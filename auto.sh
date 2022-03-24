@@ -136,7 +136,7 @@ for file in $localPath/*; do
     echo -e "\033[32m info:\033[0m \033[33m${dirName}/cpp/${newFileName}\033[0m create"
 done
 
-if [ -n $1 ]; then
+if [[ $1 -eq 1 ]]; then
     git add .
     git commit -m "leetcode auto commit"
     git push

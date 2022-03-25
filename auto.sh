@@ -3,7 +3,7 @@
 #leetcode插件工作目录为当前目录，生成文件名类似1.xxxx.cpp
 #此脚本会更改cpp名字并移动到相关目录，按固定格式操作readme，最后提交github
 localPath=`pwd`
-githubPath='https://github.com/ccencon/leetcode'
+githubPath='https://github.com/ccencon/leetcode/tree/main'
 orderStep=50
 
 dirName=""
@@ -51,7 +51,7 @@ GetDirectoty()
 #$1:line $2:questionName $3:newFileName $4:order
 insert_list()
 {
-    list=`printf "|[%04d](#%04d)|[$2](#%04d)|[cpp](${githubPath}/${dirName}/$3)|" $4 $4 $4`
+    list=`printf "|[%04d](#%04d)|[$2](#%04d)|[cpp](${githubPath}/${dirName}/cpp/$3)|" $4 $4 $4`
     if [ $1 -eq 0 ]; then
         echo "${list}" >> ${dirName}/README.md
         echo >> ${dirName}/README.md
@@ -70,7 +70,7 @@ insert_content()
     tt=${tt#*: \"}
     tt=${tt%\"*}
     ques="题目链接：[${tt}](${tt})  "
-    link=${githubPath}/${dirName}/$3
+    link=${githubPath}/${dirName}/cpp/$3
     cpplink="代码链接：[$link](${link})  "
     solut="解题思路："
     #$1==0时行尾插入

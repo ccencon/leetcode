@@ -21,4 +21,4 @@
 #### <span id=0004>[4] 寻找两个正序数组的中位数</span>
 题目链接：[https://leetcode-cn.com/problems/median-of-two-sorted-arrays](https://leetcode-cn.com/problems/median-of-two-sorted-arrays)  
 代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0004.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0004.cpp)  
-解题思路：苦思一个小时，结果第一道hard就翻车；题目限定了时间复杂度为O(log(m+n))，所以不能开辟额外空间对数组进行排序；最终还是看了最多投票答案，思路是计算出中位数偏移位置f之后，分别向两个数组分摊这个偏移，假设为f1、f2，因为两个数组是升序排列，所以如果nums1[f1]小于nums2[f2]，那nums1数组中前f1位就可以确定小于中位数，记录这个f1，并将f-f1，重复判断，直至f等于1（如果f1或f2达到对应数组长度，返回另一个数组剩余f的偏移即可）；题解是递归实现，思路明确之后非递归的实现也比较容易写，本题解答便是同样思路的非递归实现
+解题思路：苦思一个小时，结果第一道hard就翻车；题目限定了时间复杂度为O(log(m+n))，所以不能开辟额外空间对数组进行排序；最终还是看了最多投票答案，思路是计算出中位数偏移位置f之后，分别向两个数组分摊这个偏移，假设为f1、f2，因为两个数组是升序排列，所以如果nums1[f1]小于nums2[f2]，那nums1数组中前f1位就可以确定小于中位数，记录这个f1，并将f-f1，重复判断，直至f等于1（如果f1或f2达到对应数组长度，返回另一个数组剩余f的偏移即可）；题解是递归实现，思路明确之后非递归的实现也比较容易写，本题解答便是同样思路的非递归实现；这题可以进一步抽象，求n个数组，总长度为N的中位数，按照这个思想时间复杂度将会变为O(log_n N)，也就是说，数组越多，越利于筛选

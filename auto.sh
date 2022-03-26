@@ -107,6 +107,7 @@ for file in $localPath/*; do
     fi
     \cp $fileName ${dirName}/cpp
     mv ${dirName}/cpp/${fileName} ${dirName}/cpp/${newFileName}
+    sed -i 's/\r//g' ${dirName}/cpp/${newFileName}
     mv $fileName ".back/"
     #向新目录内README.md插入新记录
     lines=`sed -n -e '/[[0-9][0-9][0-9][0-9]](/=' ${dirName}/README.md`

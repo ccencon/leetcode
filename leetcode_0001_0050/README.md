@@ -7,6 +7,7 @@
 |[0004](#0004)|[寻找两个正序数组的中位数](#0004)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0004.cpp)|
 |[0005](#0005)|[最长回文子串](#0005)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0005.cpp)|
 |[0006](#0006)|[z-字形变换](#0006)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0006.cpp)|
+|[0007](#0007)|[整数反转](#0007)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0007.cpp)|
 
 #### <span id=0001>[1] 两数之和</span>
 题目链接：[https://leetcode-cn.com/problems/two-sum](https://leetcode-cn.com/problems/two-sum)  
@@ -32,3 +33,7 @@
 题目链接：[https://leetcode-cn.com/problems/zigzag-conversion](https://leetcode-cn.com/problems/zigzag-conversion)  
 代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0006.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0006.cpp)  
 解题思路：最直观的方法就是设定个数与输入行数相等的字符串数组，对原字符串进行遍历的时候根据下标将字符赋值到不同的字符串数组中，最后拼接返回，时间复杂度为O(n)，不过这种方法部分字符在最后进行了无意义拷贝。可以对Z-字形排列进行找规律，比如输入行数为5，那么第1行和第5行字符每次步进长度为（5-1）\*2=8，中间第2行每次步进长度分别为（5-2）\*2=6，8-6=2循环...根据这种规律，设定一个新字符串并对行数进行遍历，将每一行的字符根据步进长度依次复制到新字符串中，最后返回；时间复杂度与第一种方法一致，但是部分字符却少了一次内存拷贝
+#### <span id=0007>[7] 整数反转</span>
+题目链接：[https://leetcode-cn.com/problems/reverse-integer](https://leetcode-cn.com/problems/reverse-integer)  
+代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0007.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0007.cpp)  
+解题思路：一开始以为是与或非的位运算问题，想了半天感觉没方案就采用了循环除法，结果runtime只打败了42.21%的提交，去看题解结果思路都是一样的，难道是因为部分提交直接标明了INT_MAN和INT_MIN的前后部分数值导致了runtime的差异？于是把代码里面对INT_MAN和INT_MIN的计算去掉，写定了具体数值，再次提交，runtime打败了100%的提交...

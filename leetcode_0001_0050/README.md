@@ -37,8 +37,8 @@
 #### <span id=0007>[7] 整数反转</span>
 题目链接：[https://leetcode-cn.com/problems/reverse-integer](https://leetcode-cn.com/problems/reverse-integer)  
 代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0007.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0007.cpp)  
-解题思路：一开始以为是与或非的位运算问题，想了半天感觉没方案就采用了循环除法，结果runtime只打败了42.21%的提交，去看题解结果思路都是一样的，难道是因为部分提交直接标明了INT_MAN和INT_MIN的前后部分数值导致了runtime的差异？于是把代码里面对INT_MAN和INT_MIN的计算去掉，写定了具体数值，再次提交，runtime打败了100%的提交...
+解题思路：一开始以为是与或非的位运算问题，想了半天感觉没方案就采用了循环除法，结果runtime只打败了42.21%的提交，去看题解结果思路都是一样的，难道是因为部分提交直接标明了INT_MAN和INT_MIN的前后部分数值导致了runtime的差异？于是把代码里面对INT_MAN和INT_MIN的计算去掉，写定了具体数值，再次submit，runtime打败了100%的提交...
 #### <span id=0008>[8] 字符串转换整数-atoi</span>
 题目链接：[https://leetcode-cn.com/problems/string-to-integer-atoi](https://leetcode-cn.com/problems/string-to-integer-atoi)  
 代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0008.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0008.cpp)  
-解题思路：
+解题思路：过滤掉前置空格后判断符号位，设置factor为1或者-1，将factor乘以每次读取的字符与'0'的ASCII码差值，然后累加，直至字符串结束或者遇到非数字字符，累加后若累加数大于等于INT_MAX，结束返回INT_MAX，INT_MIN同理

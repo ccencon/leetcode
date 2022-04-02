@@ -6,6 +6,7 @@
 |[0003](#0003)|[无重复字符的最长子串](#0003)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0003.cpp)|
 |[0004](#0004)|[寻找两个正序数组的中位数](#0004)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0004.cpp)|
 |[0005](#0005)|[最长回文子串](#0005)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0005.cpp)|
+|[0006](#0006)|[z-字形变换](#0006)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0006.cpp)|
 
 #### <span id=0001>[1] 两数之和</span>
 题目链接：[https://leetcode-cn.com/problems/two-sum](https://leetcode-cn.com/problems/two-sum)  
@@ -27,3 +28,7 @@
 题目链接：[https://leetcode-cn.com/problems/longest-palindromic-substring](https://leetcode-cn.com/problems/longest-palindromic-substring)  
 代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0005.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0005.cpp)  
 解题思路：设定一个基准点，然后判断两边字符是否相等，刷新最长回文子串；如果左边字符与基准字符相等，再执行同样的操作，时间复杂度为O(n^2)，可以优化的点是当最长回文子串长度大于基准点与最尾字符距离差值的两倍时，可以提前跳出循环，结束判断
+#### <span id=0006>[6] z-字形变换</span>
+题目链接：[https://leetcode-cn.com/problems/zigzag-conversion](https://leetcode-cn.com/problems/zigzag-conversion)  
+代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0006.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0006.cpp)  
+解题思路：最直观的方法就是设定个数与输入行数相等的字符串数组，对原字符串进行遍历的时候根据下标将字符赋值到不同的字符串数组中，最后拼接返回，时间复杂度为O(n)，不过这种方法部分字符在最后进行了无意义拷贝。可以对Z-字形排列进行找规律，比如输入行数为5，那么第1行和第5行字符每次步进长度为（5-1）\*2=8，中间第2行每次步进长度分别为（5-2）\*2=6，8-6=2循环...根据这种规律，设定一个新字符串并对行数进行遍历，将每一行的字符根据步进长度依次复制到新字符串中，最后返回；时间复杂度与第一种方法一致，但是部分字符却少了一次内存拷贝

@@ -10,6 +10,7 @@
 |[0007](#0007)|[整数反转](#0007)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0007.cpp)|
 |[0008](#0008)|[字符串转换整数-atoi](#0008)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0008.cpp)|
 |[0009](#0009)|[回文数](#0009)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0009.cpp)|
+|[0010](#0010)|[正则表达式匹配](#0010)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0010.cpp)|
 
 #### <span id=0001>[1] 两数之和</span>
 题目链接：[https://leetcode-cn.com/problems/two-sum](https://leetcode-cn.com/problems/two-sum)  
@@ -47,3 +48,7 @@
 题目链接：[https://leetcode-cn.com/problems/palindrome-number](https://leetcode-cn.com/problems/palindrome-number)  
 代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0009.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0009.cpp)  
 解题思路：将输入整数拆分成前后两部分判断是否相等，后部分通过累加累乘反转，最后判断前后两部分是否相等或去掉中间数之后是否相等即可；值得注意的是形如122100这种末尾有0的，需要提前判断返回false，不然按照这种思路会返回true
+#### <span id=0010>[10] 正则表达式匹配</span>
+题目链接：[https://leetcode-cn.com/problems/regular-expression-matching](https://leetcode-cn.com/problems/regular-expression-matching)  
+代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0010.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0010.cpp)  
+解题思路：

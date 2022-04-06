@@ -47,8 +47,10 @@
 #### <span id=0009>[9] 回文数</span>
 题目链接：[https://leetcode-cn.com/problems/palindrome-number](https://leetcode-cn.com/problems/palindrome-number)  
 代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0009.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0009.cpp)  
-解题思路：将输入整数拆分成前后两部分判断是否相等，后部分通过累加累乘反转，最后判断前后两部分是否相等或去掉中间数之后是否相等即可；值得注意的是形如122100这种末尾有0的，需要提前判断返回false，不然按照这种思路会返回true
+解题思路：将输入整数拆分成前后两部分判断是否相等，后部分通过累加累乘反转，最后判断前后两部分是否相等或去掉中间数之后是否相等即可；值得注意的是形如122100这种最末尾一位有0的，需要提前判断返回false，不然按照这种思路会返回true
 #### <span id=0010>[10] 正则表达式匹配</span>
 题目链接：[https://leetcode-cn.com/problems/regular-expression-matching](https://leetcode-cn.com/problems/regular-expression-matching)  
 代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0010.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0010.cpp)  
-解题思路：
+解题思路：提交打败了5.几%的提交...解答采用了递归的方法，对比了一下官网题解的思路，发现有许多值得优化的地方，先mark一下自己的思路：题目中的正则匹配可以分为两种，一种是带\*匹配，一种是单个字符匹配。单个字符匹配比较好处理，如果是单个具体字符只需判断是否相等即可；带\*匹配是匹配0个或多个，而且是尽可能多匹配，当遇到带\*匹配时，需要递归判断s中的剩余字符（已匹配索引一步步往后移）和p中剩余匹配字符，直至找到当前带\*的最长匹配，如果找不到，返回false  
+官方的递归思路与上述思路大体一致，主要差别体现在实现技巧上，比如官解最开始的返回点是判断p是否为空，是的话返回s是否为空，但上述解答中传入p就不允许为空，这就使代码里面会p的长度进行较多的判断，逻辑也变得冗余，代码不够简洁清晰  
+另外一种经典解法就是DP求解，

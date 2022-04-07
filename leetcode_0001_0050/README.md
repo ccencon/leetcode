@@ -13,6 +13,7 @@
 |[0010](#0010)|[正则表达式匹配](#0010)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0010.cpp)|
 |[0011](#0011)|[盛最多水的容器](#0011)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0011.cpp)|
 |[0012](#0012)|[整数转罗马数字](#0012)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0012.cpp)|
+|[0013](#0013)|[罗马数字转整数](#0013)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0013.cpp)|
 
 #### <span id=0001>[1] 两数之和</span>
 题目链接：[https://leetcode-cn.com/problems/two-sum](https://leetcode-cn.com/problems/two-sum)  
@@ -66,3 +67,7 @@
 题目链接：[https://leetcode-cn.com/problems/integer-to-roman](https://leetcode-cn.com/problems/integer-to-roman)  
 代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0012.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0012.cpp)  
 解题思路：提交之后看到runtime不够理想点开最多投票答案，好家伙，直接用列表保存了每一位对应的罗马数字，这也让我想起以前写过获取位图第一个为0的高位索引的代码，采用的也是类似的方法，256个char保存了出现0的最高位索引。当前思路：分析得知，当出现4，5，9时需要特殊处理添加左边罗马数字，然后剩下高位小于4的数，再循环添加，所以可以写成两个函数依次调用，即传入高位因子和对应罗马数字分别处理这两种情况
+#### <span id=0013>[13] 罗马数字转整数</span>
+题目链接：[https://leetcode-cn.com/problems/roman-to-integer](https://leetcode-cn.com/problems/roman-to-integer)  
+代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0013.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0013.cpp)  
+解题思路：类似于上一道题，可以用哈希表保存每个罗马字符对应的数值；对罗马字符串进行遍历，累加每一位数，特殊的情况是，遇到紧挨的罗马数字且左边比右边小时，需要减掉左边数的两倍

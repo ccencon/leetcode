@@ -59,7 +59,7 @@
 
 官方的递归思路与上述思路大体一致，主要差别体现在实现技巧上，比如官解最开始的返回点是判断p是否为空，是则返回s是否为空，但上述解答中传入p就不允许为空，这就使代码里面会p的长度进行较多的判断，逻辑也变得冗余，代码不够简洁清晰  
 
-另外一种经典解法就是DP求解，设定数组dp[i][j]，表示s中的前i个字符能够被p的前j个字符匹配，i从0开始，迭代计算当前i与j（0-p的长度）能否匹配；在官方DP解答中，为了使状态能够进行顺利迁移，对i和j进行了特别处理，使p对空字符串进行了一次正则匹配，但这似乎也使大部分人的理解直接撞墙，也包括我自己；在真正搞懂DP的思路之后，可以对官方题解进行思路优化。使i，j从0开始，不大于对应字符串长度，在明确初始状态之后，还需要明确i=0，j≠0时的状态迁移，这也是跟目前其他题解最大的不同，具体看代码；时间复杂度O(ij)，与递归解法一致，但多次提交的runtime都达到了0ms
+另外一种经典解法就是DP求解，设定数组dp[i][j]，表示s中的前i个字符能够被p的前j个字符匹配，i从0开始，迭代计算当前i与j（0-p的长度）能否匹配；在官方DP解答中，为了使状态能够进行顺利迁移，对i和j进行了特别处理，使p对空字符串进行了一次正则匹配，但这似乎也使大部分人的理解直接撞墙，也包括我自己；在真正搞懂DP的思路之后，可以对官方题解进行思路优化。使i，j从0开始，不大于对应字符串长度，在明确初始状态之后，还需要明确i=0，j≠0时的状态迁移，这也是跟目前其他题解最大的不同，具体看代码；时间复杂度O(mn)，与递归解法一致，但多次提交的runtime都达到了0ms
 #### <span id=0011>[11] 盛最多水的容器</span>
 题目链接：[https://leetcode-cn.com/problems/container-with-most-water](https://leetcode-cn.com/problems/container-with-most-water)  
 代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0011.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0011.cpp)  
@@ -75,4 +75,4 @@
 #### <span id=0014>[14] 最长公共前缀</span>
 题目链接：[https://leetcode-cn.com/problems/longest-common-prefix](https://leetcode-cn.com/problems/longest-common-prefix)  
 代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0014.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0014.cpp)  
-解题思路：
+解题思路：初始返回字符串r为strs第一个字符串，最小公共前缀长度m为strs第一个字符串长度，对strs剩余字符串进行遍历，刷新m的长度，并迭代判断r与当前遍历字符串的前m个字符是否相等，不相等时刷新m长度并进入下一次循环，时间复杂度为O(mn)。而在官方解答中，先对strs进行排序，再比较第一个和最后一个字符，但string的排序需要逐字符对比，排序复杂度不会低于O(nmlogm)，再加上排序过程存在不必要的内存拷贝，所以总体效率远不如上述做法

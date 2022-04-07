@@ -11,6 +11,7 @@
 |[0008](#0008)|[字符串转换整数-atoi](#0008)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0008.cpp)|
 |[0009](#0009)|[回文数](#0009)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0009.cpp)|
 |[0010](#0010)|[正则表达式匹配](#0010)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0010.cpp)|
+|[0011](#0011)|[盛最多水的容器](#0011)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0011.cpp)|
 
 #### <span id=0001>[1] 两数之和</span>
 题目链接：[https://leetcode-cn.com/problems/two-sum](https://leetcode-cn.com/problems/two-sum)  
@@ -55,4 +56,8 @@
 
 官方的递归思路与上述思路大体一致，主要差别体现在实现技巧上，比如官解最开始的返回点是判断p是否为空，是则返回s是否为空，但上述解答中传入p就不允许为空，这就使代码里面会p的长度进行较多的判断，逻辑也变得冗余，代码不够简洁清晰  
 
-另外一种经典解法就是DP求解，设定数组dp[i][j]，表示s中的前i个字符能够被p的前j个字符匹配，i从0开始，迭代计算当前i与j（0-p的长度）能否匹配；在官方DP解答中，为了使状态能够进行顺利迁移，对i和j进行了特别处理，使p对空字符串进行了一次正则匹配，但这似乎也使大部分人的理解直接撞墙，也包括我自己；在真正搞懂DP的思路之后，可以对官方题解进行思路优化。使i，j从0开始，不大于对应字符串长度，在明确初始状态之后，还需要明确i=0，j≠0时的状态迁移，这也是跟目前其他题解最大的不同，具体看代码
+另外一种经典解法就是DP求解，设定数组dp[i][j]，表示s中的前i个字符能够被p的前j个字符匹配，i从0开始，迭代计算当前i与j（0-p的长度）能否匹配；在官方DP解答中，为了使状态能够进行顺利迁移，对i和j进行了特别处理，使p对空字符串进行了一次正则匹配，但这似乎也使大部分人的理解直接撞墙，也包括我自己；在真正搞懂DP的思路之后，可以对官方题解进行思路优化。使i，j从0开始，不大于对应字符串长度，在明确初始状态之后，还需要明确i=0，j≠0时的状态迁移，这也是跟目前其他题解最大的不同，具体看代码；时间复杂度O(ij)，与递归解法一致，但多次提交的runtime都达到了0ms
+#### <span id=0011>[11] 盛最多水的容器</span>
+题目链接：[https://leetcode-cn.com/problems/container-with-most-water](https://leetcode-cn.com/problems/container-with-most-water)  
+代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0011.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0011.cpp)  
+解题思路：从两边向中间靠拢计算，取最小高度\*宽度并刷新最大面积，如果左边等于最小高度，左边向中间靠拢，否则右边向中间靠拢；时间复杂度O(n)，原以为达到了最优解法，结果还是有可以优化的地方：向中间靠拢时判断新坐标对应的值是否小于等于最小高度，是则继续执行靠拢操作跳过不必要的面积计算

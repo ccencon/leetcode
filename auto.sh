@@ -1,7 +1,6 @@
 #/bin/sh
 #提交github自动化工具
-#leetcode插件工作目录为当前目录，生成文件名类似1.xxxx.cpp
-#此脚本会更改cpp名字并移动到相关目录，按固定格式操作readme，最后提交github
+#根据题目生成相关目录和readme结构
 localPath=`pwd`
 githubPath='https://github.com/ccencon/leetcode/tree/main'
 orderStep=50

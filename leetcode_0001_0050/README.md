@@ -12,6 +12,7 @@
 |[0009](#0009)|[回文数](#0009)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0009.cpp)|
 |[0010](#0010)|[正则表达式匹配](#0010)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0010.cpp)|
 |[0011](#0011)|[盛最多水的容器](#0011)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0011.cpp)|
+|[0012](#0012)|[整数转罗马数字](#0012)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0012.cpp)|
 
 #### <span id=0001>[1] 两数之和</span>
 题目链接：[https://leetcode-cn.com/problems/two-sum](https://leetcode-cn.com/problems/two-sum)  
@@ -61,3 +62,7 @@
 题目链接：[https://leetcode-cn.com/problems/container-with-most-water](https://leetcode-cn.com/problems/container-with-most-water)  
 代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0011.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0011.cpp)  
 解题思路：从两边向中间靠拢计算，取最小高度\*宽度并刷新最大面积，如果左边等于最小高度，左边向中间靠拢，否则右边向中间靠拢；时间复杂度O(n)，原以为达到了最优解法，结果还是有可以优化的地方：向中间靠拢时判断新坐标对应的值是否小于等于最小高度，是则继续执行靠拢操作跳过不必要的面积计算
+#### <span id=0012>[12] 整数转罗马数字</span>
+题目链接：[https://leetcode-cn.com/problems/integer-to-roman](https://leetcode-cn.com/problems/integer-to-roman)  
+代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0012.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0012.cpp)  
+解题思路：提交之后看到runtime不够理想点开最多投票答案，好家伙，直接用列表保存了每一位对应的罗马数字，这也让我想起以前写过获取位图第一个为0的高位索引的代码，采用的也是类似的方法，256个char保存了出现0的最高位索引。当前思路：分析得知，当出现4，5，9时需要特殊处理添加左边罗马数字，然后剩下高位小于4的数，再循环添加，所以可以写成两个函数依次调用，即传入高位因子和对应罗马数字分别处理这两种情况

@@ -14,6 +14,7 @@
 |[0011](#0011)|[盛最多水的容器](#0011)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0011.cpp)|
 |[0012](#0012)|[整数转罗马数字](#0012)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0012.cpp)|
 |[0013](#0013)|[罗马数字转整数](#0013)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0013.cpp)|
+|[0014](#0014)|[最长公共前缀](#0014)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0014.cpp)|
 
 #### <span id=0001>[1] 两数之和</span>
 题目链接：[https://leetcode-cn.com/problems/two-sum](https://leetcode-cn.com/problems/two-sum)  
@@ -71,3 +72,7 @@
 题目链接：[https://leetcode-cn.com/problems/roman-to-integer](https://leetcode-cn.com/problems/roman-to-integer)  
 代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0013.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0013.cpp)  
 解题思路：类似于上一道题，可以用哈希表保存每个罗马字符对应的数值；对罗马字符串进行遍历，累加每一位数，特殊的情况是，遇到紧挨的罗马数字且左边比右边小时，需要减掉左边数的两倍
+#### <span id=0014>[14] 最长公共前缀</span>
+题目链接：[https://leetcode-cn.com/problems/longest-common-prefix](https://leetcode-cn.com/problems/longest-common-prefix)  
+代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0014.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0014.cpp)  
+解题思路：

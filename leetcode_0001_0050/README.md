@@ -16,6 +16,7 @@
 |[0013](#0013)|[罗马数字转整数](#0013)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0013.cpp)|
 |[0014](#0014)|[最长公共前缀](#0014)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0014.cpp)|
 |[0015](#0015)|[三数之和](#0015)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0015.cpp)|
+|[0016](#0016)|[最接近的三数之和](#0016)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0016.cpp)|
 
 #### <span id=0001>[1] 两数之和</span>
 题目链接：[https://leetcode-cn.com/problems/two-sum](https://leetcode-cn.com/problems/two-sum)  
@@ -95,6 +96,11 @@
 题目链接：[https://leetcode-cn.com/problems/3sum](https://leetcode-cn.com/problems/3sum)  
 代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0015.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0015.cpp)  
 运行时间：beats 25.69%  
-解题思路：先对数组进行升序排序，反向遍历数组，将正数添加进map中（不用哈希表是因为循环时遇到比中间数小的右边数时可以直接break）并记录最小正数下标；对i，j进行双重遍历，i从0开始，不大于最小正数下标（不算3个0的情况，必然会有一个负数），j从i+1开始，不大于数组长度-1；通过nums[i]+nums[j]计算出另外一个数a，如果a\<nums[j]，跳出循环；如果a==nums[j]，通过判断map中记录a的个数是否记录结果，跳出循环；如果a\>nums[j]且map中能查找到a，记录结果；最后还需要判断一下是否有3个0连续的情况；时间复杂度为O(n^2)  
+解题思路：先对数组进行升序排序，反向遍历数组，将正数添加进map中（不用哈希表是因为循环时遇到比中间数小的右边数时可以直接break）并记录最小正数下标；对i，j进行双重遍历，i从0开始，不大于最小正数下标（不算3个0的情况，必然会有一个负数），j从i+1开始，不大于数组长度-1；通过nums[i]+nums[j]计算出另外一个数a，如果a\<nums[j]，跳出循环；如果a==nums[j]，通过判断map中记录a的个数是否记录结果，跳出循环；如果a\>nums[j]且map中能查找到a，记录结果；最后还需要特殊处理一下存在3个0的情况；时间复杂度为O(n^2)  
 
 官方的双指针（下标）解法效率更高，同样的先对数组进行升序排序，指针i从数组左边出发，指针k从数组右边出发，指针j从i的右边出发，通过nums[i]+nums[j]计算出另外一个数a，如果a比nums[k]小，则k递减，因为-a已经是当前最小数，比a大的数已经可以舍弃判断
+#### <span id=0016>[16] 最接近的三数之和</span>
+题目链接：[https://leetcode-cn.com/problems/3sum-closest](https://leetcode-cn.com/problems/3sum-closest)  
+代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0016.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0016.cpp)  
+运行时间：beats 49.29%  
+解题思路：思路类似上一题，采用排序+多指针解法。设3个指针left，middle，right；left从0开始，middle从left+1开始，right从数组末尾开始，迭代往数组中间靠拢；当left固定，三个数的sum\>target时right--，即向middle靠拢；sum\<target时middle++，向right靠拢；sum==target时直接返回即可；当进行新一轮的left迭代时，right需要重置，开始的几次提交也是不注意这个点导致了WA，right向middle靠拢是因为前两个数和不变的情况下总值sum依然比target大，而进行新的一轮迭代时，前两数之和重新计算，不一定会大于上一轮的最大值，所以这时候就需要重置right

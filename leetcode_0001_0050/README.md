@@ -17,6 +17,7 @@
 |[0014](#0014)|[最长公共前缀](#0014)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0014.cpp)|
 |[0015](#0015)|[三数之和](#0015)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0015.cpp)|
 |[0016](#0016)|[最接近的三数之和](#0016)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0016.cpp)|
+|[0017](#0017)|[电话号码的字母组合](#0017)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0017.cpp)|
 
 #### <span id=0001>[1] 两数之和</span>
 题目链接：[https://leetcode-cn.com/problems/two-sum](https://leetcode-cn.com/problems/two-sum)  
@@ -104,3 +105,8 @@
 代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0016.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0016.cpp)  
 运行时间：beats 49.29%  
 解题思路：思路类似上一题，采用排序+多指针解法。设3个指针left，middle，right；left从0开始，middle从left+1开始，right从数组末尾开始，迭代往数组中间靠拢；当left固定，三个数的sum\>target时right--，即向middle靠拢；sum\<target时middle++，向right靠拢；sum==target时直接返回即可；当进行新一轮的left迭代时，right需要重置，开始的几次提交也是不注意这个点导致了WA，right向middle靠拢是因为前两个数和不变的情况下总值sum依然比target大，而进行新的一轮迭代时，前两数之和重新计算，不一定会大于上一轮的最大值，所以这时候就需要重置right
+#### <span id=0017>[17] 电话号码的字母组合</span>
+题目链接：[https://leetcode-cn.com/problems/letter-combinations-of-a-phone-number](https://leetcode-cn.com/problems/letter-combinations-of-a-phone-number)  
+代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0017.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0017.cpp)  
+运行时间：beats 100%  
+解题思路：看完题目之后想起了之前写[有向图](https://github.com/ccencon/structdata#DirectedGraph)输出所有拓扑序列和所有关键路径的代码，这里也可以采用同样的算法。首先初始化一个数组v，记录每个位置字符对应字符串的下一个遍历位置，初始化回溯索引traceIdx=0；递增traceIdx，将digits对应traceIdx的字符所对应v所记录遍历位置的字符添加到临时字符串tmp中，递增完traceIdx后，tmp将会是一个新的字符串；然后回溯traceIdx，当v中对应traceIdx的记录已经等于对应字符串的长度时继续回溯同时清零v中对应记录；当traceIdx>=0时继续递增traceIdx的步骤；时间复杂度近似为O(3^n)。大部分题解采用的是基于递归的DFS遍历，时间复杂度一致，但是实际效率上会差上不少；在上面提交中，采用了哈希表记录每个数字对应的字符串，可以改用顺序数组记录，毕竟只有两个空余位置，这是一个值得优化的点

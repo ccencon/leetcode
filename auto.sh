@@ -71,12 +71,14 @@ insert_content()
     ques="题目链接：[${tt}](${tt})  "
     link=${githubPath}/${dirName}/cpp/$3
     cpplink="代码链接：[$link](${link})  "
+    runtime="运行时间：beats %  "
     solut="解题思路："
     #$1==0时行尾插入
     if [ $1 -eq 0 ]; then
         echo "${title}" >> ${dirName}/README.md
         echo "${ques}" >> ${dirName}/README.md
         echo "${cpplink}" >> ${dirName}/README.md
+        echo "${runtime}" >> ${dirName}/README.md
         echo "${solut}" >> ${dirName}/README.md
     else
         line=$1
@@ -84,6 +86,8 @@ insert_content()
         sed -i ${line}"a""${ques}" ${dirName}/README.md
         line=`expr $line + 1`
         sed -i ${line}"a""${cpplink}" ${dirName}/README.md
+        line=`expr $line + 1`
+        sed -i ${line}"a""${runtime}" ${dirName}/README.md
         line=`expr $line + 1`
         sed -i ${line}"a""${solut}" ${dirName}/README.md
     fi

@@ -19,6 +19,7 @@
 |[0016](#0016)|[最接近的三数之和](#0016)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0016.cpp)|
 |[0017](#0017)|[电话号码的字母组合](#0017)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0017.cpp)|
 |[0018](#0018)|[四数之和](#0018)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0018.cpp)|
+|[0019](#0019)|[删除链表的倒数第-n-个结点](#0019)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0019.cpp)|
 
 #### <span id=0001>[1] 两数之和</span>
 题目链接：[https://leetcode-cn.com/problems/two-sum](https://leetcode-cn.com/problems/two-sum)  
@@ -116,3 +117,8 @@
 代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0018.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0018.cpp)  
 运行时间：beats 76.97%  
 解题思路：三数和的进阶版，后面是否还有n数和？思路类似第15题的三数之和，先固定两个坐标，设定两个指针l，r分别从数组前后往中间靠拢，总和sum\>target时，r--；sum\<target时，l++；相等时四数符合题意；值得注意的是，相等时还需继续移动l，r判断，因为中间可能还存在满足条件的其它两数
+#### <span id=0019>[19] 删除链表的倒数第-n-个结点</span>
+题目链接：[https://leetcode-cn.com/problems/remove-nth-node-from-end-of-list](https://leetcode-cn.com/problems/remove-nth-node-from-end-of-list)  
+代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0019.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0019.cpp)  
+运行时间：beats 77.58%  
+解题思路：顺序遍历链表，并记录当前遍历长度的倒数第n+1个结点node；遍历完成后如果存在倒数n+1个结点，则node=node->next->next，如果头结点恰好是第n个结点，则head=head->next；最后返回head即可

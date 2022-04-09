@@ -21,6 +21,7 @@
 |[0018](#0018)|[四数之和](#0018)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0018.cpp)|
 |[0019](#0019)|[删除链表的倒数第-n-个结点](#0019)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0019.cpp)|
 |[0020](#0020)|[有效的括号](#0020)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0020.cpp)|
+|[0021](#0021)|[合并两个有序链表](#0021)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0021.cpp)|
 
 #### <span id=0001>[1] 两数之和</span>
 题目链接：[https://leetcode-cn.com/problems/two-sum](https://leetcode-cn.com/problems/two-sum)  
@@ -128,3 +129,8 @@
 代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0020.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0020.cpp)  
 运行时间：beats 100%  
 解题思路：用栈记录左括号，遇到右括号时出栈，如果栈为空或者出战的左括号跟当前右括号对应不上则返回false；最后判断是否出栈了所有左括号并返回结果
+#### <span id=0021>[21] 合并两个有序链表</span>
+题目链接：[https://leetcode-cn.com/problems/merge-two-sorted-lists](https://leetcode-cn.com/problems/merge-two-sorted-lists)  
+代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0021.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0021.cpp)  
+运行时间：beats 100%  
+解题思路：利用迭代的方法，不断的将一张链表的结点合并到另外一张；合并的时候记录当前的合并位置，因为两张链表都是升序排序，下一个合并结点必然大于等于当前所记录的位置结点；特殊的情况是，合并第一个结点时，可能会小于记录结点，这时候往头部插入即可

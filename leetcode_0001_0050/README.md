@@ -20,6 +20,7 @@
 |[0017](#0017)|[电话号码的字母组合](#0017)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0017.cpp)|
 |[0018](#0018)|[四数之和](#0018)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0018.cpp)|
 |[0019](#0019)|[删除链表的倒数第-n-个结点](#0019)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0019.cpp)|
+|[0020](#0020)|[有效的括号](#0020)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0020.cpp)|
 
 #### <span id=0001>[1] 两数之和</span>
 题目链接：[https://leetcode-cn.com/problems/two-sum](https://leetcode-cn.com/problems/two-sum)  
@@ -122,3 +123,8 @@
 代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0019.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0019.cpp)  
 运行时间：beats 77.58%  
 解题思路：顺序遍历链表，并记录当前遍历长度的倒数第n+1个结点node；遍历完成后如果存在倒数n+1个结点，则node=node->next->next，如果头结点恰好是第n个结点，则head=head->next；最后返回head即可
+#### <span id=0020>[20] 有效的括号</span>
+题目链接：[https://leetcode-cn.com/problems/valid-parentheses](https://leetcode-cn.com/problems/valid-parentheses)  
+代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0020.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0020.cpp)  
+运行时间：beats 100%  
+解题思路：用栈记录左括号，遇到右括号时出栈，如果栈为空或者出战的左括号跟当前右括号对应不上则返回false；最后判断是否出栈了所有左括号并返回结果

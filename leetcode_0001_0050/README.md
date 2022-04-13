@@ -22,6 +22,7 @@
 |[0019](#0019)|[删除链表的倒数第-n-个结点](#0019)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0019.cpp)|
 |[0020](#0020)|[有效的括号](#0020)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0020.cpp)|
 |[0021](#0021)|[合并两个有序链表](#0021)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0021.cpp)|
+|[0022](#0022)|[括号生成](#0022)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0022.cpp)|
 
 #### <span id=0001>[1] 两数之和</span>
 题目链接：[https://leetcode-cn.com/problems/two-sum](https://leetcode-cn.com/problems/two-sum)  
@@ -134,3 +135,8 @@
 代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0021.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0021.cpp)  
 运行时间：beats 100%  
 解题思路：利用迭代的方法，不断的将一张链表的结点合并到另外一张；合并的时候记录当前的合并位置，因为两张链表都是升序排序，下一个合并结点必然大于等于当前所记录的位置结点；特殊的情况是，合并第一个结点时，可能会小于记录结点，这时候往头部插入即可
+#### <span id=0022>[22] 括号生成</span>
+题目链接：[https://leetcode-cn.com/problems/generate-parentheses](https://leetcode-cn.com/problems/generate-parentheses)  
+代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0022.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0022.cpp)  
+运行时间：beats 100%  
+解题思路：所看到的题解都是基于递归的DFS或者回溯，部分是DP；对这类回溯类型的题目，如果理解透彻，应该很容易就写出非递归的回溯解法，这应该也是效率最高的。思路类似[电话号码的字母组合](#0017)，因为字符串第0位必为'('，所以初始回溯索引traceIdx为1，剩余左括号数为left_count=n-1，字符串tmp="("；使traceIdx递增进行迭代，迭代过程中，如果left_count>0，tmp插入'('，同时left_count自减1，也就是优先插入'('，否则插入')'；迭代完成后，tmp将会是新的满足题意的字符串；然后回溯traceIdx，遇到')'时left_count自增1，如果traceIdx往后的剩余空间可以容纳下left_count数量的'('和')'，那么将此位置的'('设置为')'，同时对traceIdx的回溯停止，转到traceIdx的迭代步骤，直至traceIdx小于1

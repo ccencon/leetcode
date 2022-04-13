@@ -23,6 +23,7 @@
 |[0020](#0020)|[有效的括号](#0020)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0020.cpp)|
 |[0021](#0021)|[合并两个有序链表](#0021)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0021.cpp)|
 |[0022](#0022)|[括号生成](#0022)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0022.cpp)|
+|[0023](#0023)|[合并k个升序链表](#0023)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0023.cpp)|
 
 #### <span id=0001>[1] 两数之和</span>
 题目链接：[https://leetcode-cn.com/problems/two-sum](https://leetcode-cn.com/problems/two-sum)  
@@ -139,4 +140,9 @@
 题目链接：[https://leetcode-cn.com/problems/generate-parentheses](https://leetcode-cn.com/problems/generate-parentheses)  
 代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0022.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0022.cpp)  
 运行时间：beats 100%  
-解题思路：所看到的题解都是基于递归的DFS或者回溯，部分是DP；对这类回溯类型的题目，如果理解透彻，应该很容易就写出非递归的回溯解法，这应该也是效率最高的。思路类似[电话号码的字母组合](#0017)，因为字符串第0位必为'('，所以初始回溯索引traceIdx为1，剩余左括号数为left_count=n-1，字符串tmp="("；使traceIdx递增进行迭代，迭代过程中，如果left_count>0，tmp插入'('，同时left_count自减1，也就是优先插入'('，否则插入')'；迭代完成后，tmp将会是新的满足题意的字符串；然后回溯traceIdx，遇到')'时left_count自增1，如果traceIdx往后的剩余空间可以容纳下left_count数量的'('和')'，那么将此位置的'('设置为')'，同时对traceIdx的回溯停止，转到traceIdx的迭代步骤，直至traceIdx小于1
+解题思路：所看到的题解都是基于递归的DFS或者回溯，部分是DP；对这类回溯类型的题目，如果理解透彻，应该很容易就写出非递归的回溯解法，这应该也是效率最高的。思路类似[电话号码的字母组合](#0017)，因为字符串第0位必为'('，所以初始回溯索引traceIdx为1，剩余左括号数为left_count=n-1，字符串tmp="("；使traceIdx递增进行迭代，迭代过程中，如果left_count>0，tmp插入'('，同时left_count自减1，也就是优先插入'('，否则插入')'；迭代完成后，tmp将会是新的满足题意的字符串；然后回溯traceIdx，遇到')'时left_count自增1，如果traceIdx往后的剩余空间可以容纳下left_count数量的'('和')'，那么将此位置的'('设置为')'，同时对traceIdx的回溯停止，转到traceIdx的迭代步骤，直至traceIdx小于1；总体时间复杂度近似O(2^n)
+#### <span id=0023>[23] 合并k个升序链表</span>
+题目链接：[https://leetcode-cn.com/problems/merge-k-sorted-lists](https://leetcode-cn.com/problems/merge-k-sorted-lists)  
+代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0023.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0023.cpp)  
+运行时间：beats 15.93%  
+解题思路：看到运行时间瞬间懵逼，采用的是[合并两个有序链表](#0021)的解法，虽然隐隐感觉还有可以优化的点，但觉得应该也不会太差...看了投票答案，采用的是分治的递归算法，但时间复杂度都近似O(mn*log_2 m)，不至于差别这么大吧，看了官方题解，优先队列！！！...捂脸...

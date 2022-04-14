@@ -27,6 +27,7 @@
 |[0024](#0024)|[两两交换链表中的节点](#0024)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0024.cpp)|
 |[0025](#0025)|[k-个一组翻转链表](#0025)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0025.cpp)|
 |[0026](#0026)|[删除有序数组中的重复项](#0026)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0026.cpp)|
+|[0027](#0027)|[移除元素](#0027)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0027.cpp)|
 
 #### <span id=0001>[1] 两数之和</span>
 题目链接：[https://leetcode-cn.com/problems/two-sum](https://leetcode-cn.com/problems/two-sum)  
@@ -164,3 +165,8 @@
 代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0026.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0026.cpp)  
 运行时间：beats 82.12%  
 解题思路：设定基准索引k=0，遍历索引i从1开始，当nums[i]≠nums[k]时，nums[++k]=nums[i]，最后返回k+1
+#### <span id=0027>[27] 移除元素</span>
+题目链接：[https://leetcode-cn.com/problems/remove-element](https://leetcode-cn.com/problems/remove-element)  
+代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0027.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0027.cpp)  
+运行时间：beats 100%  
+解题思路：跟上一题一样，也是双指针思路，大体做法是设定索引k，last分别从数组两边开始，当nums[k]==val时，交换nums[k]和nums[last]，最后返回k

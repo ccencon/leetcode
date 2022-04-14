@@ -24,6 +24,7 @@
 |[0021](#0021)|[合并两个有序链表](#0021)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0021.cpp)|
 |[0022](#0022)|[括号生成](#0022)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0022.cpp)|
 |[0023](#0023)|[合并k个升序链表](#0023)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0023.cpp)|
+|[0024](#0024)|[两两交换链表中的节点](#0024)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0024.cpp)|
 
 #### <span id=0001>[1] 两数之和</span>
 题目链接：[https://leetcode-cn.com/problems/two-sum](https://leetcode-cn.com/problems/two-sum)  
@@ -146,3 +147,8 @@
 代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0023.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0023.cpp)  
 运行时间：beats 15.93%  
 解题思路：看到运行时间瞬间懵逼，采用的是[合并两个有序链表](#0021)的解法，虽然隐隐感觉还有可以优化的点，但觉得应该也不会太差...看了投票答案，采用的是分治的递归算法，但时间复杂度都近似O(mn*log_2 m)，不至于差别这么大吧，看了官方题解，优先队列！！！...捂脸...
+#### <span id=0024>[24] 两两交换链表中的节点</span>
+题目链接：[https://leetcode-cn.com/problems/swap-nodes-in-pairs](https://leetcode-cn.com/problems/swap-nodes-in-pairs)  
+代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0024.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0024.cpp)  
+运行时间：beats 100%  
+解题思路：没啥好说的，有时候代码简洁短小和易读易懂确实难以抉择

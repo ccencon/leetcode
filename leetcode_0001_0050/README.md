@@ -25,6 +25,7 @@
 |[0022](#0022)|[括号生成](#0022)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0022.cpp)|
 |[0023](#0023)|[合并k个升序链表](#0023)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0023.cpp)|
 |[0024](#0024)|[两两交换链表中的节点](#0024)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0024.cpp)|
+|[0025](#0025)|[k-个一组翻转链表](#0025)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0025.cpp)|
 
 #### <span id=0001>[1] 两数之和</span>
 题目链接：[https://leetcode-cn.com/problems/two-sum](https://leetcode-cn.com/problems/two-sum)  
@@ -151,4 +152,9 @@
 题目链接：[https://leetcode-cn.com/problems/swap-nodes-in-pairs](https://leetcode-cn.com/problems/swap-nodes-in-pairs)  
 代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0024.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0024.cpp)  
 运行时间：beats 100%  
-解题思路：没啥好说的，有时候代码简洁短小和易读易懂确实难以抉择
+解题思路：没啥好说的，在一些时候代码简洁短小和易读易懂确实不可兼得
+#### <span id=0025>[25] k-个一组翻转链表</span>
+题目链接：[https://leetcode-cn.com/problems/reverse-nodes-in-k-group](https://leetcode-cn.com/problems/reverse-nodes-in-k-group)  
+代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0025.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0025.cpp)  
+运行时间：beats 45.51%  
+解题思路：如果不考虑空间复杂度，用栈实现最清晰明了，时间复杂度都为O(n)；考虑到O(1)的空间复杂度，每次遍历够k个结点时记录最左和最右两个结点，然后不断将最左边的结点依次插入到最右边结点后面；这题的难点应该在于如何对头结点进行优雅的处理，因为链表头没有头结点，这样会使得循环体内代码难以处理，而解决这个问题只需创建一个新的头结点即可

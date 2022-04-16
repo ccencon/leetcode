@@ -28,6 +28,7 @@
 |[0025](#0025)|[k-个一组翻转链表](#0025)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0025.cpp)|
 |[0026](#0026)|[删除有序数组中的重复项](#0026)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0026.cpp)|
 |[0027](#0027)|[移除元素](#0027)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0027.cpp)|
+|[0028](#0028)|[实现-str-str](#0028)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0028.cpp)|
 
 #### <span id=0001>[1] 两数之和</span>
 题目链接：[https://leetcode-cn.com/problems/two-sum](https://leetcode-cn.com/problems/two-sum)  
@@ -62,7 +63,7 @@
 #### <span id=0007>[7] 整数反转</span>
 题目链接：[https://leetcode-cn.com/problems/reverse-integer](https://leetcode-cn.com/problems/reverse-integer)  
 代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0007.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0007.cpp)  
-运行时间：beats 42.21% 100%  
+运行时间：beats 42.21%  
 解题思路：一开始以为是与或非的位运算问题，想了半天感觉没方案就采用了循环除法，结果runtime只打败了42.21%的提交，去看题解结果思路都是一样的，难道是因为部分提交直接标明了INT_MAN和INT_MIN的前后部分数值导致了runtime的差异？于是把代码里面对INT_MAN和INT_MIN的计算去掉，写定了具体数值，再次submit，runtime打败了100%的提交...
 #### <span id=0008>[8] 字符串转换整数-atoi</span>
 题目链接：[https://leetcode-cn.com/problems/string-to-integer-atoi](https://leetcode-cn.com/problems/string-to-integer-atoi)  
@@ -170,3 +171,8 @@
 代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0027.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0027.cpp)  
 运行时间：beats 100%  
 解题思路：跟上一题一样，也是双指针思路，大体做法是设定索引k，last分别从数组两边开始，当nums[k]==val时，交换nums[k]和nums[last]，最后返回k
+#### <span id=0028>[28] 实现-str-str</span>
+题目链接：[https://leetcode-cn.com/problems/implement-strstr](https://leetcode-cn.com/problems/implement-strstr)  
+代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0028.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0028.cpp)  
+运行时间：beats 100%  
+解题思路：

@@ -29,6 +29,7 @@
 |[0026](#0026)|[删除有序数组中的重复项](#0026)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0026.cpp)|
 |[0027](#0027)|[移除元素](#0027)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0027.cpp)|
 |[0028](#0028)|[实现-str-str](#0028)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0028.cpp)|
+|[0029](#0029)|[两数相除](#0029)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0029.cpp)|
 
 #### <span id=0001>[1] 两数之和</span>
 题目链接：[https://leetcode-cn.com/problems/two-sum](https://leetcode-cn.com/problems/two-sum)  
@@ -199,3 +200,8 @@
 1. 初始j = 0（记录可匹配的最长字符串下标），i = 2（trick，迭代时比较的是t[i - 1]和t[j]，在strStr函数过程中如果失配，t回溯的下标取next[j]而不是next[j - 1]），数组next[1] = 0；对i进行迭代执行步骤2和3
 2. 如果t[i - 1] == t[j]，则表明$[t_0,t_j]==[t_{i-1-j},t_{i-1}]$，执行j++，并设置next[i] = j，也就是说当下标i的字符失配时，将$t$回溯到j的位置继续与主串的失配位置进行比较
 3. 如果t[i - 1] != t[j]，则表明$[t_0,t_j]!=[t_{i-1-j},t_{i-1}]$，这时候next[i]就不能等于j+1了；但从上一轮的匹配结果来看，也就是$[t_0,t_{next[j]}]==[t_{i-2-next[j]},t_{i-2}]$，所以将j进行回溯，j = next[j]，重复执行步骤2和3
+#### <span id=0029>[29] 两数相除</span>
+题目链接：[https://leetcode-cn.com/problems/divide-two-integers](https://leetcode-cn.com/problems/divide-two-integers)  
+代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0029.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0029.cpp)  
+运行时间：beats 48.64%  
+解题思路：这是目前为止做的最难受一题，不知道leetcode官方采用的什么版本cpp编译器，居然不支持负数的算术移位。具体思路是，因为商是一个具体整数，而一个整数从二进制看则是由0个或多个不同的2的n次方幂相加得到，所以设定i从31开始，不小于0，迭代执行以下逻辑：如果dividend>>i \<= divisor，则说明dividend包含的divisor大于等于2^i，所以将dividend减去2^i个divisor，并将quotient叠加上2^i，最后返回。这题的难点在于对溢出和符号位的细节处理，折腾了差不多一个下午，真是难受

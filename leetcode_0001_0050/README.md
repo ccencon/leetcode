@@ -32,6 +32,7 @@
 |[0029](#0029)|[两数相除](#0029)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0029.cpp)|
 |[0030](#0030)|[串联所有单词的子串](#0030)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0030.cpp)|
 |[0031](#0031)|[下一个排列](#0031)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0031.cpp)|
+|[0032](#0032)|[最长有效括号](#0032)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0032.cpp)|
 
 #### <span id=0001>[1] 两数之和</span>
 题目链接：[https://leetcode-cn.com/problems/two-sum](https://leetcode-cn.com/problems/two-sum)  
@@ -217,3 +218,10 @@
 代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0031.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0031.cpp)  
 运行时间：beats 100%  
 解题思路：解答这类题最快的方法就是找规律，首先设定一个数组，列出它排列的几种情况，可以很容易发现，当末尾某个数及它后面的序列不是降序排列时，找到这个序列比它大且数值最接近它的一个整数，将两者交换，最后再对这个序列进行反转即可
+#### <span id=0032>[32] 最长有效括号</span>
+题目链接：[https://leetcode-cn.com/problems/longest-valid-parentheses](https://leetcode-cn.com/problems/longest-valid-parentheses)  
+代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0032.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0032.cpp)  
+运行时间：beats 100%  
+解题思路：设置一个记录左括号数变量count，遇到左括号时count++，遇到右括号时count--，当count为0时便刷新最大长度；但这样会有一个问题，当s中左括号比右括号多的时候，会发生长度为0的情况，因为count减少不到0，比如s="()((()()"，这时候便使count变为记录右括号数，以同样的逻辑重新反向遍历s即可  
+
+也可以采用动态规划求解，初始dp数组为0，设定i从1开始遍历s，当s[i] == '('时，跳过，因为当前'('必然是匹配后面的')'；当s[i] == ')'时，如果s[i - 1] == '('，则说明这两个括号相互配对，有dp[i] = dp[i - 2] + 2；如果s[i - 1] == ')'，且s[i - dp[i - 1] - 1] == '('，则说明s[i]与s[i - dp[i - 1] - 1]相互配对，这时候有dp[i] = dp[i - 1] + 2 + dp[i - dp[i - 1] - 2]

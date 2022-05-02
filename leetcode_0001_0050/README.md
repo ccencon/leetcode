@@ -30,6 +30,7 @@
 |[0027](#0027)|[移除元素](#0027)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0027.cpp)|
 |[0028](#0028)|[实现-str-str](#0028)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0028.cpp)|
 |[0029](#0029)|[两数相除](#0029)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0029.cpp)|
+|[0030](#0030)|[串联所有单词的子串](#0030)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0030.cpp)|
 
 #### <span id=0001>[1] 两数之和</span>
 题目链接：[https://leetcode-cn.com/problems/two-sum](https://leetcode-cn.com/problems/two-sum)  
@@ -205,3 +206,8 @@
 代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0029.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0029.cpp)  
 运行时间：beats 48.64%  
 解题思路：这是目前为止做的最难受一题，不知道leetcode官方采用的什么版本cpp编译器，居然不支持负数的算术移位。具体思路是，因为商是一个具体整数，而一个整数从二进制看则是由0个或多个不同的2的n次方幂相加得到，所以设定i从31开始，不小于0，迭代执行以下逻辑：如果dividend>>i \<= divisor，则说明dividend包含的divisor大于等于2^i，所以将dividend减去2^i个divisor，并将quotient叠加上2^i，最后返回。这题的难点在于对溢出和符号位的细节处理，折腾了差不多一个下午，真是难受
+#### <span id=0030>[30] 串联所有单词的子串</span>
+题目链接：[https://leetcode-cn.com/problems/substring-with-concatenation-of-all-words](https://leetcode-cn.com/problems/substring-with-concatenation-of-all-words)  
+代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0030.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0030.cpp)  
+运行时间：beats 91.35%  
+解题思路：开始还理解错了题意，以为是返回words中单词组合成子串在s中的各自位置，测试之后才发现是返回所有子串的起始位置，不过做法也差不了多少。具体思路：滑动窗口，哈希表t保存words中每个单词出现的次数，哈希表t'保存对应单词已使用次数；然后向右滑动窗口，即截取s中一个长度单位字符，判断是否在t中，如果不在，窗口左边滑动到当前位置，清空t'；如果存在，则记录t'，如果已经匹配了所有单词，记录当前窗口左边位置；当t'中某个单词使用次数达到上限，则每次移动左窗口一个长度，并减少相应单词在t'中记录。

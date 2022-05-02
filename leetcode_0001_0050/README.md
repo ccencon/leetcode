@@ -31,6 +31,7 @@
 |[0028](#0028)|[实现-str-str](#0028)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0028.cpp)|
 |[0029](#0029)|[两数相除](#0029)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0029.cpp)|
 |[0030](#0030)|[串联所有单词的子串](#0030)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0030.cpp)|
+|[0031](#0031)|[下一个排列](#0031)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0031.cpp)|
 
 #### <span id=0001>[1] 两数之和</span>
 题目链接：[https://leetcode-cn.com/problems/two-sum](https://leetcode-cn.com/problems/two-sum)  
@@ -211,3 +212,8 @@
 代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0030.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0030.cpp)  
 运行时间：beats 91.35%  
 解题思路：开始还理解错了题意，以为是返回words中单词组合成子串在s中的各自位置，测试之后才发现是返回所有子串的起始位置，不过做法也差不了多少。具体思路：滑动窗口，哈希表t保存words中每个单词出现的次数，哈希表t'保存对应单词已使用次数；然后向右滑动窗口，即截取s中一个长度单位字符，判断是否在t中，如果不在，窗口左边滑动到当前位置，清空t'；如果存在，则记录t'，如果已经匹配了所有单词，记录当前窗口左边位置；当t'中某个单词使用次数达到上限，则每次移动左窗口一个长度，并减少相应单词在t'中记录。
+#### <span id=0031>[31] 下一个排列</span>
+题目链接：[https://leetcode-cn.com/problems/next-permutation](https://leetcode-cn.com/problems/next-permutation)  
+代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0031.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0031.cpp)  
+运行时间：beats 100%  
+解题思路：解答这类题最快的方法就是找规律，首先设定一个数组，列出它排列的几种情况，可以很容易发现，当末尾某个数及它后面的序列不是降序排列时，找到这个序列比它大且数值最接近它的一个整数，将两者交换，最后再对这个序列进行反转即可

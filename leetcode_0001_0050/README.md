@@ -248,4 +248,4 @@
 题目链接：[https://leetcode-cn.com/problems/valid-sudoku](https://leetcode-cn.com/problems/valid-sudoku)  
 代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0036.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0036.cpp)  
 运行时间：beats 77.66%  
-解题思路：设定几个容器保存每一行，每一列，每一个九宫格的字符数，数量超出1时返回false；因为数独的数字是1-9，所以容器可以采用数组而不是哈希表
+解题思路：设定几个容器保存每一行，每一列，每一个九宫格的字符数，数量超出1时返回false；因为数独的数字是1-9，所以容器可以采用数组替代哈希表

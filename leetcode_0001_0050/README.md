@@ -241,5 +241,5 @@
 #### <span id=0035>[35] 搜索插入位置</span>
 题目链接：[https://leetcode-cn.com/problems/search-insert-position](https://leetcode-cn.com/problems/search-insert-position)  
 代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0035.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0035.cpp)  
-运行时间：beats %  
-解题思路：
+运行时间：beats 74.01%  
+解题思路：而是二分查找的思想，思路比较简单，但还是在返回值的处理花费了一点时间

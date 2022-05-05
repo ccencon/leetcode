@@ -36,6 +36,7 @@
 |[0033](#0033)|[搜索旋转排序数组](#0033)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0033.cpp)|
 |[0034](#0034)|[在排序数组中查找元素的第一个和最后一个位置](#0034)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0034.cpp)|
 |[0035](#0035)|[搜索插入位置](#0035)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0035.cpp)|
+|[0036](#0036)|[有效的数独](#0036)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0036.cpp)|
 
 #### <span id=0001>[1] 两数之和</span>
 题目链接：[https://leetcode-cn.com/problems/two-sum](https://leetcode-cn.com/problems/two-sum)  
@@ -242,4 +243,9 @@
 题目链接：[https://leetcode-cn.com/problems/search-insert-position](https://leetcode-cn.com/problems/search-insert-position)  
 代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0035.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0035.cpp)  
 运行时间：beats 74.01%  
-解题思路：而是二分查找的思想，思路比较简单，但还是在返回值的处理花费了一点时间
+解题思路：也是二分查找的思想，思路比较简单，但还是在返回值的处理上花费了一点时间
+#### <span id=0036>[36] 有效的数独</span>
+题目链接：[https://leetcode-cn.com/problems/valid-sudoku](https://leetcode-cn.com/problems/valid-sudoku)  
+代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0036.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0036.cpp)  
+运行时间：beats 77.66%  
+解题思路：设定几个容器保存每一行，每一列，每一个九宫格的字符数，数量超出1时返回false；因为数独的数字是1-9，所以容器可以采用数组而不是哈希表

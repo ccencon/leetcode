@@ -34,6 +34,7 @@
 |[0031](#0031)|[下一个排列](#0031)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0031.cpp)|
 |[0032](#0032)|[最长有效括号](#0032)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0032.cpp)|
 |[0033](#0033)|[搜索旋转排序数组](#0033)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0033.cpp)|
+|[0034](#0034)|[在排序数组中查找元素的第一个和最后一个位置](#0034)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0034.cpp)|
 
 #### <span id=0001>[1] 两数之和</span>
 题目链接：[https://leetcode-cn.com/problems/two-sum](https://leetcode-cn.com/problems/two-sum)  
@@ -231,3 +232,8 @@
 代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0033.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0033.cpp)  
 运行时间：beats 69.49%  
 解题思路：先遍历一次数组找到旋转点设置left和right，再对left和right进行二分查找；而在官方题解中省略事先遍历的操作，因为可以在二分查找的过程中通过各种判断设置left和right，方法更加高效
+#### <span id=0034>[34] 在排序数组中查找元素的第一个和最后一个位置</span>
+题目链接：[https://leetcode-cn.com/problems/find-first-and-last-position-of-element-in-sorted-array](https://leetcode-cn.com/problems/find-first-and-last-position-of-element-in-sorted-array)  
+代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0034.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0034.cpp)  
+运行时间：beats 58.33%  
+解题思路：比较直观的做法是利用一次二分法找到target，然后分别向左和向右做延伸，直至找到两个下标，在一般情况中，相同的target不会占数组的绝大部分，所以这应该是实际效率最高的一种做法；但算法题应该不允许这种理论上退化到O(n)的做法，那便通过两次二分查找解决吧

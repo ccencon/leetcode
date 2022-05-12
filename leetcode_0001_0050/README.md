@@ -38,6 +38,7 @@
 |[0035](#0035)|[搜索插入位置](#0035)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0035.cpp)|
 |[0036](#0036)|[有效的数独](#0036)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0036.cpp)|
 |[0037](#0037)|[解数独](#0037)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0037.cpp)|
+|[0038](#0038)|[外观数列](#0038)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0038.cpp)|
 
 #### <span id=0001>[1] 两数之和</span>
 题目链接：[https://leetcode-cn.com/problems/two-sum](https://leetcode-cn.com/problems/two-sum)  
@@ -261,3 +262,8 @@
 当时做到这个步骤的时候，以为已经得到了正确的解，在默认测试用例通过后，满怀信心的去提交，结果第二个测试用例就解答错误，迷糊了好一会才发现还有多个格子剩余可选数全都大于1的情况。这时候的做法应该是对所有位置递归代入每一个可能的数，当某个位置没有可选数时表明上一步或几步代入的数不合法，这时候应该回溯到上一步，换一个数进行代入。而在这里受到惯性思维影响，对要递归的下一个位置采用了类似第一次遍历确定唯一数的做法，对当前行，当前列，当前九宫格的所有格子在当前步骤内全都进行递归，而这种做法弊端就是当某个格子发生匹配错误时，对之前已经递归匹配成功的格子的状态将难以恢复，脑海里隐约中彷佛有一些解决方法，但都因为实现起来太过复杂放弃了，这也是这次花费这么多时间的原因。比较清晰的做法应该是保存这些可选数大于1的格子，在对第一个格子填入一个数之后，再递归执行下一个格子，这样就可以避免了单步骤内多次递归而导致状态难以恢复的问题，当递归到最后一个格子且成功填入数字时，表示所有格子匹配成功，否则恢复状态回溯到上一步骤换一个数  
 
 上面的做法可以省略掉最开始确认唯一数的步骤；还可以对bits数组进行优化，采用row[9]，column[9]，block[3][3]，保存每一行每一列，每一个九宫格剩余可选数，这样设置状态，恢复状态的复杂度都会降低，但是这样便不能省略掉最开始确认唯一数的步骤，因为不再是每个格子单独记录自身的可选数，如果省略掉虽然也会得出正确的解，但会让后面递归的深度变大
+#### <span id=0038>[38] 外观数列</span>
+题目链接：[https://leetcode-cn.com/problems/count-and-say](https://leetcode-cn.com/problems/count-and-say)  
+代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0038.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0038.cpp)  
+运行时间：beats 100%  
+解题思路：比较简单的题目，虽然题意是考察对字符串的遍历，但实际操作起来的难点应该是在于如何减少产生临时字符串，解决方法也很简单，定义两个字符串和两个指向它们的指针，对n的每一次遍历完成后交换这两个指针即可

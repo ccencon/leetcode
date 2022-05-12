@@ -37,6 +37,7 @@
 |[0034](#0034)|[在排序数组中查找元素的第一个和最后一个位置](#0034)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0034.cpp)|
 |[0035](#0035)|[搜索插入位置](#0035)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0035.cpp)|
 |[0036](#0036)|[有效的数独](#0036)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0036.cpp)|
+|[0037](#0037)|[解数独](#0037)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0037.cpp)|
 
 #### <span id=0001>[1] 两数之和</span>
 题目链接：[https://leetcode-cn.com/problems/two-sum](https://leetcode-cn.com/problems/two-sum)  
@@ -249,3 +250,14 @@
 代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0036.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0036.cpp)  
 运行时间：beats 77.66%  
 解题思路：设定几个容器保存每一行，每一列，每一个九宫格的字符数，数量超出1时返回false；因为数独的数字是1-9，所以容器可以采用数组替代哈希表
+#### <span id=0037>[37] 解数独</span>
+题目链接：[https://leetcode-cn.com/problems/sudoku-solver](https://leetcode-cn.com/problems/sudoku-solver)  
+代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0037.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0037.cpp)  
+运行时间：beats 58.87%  
+解题思路：断断续续的四天时间终于AC了，期间陷入了不少的思维误区，所幸最终都理清了思路。设定一个二维数组bits[9][9]，通过比特位记录每一个格子剩余可选的数字；对board数组进行第一次遍历：  
++ 遇到数字时将当前格子的bits置0，并将对应行，对应列，对应九宫格所有格子对此数字相应的bit位置0，在此过程中，如果遇到'.'，执行下面步骤
++ 如果遇到'.'，则判断当前格子所剩可选数字数目是否为1，是的话填入唯一可选数字，对此格子转到上一步骤，进行递归调用  
+
+当时做到这个步骤的时候，以为已经得到了正确的解，在默认测试用例通过后，满怀信心的去提交，结果第二个测试用例就解答错误，迷糊了好一会才发现还有多个格子剩余可选数全都大于1的情况。这时候的做法应该是对所有位置递归代入每一个可能的数，当某个位置没有可选数时表明上一步或几步代入的数不合法，这时候应该回溯到上一步，换一个数进行代入。而在这里受到惯性思维影响，对要递归的下一个位置采用了类似第一次遍历确定唯一数的做法，对当前行，当前列，当前九宫格的所有格子在当前步骤内全都进行递归，而这种做法弊端就是当某个格子发生匹配错误时，对之前已经递归匹配成功的格子的状态将难以恢复，脑海里隐约中彷佛有一些解决方法，但都因为实现起来太过复杂放弃了，这也是这次花费这么多时间的原因。比较清晰的做法应该是保存这些可选数大于1的格子，在对第一个格子填入一个数之后，再递归执行下一个格子，这样就可以避免了单步骤内多次递归而导致状态难以恢复的问题，当递归到最后一个格子且成功填入数字时，表示所有格子匹配成功，否则恢复状态回溯到上一步骤换一个数  
+
+上面的做法可以省略掉最开始确认唯一数的步骤；还可以对bits数组进行优化，采用row[9]，column[9]，block[3][3]，保存每一行每一列，每一个九宫格剩余可选数，这样设置状态，恢复状态的复杂度都会降低，但是这样便不能省略掉最开始确认唯一数的步骤，因为不再是每个格子单独记录自身的可选数，如果省略掉虽然也会得出正确的解，但会让后面递归的深度变大

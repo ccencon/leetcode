@@ -41,6 +41,7 @@
 |[0038](#0038)|[外观数列](#0038)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0038.cpp)|
 |[0039](#0039)|[组合总和](#0039)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0039.cpp)|
 |[0040](#0040)|[组合总和-ii](#0040)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0040.cpp)|
+|[0041](#0041)|[缺失的第一个正数](#0041)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0041.cpp)|
 
 #### <span id=0001>[1] 两数之和</span>
 题目链接：[https://leetcode-cn.com/problems/two-sum](https://leetcode-cn.com/problems/two-sum)  
@@ -279,3 +280,8 @@
 代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0040.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0040.cpp)  
 运行时间：beats 90.15%  
 解题思路：与上一题的思路基本一致，主要差别有两点：元素只可以选择0次或1次，其实这与选择多次没有本质区别，只是单纯的循环次数问题；另外一点是解集不能包含重复的组合，因为需要减少递归深度而事先对数组进行排序，那么可以在回溯到某元素之后，如果此元素与其后面的元素相同，便将回溯索引移动到最后一个相同元素，这样便使当前组合与已经推导过的组合包含了不同个数的相同元素，所得到的解也绝不会重复。由于上道题采用了递归解法，这题解答便采用非递归模式
+#### <span id=0041>[41] 缺失的第一个正数</span>
+题目链接：[https://leetcode-cn.com/problems/first-missing-positive](https://leetcode-cn.com/problems/first-missing-positive)  
+代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0041.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0041.cpp)  
+运行时间：beats 83.74%  
+解题思路：题目限定了时间复杂度为O(n)，所以不能使用排序，限定了常数级别的额外空间，所以也不能用哈希表，尝试了一下位操作，还是毫无头绪。点开题解看，居然是在原来的数组上操作...这应该在原来题目上增加提示，因为这不应该作为一个考点...解法很简单，因为一个长度为n的数组，所缺失的第一个正整数必然在[1, n+1]的范围内；在第一次遍历数组的时候，如果元素数值大于0且不大于数组长度，便将它与占了它位置的元素进行交换，继续处理此位置和后面位置的元素；第二次遍历的时候，如果元素与（下标值+1）不相等，则说明此位置缺失，返回（下标值+1），如果循环结束还没返回，便返回（数组长度+1）

@@ -40,6 +40,7 @@
 |[0037](#0037)|[解数独](#0037)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0037.cpp)|
 |[0038](#0038)|[外观数列](#0038)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0038.cpp)|
 |[0039](#0039)|[组合总和](#0039)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0039.cpp)|
+|[0040](#0040)|[组合总和-ii](#0040)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0040.cpp)|
 
 #### <span id=0001>[1] 两数之和</span>
 题目链接：[https://leetcode-cn.com/problems/two-sum](https://leetcode-cn.com/problems/two-sum)  
@@ -273,3 +274,8 @@
 代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0039.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0039.cpp)  
 运行时间：beats 91.52%  
 解题思路：每个位置的数都可以出现0次或多次，所以可以用剩余target值除以当前位置的数值得出当前数可以出现的最大次数c，令0 <= t <= c，即当前数出现t次时递归计算下一个位置的结果，根据返回结果确认是否插入当前数。可以事先对数组进行排序减少递归深度，递归的结束条件是剩余target值为0，这时候插入新的返回数组；又或者是到达数组边界，或剩余target值小于当前数，这时候直接返回。这题递归的解法简单明了，可以容易改写成非递归模式，大体做法是设定一个回溯索引，计算出每个位置数值出现对剩余target值出现的最大次数，出现次数分别取0次或多次时计算下一个位置，回溯索引时改变出现次数，重新进入下一轮计算
+#### <span id=0040>[40] 组合总和-ii</span>
+题目链接：[https://leetcode-cn.com/problems/combination-sum-ii](https://leetcode-cn.com/problems/combination-sum-ii)  
+代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0040.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0040.cpp)  
+运行时间：beats %  
+解题思路：

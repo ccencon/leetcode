@@ -39,6 +39,7 @@
 |[0036](#0036)|[有效的数独](#0036)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0036.cpp)|
 |[0037](#0037)|[解数独](#0037)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0037.cpp)|
 |[0038](#0038)|[外观数列](#0038)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0038.cpp)|
+|[0039](#0039)|[组合总和](#0039)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0039.cpp)|
 
 #### <span id=0001>[1] 两数之和</span>
 题目链接：[https://leetcode-cn.com/problems/two-sum](https://leetcode-cn.com/problems/two-sum)  
@@ -267,3 +268,8 @@
 代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0038.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0038.cpp)  
 运行时间：beats 100%  
 解题思路：比较简单的题目，虽然题意是考察对字符串的遍历，但实际操作起来的难点应该是在于如何减少产生临时字符串，解决方法也很简单，定义两个字符串和两个指向它们的指针，对n的每一次遍历完成后交换这两个指针即可
+#### <span id=0039>[39] 组合总和</span>
+题目链接：[https://leetcode-cn.com/problems/combination-sum](https://leetcode-cn.com/problems/combination-sum)  
+代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0039.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0039.cpp)  
+运行时间：beats 91.52%  
+解题思路：每个位置的数都可以出现0次或多次，所以可以用剩余target值除以当前位置的数值得出当前数可以出现的最大次数c，令0 <= t <= c，即当前数出现t次时递归计算下一个位置的结果，根据返回结果确认是否插入当前数。可以事先对数组进行排序减少递归深度，递归的结束条件是剩余target值为0，这时候插入新的返回数组；又或者是到达数组边界，或剩余target值小于当前数，这时候直接返回。这题递归的解法简单明了，可以容易改写成非递归模式，大体做法是设定一个回溯索引，计算出每个位置数值出现对剩余target值出现的最大次数，出现次数分别取0次或多次时计算下一个位置，回溯索引时改变出现次数，重新进入下一轮计算

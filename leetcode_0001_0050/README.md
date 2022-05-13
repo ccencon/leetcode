@@ -277,5 +277,5 @@
 #### <span id=0040>[40] 组合总和-ii</span>
 题目链接：[https://leetcode-cn.com/problems/combination-sum-ii](https://leetcode-cn.com/problems/combination-sum-ii)  
 代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0040.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0040.cpp)  
-运行时间：beats %  
-解题思路：
+运行时间：beats 90.15%  
+解题思路：与上一题的思路基本一致，主要差别有两点：元素只可以选择0次或1次，其实这与选择多次没有本质区别，只是单纯的循环次数问题；另外一点是解集不能包含重复的组合，因为需要减少递归深度而事先对数组进行排序，那么可以在回溯到某元素之后，如果此元素与其后面的元素相同，便将回溯索引移动到最后一个相同元素，这样便使当前组合与已经推导过的组合包含了不同个数的相同元素，所得到的解也绝不会重复。由于上道题采用了递归解法，这题解答便采用非递归模式

@@ -43,6 +43,7 @@
 |[0040](#0040)|[组合总和-ii](#0040)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0040.cpp)|
 |[0041](#0041)|[缺失的第一个正数](#0041)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0041.cpp)|
 |[0042](#0042)|[接雨水](#0042)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0042.cpp)|
+|[0043](#0043)|[字符串相乘](#0043)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0043.cpp)|
 
 #### <span id=0001>[1] 两数之和</span>
 题目链接：[https://leetcode-cn.com/problems/two-sum](https://leetcode-cn.com/problems/two-sum)  
@@ -290,4 +291,9 @@
 题目链接：[https://leetcode-cn.com/problems/trapping-rain-water](https://leetcode-cn.com/problems/trapping-rain-water)  
 代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0042.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0042.cpp)  
 运行时间：beats 91.68%  
-解题思路：通过观察可以发现，当某个坐标的数值大于前一个坐标的数值时，表明此坐标可以作为右边界跟前面某个坐标可以一起接雨水。所以可以设定一个栈，保存可以进行接雨水的左边界下标；在遍历过程中，如果height[i] < height[i - 1]，表明height[i]只能作为左边界接雨水，将i压入栈中；如果height[i] > height[i - 1]，表明height[i]可以作为右边界与栈中所记录的左边界接雨水，循环弹出栈中所记录的左边界直至左边界高于右边界并将雨水量进行叠加，因为当前i同样可以作为左边界与后面匹配，所以循环结束后需要继续压入i
+解题思路：通过观察可以发现，当某个坐标的数值大于前一个坐标的数值时，表明此坐标可以作为右边界跟前面某个坐标可以一起接雨水。所以可以设定一个栈，保存可以进行接雨水的左边界下标；在遍历过程中，如果height[i] < height[i - 1]，表明height[i]只能作为左边界接雨水，将i压入栈中；如果height[i] > height[i - 1]，表明height[i]可以作为右边界与栈中所记录的左边界接雨水，循环弹出栈中所记录的左边界直至左边界高于右边界并将雨水量进行叠加，因为当前i同样可以作为左边界与后面匹配，所以循环结束后需要继续压入i。时间空间复杂度都为O(n)
+#### <span id=0043>[43] 字符串相乘</span>
+题目链接：[https://leetcode-cn.com/problems/multiply-strings](https://leetcode-cn.com/problems/multiply-strings)  
+代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0043.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0043.cpp)  
+运行时间：beats 100%  
+解题思路：大数乘法，将num2拆分为每一位分别与num1相乘，将结果相加；为了减少临时字符串的产生，num2和num1每一位相乘后都可以立马将乘积添加到结果中，要注意偏移和溢出；在直观的做法上，通常是将乘积前向排列，但因为string向前插入需要移动所有后面的字符，效率低下，所以可以将乘积后向排列，在最后返回结果时将结果反转即可

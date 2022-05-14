@@ -42,6 +42,7 @@
 |[0039](#0039)|[组合总和](#0039)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0039.cpp)|
 |[0040](#0040)|[组合总和-ii](#0040)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0040.cpp)|
 |[0041](#0041)|[缺失的第一个正数](#0041)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0041.cpp)|
+|[0042](#0042)|[接雨水](#0042)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0042.cpp)|
 
 #### <span id=0001>[1] 两数之和</span>
 题目链接：[https://leetcode-cn.com/problems/two-sum](https://leetcode-cn.com/problems/two-sum)  
@@ -285,3 +286,8 @@
 代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0041.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0041.cpp)  
 运行时间：beats 83.74%  
 解题思路：题目限定了时间复杂度为O(n)，所以不能使用排序，限定了常数级别的额外空间，所以也不能用哈希表，尝试了一下位操作，还是毫无头绪。点开题解看，居然是在原来的数组上操作...这应该在原来题目上增加提示，因为这不应该作为一个考点...解法很简单，因为一个长度为n的数组，所缺失的第一个正整数必然在[1, n+1]的范围内；在第一次遍历数组的时候，如果元素数值大于0且不大于数组长度，便将它与占了它位置的元素进行交换，继续处理此位置和后面位置的元素；第二次遍历的时候，如果元素与（下标值+1）不相等，则说明此位置缺失，返回（下标值+1），如果循环结束还没返回，便返回（数组长度+1）
+#### <span id=0042>[42] 接雨水</span>
+题目链接：[https://leetcode-cn.com/problems/trapping-rain-water](https://leetcode-cn.com/problems/trapping-rain-water)  
+代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0042.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0042.cpp)  
+运行时间：beats 91.68%  
+解题思路：通过观察可以发现，当某个坐标的数值大于前一个坐标的数值时，表明此坐标可以作为右边界跟前面某个坐标可以一起接雨水。所以可以设定一个栈，保存可以进行接雨水的左边界下标；在遍历过程中，如果height[i] < height[i - 1]，表明height[i]只能作为左边界接雨水，将i压入栈中；如果height[i] > height[i - 1]，表明height[i]可以作为右边界与栈中所记录的左边界接雨水，循环弹出栈中所记录的左边界直至左边界高于右边界并将雨水量进行叠加，因为当前i同样可以作为左边界与后面匹配，所以循环结束后需要继续压入i

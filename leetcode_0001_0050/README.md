@@ -48,6 +48,7 @@
 |[0045](#0045)|[跳跃游戏-ii](#0045)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0045.cpp)|
 |[0046](#0046)|[全排列](#0046)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0046.cpp)|
 |[0047](#0047)|[全排列-ii](#0047)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0047.cpp)|
+|[0048](#0048)|[旋转图像](#0048)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0048.cpp)|
 
 #### <span id=0001>[1] 两数之和</span>
 题目链接：[https://leetcode-cn.com/problems/two-sum](https://leetcode-cn.com/problems/two-sum)  
@@ -321,3 +322,8 @@
 代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0047.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0047.cpp)  
 运行时间：beats 9.87%  
 解题思路：运行时间这么低应该是官方大量测试用例包含重复元素的原因，在函数开始时，会先计算出最大序列数，然后初始化返回数组的空间，因为包含大量重复元素，所以无用空间的初始化导致了运行时间的增加，不过在实际应用中，还是偏向于这种做法。
+#### <span id=0048>[48] 旋转图像</span>
+题目链接：[https://leetcode-cn.com/problems/rotate-image](https://leetcode-cn.com/problems/rotate-image)  
+代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0048.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0048.cpp)  
+运行时间：beats 100%  
+解题思路：这类题最重要就是找规律，以4阶矩阵为例，列出第一行，第二行转换的下标对，可以发现，对(i,j)进行旋转，新的下标对为(j,4-1-i)，即为(j,n-1-i)；对矩阵的前n/2行进行遍历，对未旋转的数转到对应下标即可

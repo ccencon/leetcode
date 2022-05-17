@@ -47,6 +47,7 @@
 |[0044](#0044)|[通配符匹配](#0044)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0044.cpp)|
 |[0045](#0045)|[跳跃游戏-ii](#0045)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0045.cpp)|
 |[0046](#0046)|[全排列](#0046)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0046.cpp)|
+|[0047](#0047)|[全排列-ii](#0047)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0047.cpp)|
 
 #### <span id=0001>[1] 两数之和</span>
 题目链接：[https://leetcode-cn.com/problems/two-sum](https://leetcode-cn.com/problems/two-sum)  
@@ -315,3 +316,8 @@
 代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0046.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0046.cpp)  
 运行时间：beats 100%  
 解题思路：[第31题 下一个排列](#0031)的进阶版，首先初始化一个下标序列1-n，然后不断求这个下标序列的下一个排列，将下标排列对应的数插入到返回结果中，因为原数组nums不包含重复元素，也可以先对nums进行排序，然后直接求nums的下一个排列，不过这种做法会多出无谓的O(NlogN)的排序时间复杂度；也可以采用递归的做法，不断递归数组的下一个位置，结束条件是数组长度为2或1，此时返回他们的全排列，递归返回时扩展结果并在不同位置插入当前数，递归做法存在较多的内存拷贝，时间复杂度一致，但总体效率不高
+#### <span id=0047>[47] 全排列-ii</span>
+题目链接：[https://leetcode-cn.com/problems/permutations-ii](https://leetcode-cn.com/problems/permutations-ii)  
+代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0047.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0047.cpp)  
+运行时间：beats 9.87%  
+解题思路：运行时间这么低应该是官方大量测试用例包含重复元素的原因，在函数开始时，会先计算出最大序列数，然后初始化返回数组的空间，因为包含大量重复元素，所以无用空间的初始化导致了运行时间的增加，不过在实际应用中，还是偏向于这种做法。

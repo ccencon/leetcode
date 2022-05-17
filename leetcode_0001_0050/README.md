@@ -49,6 +49,7 @@
 |[0046](#0046)|[全排列](#0046)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0046.cpp)|
 |[0047](#0047)|[全排列-ii](#0047)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0047.cpp)|
 |[0048](#0048)|[旋转图像](#0048)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0048.cpp)|
+|[0049](#0049)|[字母异位词分组](#0049)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0049.cpp)|
 
 #### <span id=0001>[1] 两数之和</span>
 题目链接：[https://leetcode-cn.com/problems/two-sum](https://leetcode-cn.com/problems/two-sum)  
@@ -327,3 +328,8 @@
 代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0048.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0048.cpp)  
 运行时间：beats 100%  
 解题思路：这类题最重要就是找规律，以4阶矩阵为例，列出第一行，第二行转换的下标对，可以发现，对(i,j)进行旋转，新的下标对为(j,4-1-i)，即为(j,n-1-i)；对矩阵的前n/2行进行遍历，对未旋转的数转到对应下标即可
+#### <span id=0049>[49] 字母异位词分组</span>
+题目链接：[https://leetcode-cn.com/problems/group-anagrams](https://leetcode-cn.com/problems/group-anagrams)  
+代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0049.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0049.cpp)  
+运行时间：beats 92.75%  
+解题思路：如果每个单词不存在重复字母，那么可以将每个字母映射到对应bit位得到唯一整数，再通过这个整数进行哈希运算映射到返回结果的下标值；但题目没有做出不存在重复字母的限定，苦思良久还是只能通过对单词进行排序解决了。评论中看到有将字母对应成质数进行乘法运算的，质数乘积只能分解成唯一因式，这样一个乘积便对应了一种字母异位词，这与上述的bit位有异曲同工之妙（遇到重复字母时再向前移动26位），但这样运算容易溢出，如果再通过其他操作处理这种溢出情况，还不如直接排序进行哈希运算来得清晰简洁

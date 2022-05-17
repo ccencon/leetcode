@@ -46,6 +46,7 @@
 |[0043](#0043)|[字符串相乘](#0043)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0043.cpp)|
 |[0044](#0044)|[通配符匹配](#0044)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0044.cpp)|
 |[0045](#0045)|[跳跃游戏-ii](#0045)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0045.cpp)|
+|[0046](#0046)|[全排列](#0046)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0046.cpp)|
 
 #### <span id=0001>[1] 两数之和</span>
 题目链接：[https://leetcode-cn.com/problems/two-sum](https://leetcode-cn.com/problems/two-sum)  
@@ -303,9 +304,14 @@
 题目链接：[https://leetcode-cn.com/problems/wildcard-matching](https://leetcode-cn.com/problems/wildcard-matching)  
 代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0044.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0044.cpp)  
 运行时间：beats 84.2%  
-解题思路：与[第10题](#0010)相比，这题是纯粹的单字符匹配，状态简单得多；可以采用与第10题一致的递归解法，遇到'*'时递归匹配后面的字符串，匹配成功一次便返回true；这次采用的是类似动态规划的枚举方法求解，具体做法是：设定dp数组，首先计算出第0个字符的匹配情况，将s中所有能与p[0]匹配的索引全部插入到dp[0]中，对p的下一次比较时，通过上一轮dp所记录的索引确定s的比较位置，并再次将合法索引插入到当前dp中，最后，对p的遍历结束时，如果dp最后一个元素记录了s的最后一个位置，则表示匹配成功，否则匹配失败
+解题思路：与[第10题 正则表达式匹配](#0010)相比，这题是纯粹的单字符匹配，状态简单得多；可以采用与第10题一致的递归解法，遇到'*'时递归匹配后面的字符串，匹配成功一次便返回true；这次采用的是类似动态规划的枚举方法求解，具体做法是：设定dp数组，首先计算出第0个字符的匹配情况，将s中所有能与p[0]匹配的索引全部插入到dp[0]中，对p的下一次比较时，通过上一轮dp所记录的索引确定s的比较位置，并再次将合法索引插入到当前dp中，最后，对p的遍历结束时，如果dp最后一个元素记录了s的最后一个位置，则表示匹配成功，否则匹配失败
 #### <span id=0045>[45] 跳跃游戏-ii</span>
 题目链接：[https://leetcode-cn.com/problems/jump-game-ii](https://leetcode-cn.com/problems/jump-game-ii)  
 代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0045.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0045.cpp)  
 运行时间：beats 76.39%  
-解题思路：计算出点A（初始为第一个点）可以跳出的步长范围，遍历这个范围，找出可以跳出范围最远的点，将这个点设置为点A，重复执行以上步骤，直至跳到最后，返回所跳的步数
+解题思路：计算出点A（初始为第一个点）可以跳出的步长范围，遍历这个范围，找出可以跳出这个范围最远的点，将这个点设置为点A，重复执行以上步骤，直至跳到最后，返回所跳的步数
+#### <span id=0046>[46] 全排列</span>
+题目链接：[https://leetcode-cn.com/problems/permutations](https://leetcode-cn.com/problems/permutations)  
+代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0046.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0046.cpp)  
+运行时间：beats 100%  
+解题思路：[第31题 下一个排列](#0031)的进阶版，首先初始化一个下标序列1-n，然后不断求这个下标序列的下一个排列，将下标排列对应的数插入到返回结果中，因为原数组nums不包含重复元素，也可以先对nums进行排序，然后直接求nums的下一个排列，不过这种做法会多出无谓的O(NlogN)的排序时间复杂度；也可以采用递归的做法，不断递归数组的下一个位置，结束条件是数组长度为2或1，此时返回他们的全排列，递归返回时扩展结果并在不同位置插入当前数，递归做法存在较多的内存拷贝，时间复杂度一致，但总体效率不高

@@ -3,6 +3,7 @@
 |:-|:-|:-|
 |[0051](#0051)|[n-皇后](#0051)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0051.cpp)|
 |[0052](#0052)|[n皇后-ii](#0052)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0052.cpp)|
+|[0053](#0053)|[最大子数组和](#0053)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0053.cpp)|
 
 #### <span id=0051>[51] n-皇后</span>
 题目链接：[https://leetcode-cn.com/problems/n-queens](https://leetcode-cn.com/problems/n-queens)  
@@ -21,3 +22,8 @@
 代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0052.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0052.cpp)  
 运行时间：beats 100%  
 解题思路：[n-皇后](#0051)一样的做法，只是将返回字符串换成了返回个数，本质上没有变化
+#### <span id=0053>[53] 最大子数组和</span>
+题目链接：[https://leetcode-cn.com/problems/maximum-subarray](https://leetcode-cn.com/problems/maximum-subarray)  
+代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0053.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0053.cpp)  
+运行时间：beats 71.26%  
+解题思路：设定prev记录以当前位置结束的最大子数组和，ans记录最大子数组和，遍历到某个pos时，如果prev + nums[pos] < nums[pos]，则prev = nums[pos]，否则prev = prev + nums[pos]，然后刷新ans

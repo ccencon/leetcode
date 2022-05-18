@@ -50,6 +50,7 @@
 |[0047](#0047)|[全排列-ii](#0047)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0047.cpp)|
 |[0048](#0048)|[旋转图像](#0048)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0048.cpp)|
 |[0049](#0049)|[字母异位词分组](#0049)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0049.cpp)|
+|[0050](#0050)|[pow-x-n](#0050)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0050.cpp)|
 
 #### <span id=0001>[1] 两数之和</span>
 题目链接：[https://leetcode-cn.com/problems/two-sum](https://leetcode-cn.com/problems/two-sum)  
@@ -322,7 +323,7 @@
 题目链接：[https://leetcode-cn.com/problems/permutations-ii](https://leetcode-cn.com/problems/permutations-ii)  
 代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0047.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0047.cpp)  
 运行时间：beats 9.87%  
-解题思路：运行时间这么低应该是官方大量测试用例包含重复元素的原因，在函数开始时，会先计算出最大序列数，然后初始化返回数组的空间，因为包含大量重复元素，所以无用空间的初始化导致了运行时间的增加，不过在实际应用中，还是偏向于这种做法。
+解题思路：运行时间这么低应该是官方大量测试用例包含重复元素的原因，在函数开始时，会先计算出最大序列数，然后初始化返回数组的空间，因为包含大量重复元素，所以无用空间的初始化导致了运行时间的增加，不过在实际应用中，还是偏向于先初始化这种做法。
 #### <span id=0048>[48] 旋转图像</span>
 题目链接：[https://leetcode-cn.com/problems/rotate-image](https://leetcode-cn.com/problems/rotate-image)  
 代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0048.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0048.cpp)  
@@ -333,3 +334,8 @@
 代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0049.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0049.cpp)  
 运行时间：beats 92.75%  
 解题思路：如果每个单词不存在重复字母，那么可以将每个字母映射到对应bit位得到唯一整数，再通过这个整数进行哈希运算映射到返回结果的下标值；但题目没有做出不存在重复字母的限定，苦思良久还是只能通过对单词进行排序解决了。评论中看到有将字母对应成质数进行乘法运算的，质数乘积只能分解成唯一因式，这样一个乘积便对应了一种字母异位词，这与上述的bit位有异曲同工之妙（遇到重复字母时再向前移动26位），但这样运算容易溢出，如果再通过其他操作处理这种溢出情况，还不如直接排序进行哈希运算来得清晰简洁
+#### <span id=0050>[50] pow-x-n</span>
+题目链接：[https://leetcode-cn.com/problems/powx-n](https://leetcode-cn.com/problems/powx-n)  
+代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0050.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0050.cpp)  
+运行时间：beats 100%  
+解题思路：分别计算出x^0，x^1，x^2，x^4，x^8，x^16...的结果，并将结果记录在result数组中，当2的n次幂超出指数n时停止计算，并计算出n与已计算幂的差值d；因为一个整数可以分割成不同的2的n次幂之和，即剩余x的d次幂可以从result数组中获取，将他们相乘之后将结果返回

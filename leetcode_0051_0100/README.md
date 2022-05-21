@@ -9,6 +9,7 @@
 |[0056](#0056)|[合并区间](#0056)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0056.cpp)|
 |[0057](#0057)|[插入区间](#0057)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0057.cpp)|
 |[0058](#0058)|[最后一个单词的长度](#0058)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0058.cpp)|
+|[0059](#0059)|[螺旋矩阵-ii](#0059)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0059.cpp)|
 
 #### <span id=0051>[51] n-皇后</span>
 题目链接：[https://leetcode-cn.com/problems/n-queens](https://leetcode-cn.com/problems/n-queens)  
@@ -67,3 +68,8 @@
 代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0058.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0058.cpp)  
 运行时间：beats 100%  
 解题思路：从后往前遍历，过滤掉空格之后开始计数，直至遇到空格结束
+#### <span id=0059>[59] 螺旋矩阵-ii</span>
+题目链接：[https://leetcode-cn.com/problems/spiral-matrix-ii](https://leetcode-cn.com/problems/spiral-matrix-ii)  
+代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0059.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0059.cpp)  
+运行时间：beats 100%  
+解题思路：[54 螺旋矩阵](#0054)的反操作，54题为了提高cpu cache命中率，采用了顺序遍历矩阵的方式，将坐标对进行了转换，这题同理，为了提高cpu的回写效率，同样以顺序方式进行遍历，将坐标对转换成第几个数即可

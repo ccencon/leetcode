@@ -5,6 +5,7 @@
 |[0052](#0052)|[n皇后-ii](#0052)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0052.cpp)|
 |[0053](#0053)|[最大子数组和](#0053)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0053.cpp)|
 |[0054](#0054)|[螺旋矩阵](#0054)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0054.cpp)|
+|[0055](#0055)|[跳跃游戏](#0055)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0055.cpp)|
 
 #### <span id=0051>[51] n-皇后</span>
 题目链接：[https://leetcode-cn.com/problems/n-queens](https://leetcode-cn.com/problems/n-queens)  
@@ -43,3 +44,8 @@
 > 虽然上面几个想法行不通（应该说实现太过复杂），但也给最终的实现方式提供了基础。具体做法是，遍历到某个位置时，首先确定当前(x,y)位于螺旋的层数，那么转换后的索引值i=外层点数+位于当前层的第几个点；每一层的外层点数都可以事先计算出来，除了最里层（差8个或7个），每一层与外层必然都是差了8个点，然后再判断(x,y)是位于右上还是左下部分，即通过分段确定坐标对位于当前层的第几个点，从而计算出i值；至于矩阵中左边和下边两部分，可以将(x,y)转换为关于x轴或y轴对称的坐标点进行判断（矩阵关于原点对称）
 
 过程是艰辛的，结果是喜悦的，网上都是清一色的push_back或append，这的确值得花文字记录一下
+#### <span id=0055>[55] 跳跃游戏</span>
+题目链接：[https://leetcode-cn.com/problems/jump-game](https://leetcode-cn.com/problems/jump-game)  
+代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0055.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0055.cpp)  
+运行时间：beats 88.33%  
+解题思路：初始变量pathLength = nums[0]，记录可以到达最大的下标，在遍历nums过程中，如果i > pathLength，则表示i点已经不可到达，返回false，如果pathLength >= 数组最大下标，则表示数组最后一点可到达，返回true

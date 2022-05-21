@@ -6,6 +6,7 @@
 |[0053](#0053)|[最大子数组和](#0053)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0053.cpp)|
 |[0054](#0054)|[螺旋矩阵](#0054)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0054.cpp)|
 |[0055](#0055)|[跳跃游戏](#0055)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0055.cpp)|
+|[0056](#0056)|[合并区间](#0056)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0056.cpp)|
 
 #### <span id=0051>[51] n-皇后</span>
 题目链接：[https://leetcode-cn.com/problems/n-queens](https://leetcode-cn.com/problems/n-queens)  
@@ -49,3 +50,8 @@
 代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0055.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0055.cpp)  
 运行时间：beats 88.33%  
 解题思路：初始变量pathLength = nums[0]，记录可以到达最大的下标，在遍历nums过程中，如果i > pathLength，则表示i点已经不可到达，返回false，如果pathLength >= 数组最大下标，则表示数组最后一点可到达，返回true
+#### <span id=0056>[56] 合并区间</span>
+题目链接：[https://leetcode-cn.com/problems/merge-intervals](https://leetcode-cn.com/problems/merge-intervals)  
+代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0056.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0056.cpp)  
+运行时间：beats 93.82%  
+解题思路：为了使两个不重叠区间因为合并了另外一个区间而变得重叠，可以先对intervals进行排序，使得左区间从小到大排列，然后遍历intervals数组，合并重复区间并加入到返回列表中

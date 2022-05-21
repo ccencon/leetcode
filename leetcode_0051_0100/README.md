@@ -7,6 +7,7 @@
 |[0054](#0054)|[螺旋矩阵](#0054)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0054.cpp)|
 |[0055](#0055)|[跳跃游戏](#0055)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0055.cpp)|
 |[0056](#0056)|[合并区间](#0056)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0056.cpp)|
+|[0057](#0057)|[插入区间](#0057)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0057.cpp)|
 
 #### <span id=0051>[51] n-皇后</span>
 题目链接：[https://leetcode-cn.com/problems/n-queens](https://leetcode-cn.com/problems/n-queens)  
@@ -54,4 +55,9 @@
 题目链接：[https://leetcode-cn.com/problems/merge-intervals](https://leetcode-cn.com/problems/merge-intervals)  
 代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0056.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0056.cpp)  
 运行时间：beats 93.82%  
-解题思路：为了使两个不重叠区间因为合并了另外一个区间而变得重叠，可以先对intervals进行排序，使得左区间从小到大排列，然后遍历intervals数组，合并重复区间并加入到返回列表中
+解题思路：为了使两个不重叠区间因为合并了另外一个区间而变得重叠，可以先对intervals进行排序，使得区间左端点从小到大排列，然后遍历intervals数组，合并重复区间并加入到返回列表中
+#### <span id=0057>[57] 插入区间</span>
+题目链接：[https://leetcode-cn.com/problems/insert-interval](https://leetcode-cn.com/problems/insert-interval)  
+代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0057.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0057.cpp)  
+运行时间：beats 51.65%  
+解题思路：通过newInterval找到在intervals重叠的左区间下标beginIdx，因为intervals已经顺序排列，所以从beginIdx开始找到重叠的右区间下标endIdx，在intervals上合并这些区间，并将endIdx后面的元素往前移动，对intervals进行resize之后返回intervals；需要特别注意一些特殊情况，比如找不到beginIdx，endIdx，或endIdx小于beginIdx等

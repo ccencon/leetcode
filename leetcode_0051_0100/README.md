@@ -8,6 +8,7 @@
 |[0055](#0055)|[跳跃游戏](#0055)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0055.cpp)|
 |[0056](#0056)|[合并区间](#0056)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0056.cpp)|
 |[0057](#0057)|[插入区间](#0057)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0057.cpp)|
+|[0058](#0058)|[最后一个单词的长度](#0058)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0058.cpp)|
 
 #### <span id=0051>[51] n-皇后</span>
 题目链接：[https://leetcode-cn.com/problems/n-queens](https://leetcode-cn.com/problems/n-queens)  
@@ -60,4 +61,9 @@
 题目链接：[https://leetcode-cn.com/problems/insert-interval](https://leetcode-cn.com/problems/insert-interval)  
 代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0057.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0057.cpp)  
 运行时间：beats 51.65%  
-解题思路：通过newInterval找到在intervals重叠的左区间下标beginIdx，因为intervals已经顺序排列，所以从beginIdx开始找到重叠的右区间下标endIdx，在intervals上合并这些区间，并将endIdx后面的元素往前移动，对intervals进行resize之后返回intervals；需要特别注意一些特殊情况，比如找不到beginIdx，endIdx，或endIdx小于beginIdx等
+解题思路：通过newInterval找到在intervals重叠的左区间下标beginIdx，因为intervals已经顺序排列，所以从beginIdx开始找到重叠的右区间下标endIdx，在intervals上合并这些区间，并将endIdx后面的元素往前移动，对intervals进行resize之后返回intervals；需要注意一些特殊情况，比如找不到beginIdx，endIdx，或endIdx小于beginIdx等
+#### <span id=0058>[58] 最后一个单词的长度</span>
+题目链接：[https://leetcode-cn.com/problems/length-of-last-word](https://leetcode-cn.com/problems/length-of-last-word)  
+代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0058.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0058.cpp)  
+运行时间：beats 100%  
+解题思路：从后往前遍历，过滤掉空格之后开始计数，直至遇到空格结束

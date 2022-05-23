@@ -10,6 +10,7 @@
 |[0057](#0057)|[插入区间](#0057)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0057.cpp)|
 |[0058](#0058)|[最后一个单词的长度](#0058)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0058.cpp)|
 |[0059](#0059)|[螺旋矩阵-ii](#0059)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0059.cpp)|
+|[0060](#0060)|[排列序列](#0060)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0060.cpp)|
 
 #### <span id=0051>[51] n-皇后</span>
 题目链接：[https://leetcode-cn.com/problems/n-queens](https://leetcode-cn.com/problems/n-queens)  
@@ -73,3 +74,8 @@
 代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0059.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0059.cpp)  
 运行时间：beats 100%  
 解题思路：[54 螺旋矩阵](#0054)的反操作，54题为了提高cpu cache命中率，采用了顺序遍历矩阵的方式，将坐标对进行了转换，这题同理，为了提高cpu的回写效率，同样以顺序方式进行遍历，将坐标对转换成第几个数即可
+#### <span id=0060>[60] 排列序列</span>
+题目链接：[https://leetcode-cn.com/problems/permutation-sequence](https://leetcode-cn.com/problems/permutation-sequence)  
+代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0060.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0060.cpp)  
+运行时间：beats 100%  
+解题思路：从后往前计算排列数，比如n = 7，k = 9，计算到倒数第4位的时候发现4! == 24 >= 9，说明第9个排列必然是从倒数第4位开始变化出来的，而第1位到第3位保持原有序列"123"；从倒数第四位开始往后遍历，获取当前位置剩余的最小数num，当k大于下一个位置的最大排列数A时，表明当前位置为num时的总排列数小于k，此时将k - A，继续在当前位置获取下一个剩余最小数

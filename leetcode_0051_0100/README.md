@@ -78,4 +78,5 @@
 题目链接：[https://leetcode-cn.com/problems/permutation-sequence](https://leetcode-cn.com/problems/permutation-sequence)  
 代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0060.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0060.cpp)  
 运行时间：beats 100%  
-解题思路：从后往前计算排列数，比如n = 7，k = 9，计算到倒数第4位的时候发现4! == 24 >= 9，说明第9个排列必然是从倒数第4位开始变化出来的，而第1位到第3位保持原有序列"123"；从倒数第四位开始往后遍历，获取当前位置剩余的最小数num，当k大于下一个位置的最大排列数A时，表明当前位置为num时的总排列数小于k，此时将k - A，继续在当前位置获取下一个剩余最小数
+解题思路：从后往前计算排列数，比如n = 7，k = 9，计算到倒数第4位的时候发现4! == 24 >= 9，说明第9个排列必然是从倒数第4位开始变化出来的，而第1位到第3位保持原有序列"123"；从倒数第四位开始往后遍历，获取当前位置剩余的最小数num，当k大于下一个位置的最大排列数A时，表明当前位置为num时的总排列数小于k，此时将k - A，继续在当前位置获取下一个剩余最小数  
+时间复杂度为O(N)，浏览评论的时候发现[康托展开](https://baike.baidu.com/item/%E5%BA%B7%E6%89%98%E5%B1%95%E5%BC%80/7968428?fr=aladdin)能更加专业的解决这个问题

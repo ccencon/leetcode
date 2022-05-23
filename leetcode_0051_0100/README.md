@@ -13,6 +13,7 @@
 |[0060](#0060)|[排列序列](#0060)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0060.cpp)|
 |[0061](#0061)|[旋转链表](#0061)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0061.cpp)|
 |[0062](#0062)|[不同路径](#0062)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0062.cpp)|
+|[0063](#0063)|[不同路径-ii](#0063)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0063.cpp)|
 
 #### <span id=0051>[51] n-皇后</span>
 题目链接：[https://leetcode-cn.com/problems/n-queens](https://leetcode-cn.com/problems/n-queens)  
@@ -94,3 +95,8 @@
 解题思路：高中的排列组合题，求某两个对角点最短路径的数目，比如m行n列的网格，从左上角的点到右下角的点，那么最短路径就只能往下或往右走，即往右走n次，往下走m次，不同的路径就是往下或往右走的时机不同，故路经数为$C_{n+m}^m$或$C_{n+m}^n$  
 也可以采用动态规划求解，到达某点的最短路径数等于相邻两点（最短路径上）的最短路径数目之和，所以可以从起点开始，一步步往下求解  
 题目是基于格子而不是点，但解法一致，m行n列的网格可以看作m-1行n-1列的格子组合，也可以看作，向右或向下少走一步，即$C_{n+m-2}^{m-1}$或$C_{n+m-2}^{n-1}$  
+#### <span id=0063>[63] 不同路径-ii</span>
+题目链接：[https://leetcode-cn.com/problems/unique-paths-ii](https://leetcode-cn.com/problems/unique-paths-ii)  
+代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0063.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0063.cpp)  
+运行时间：beats 56.13%  
+解题思路：类似[62 不同路径](#0062)，由于在网格中加入了障碍物，所以上述两种方法中只能选择dp求解

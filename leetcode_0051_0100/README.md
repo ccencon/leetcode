@@ -12,6 +12,7 @@
 |[0059](#0059)|[螺旋矩阵-ii](#0059)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0059.cpp)|
 |[0060](#0060)|[排列序列](#0060)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0060.cpp)|
 |[0061](#0061)|[旋转链表](#0061)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0061.cpp)|
+|[0062](#0062)|[不同路径](#0062)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0062.cpp)|
 
 #### <span id=0051>[51] n-皇后</span>
 题目链接：[https://leetcode-cn.com/problems/n-queens](https://leetcode-cn.com/problems/n-queens)  
@@ -86,3 +87,10 @@
 代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0061.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0061.cpp)  
 运行时间：beats 55.64%  
 解题思路：由于旋转链表需要知道链表长度，所以需要提前遍历一次链表，为了不重复遍历，在事先遍历的同时用vector保存每一位置的结点，将k对length取余后，得到新的尾结点索引为length - 1 - k，将原头尾结点相连和将新尾结点置null后，返回新的头结点，位于索引length - k。事实证明，还不如多遍历一次链表，vector的申请空间和赋值操作同样耗时
+#### <span id=0062>[62] 不同路径</span>
+题目链接：[https://leetcode-cn.com/problems/unique-paths](https://leetcode-cn.com/problems/unique-paths)  
+代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0062.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0062.cpp)  
+运行时间：beats 100%  
+解题思路：高中的排列组合题，求某两个对角点最短路径的数目，比如m行n列的网格，从左上角的点到右下角的点，那么最短路径就只能往下或往右走，即往右走n次，往下走m次，不同的路径就是往下或往右走的时机不同，故路经数为$C_{n+m}^m$或$C_{n+m}^n$  
+也可以采用动态规划求解，到达某点的最短路径数等于相邻两点（最短路径上）的最短路径数目之和，所以可以从起点开始，一步步往下求解  
+题目是基于格子而不是点，但解法一致，m行n列的网格可以看作m-1行n-1列的格子组合，也可以看作，向右或向下少走一步，即$C_{n+m-2}^{m-1}$或$C_{n+m-2}^{n-1}$  

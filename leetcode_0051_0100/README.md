@@ -14,6 +14,7 @@
 |[0061](#0061)|[旋转链表](#0061)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0061.cpp)|
 |[0062](#0062)|[不同路径](#0062)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0062.cpp)|
 |[0063](#0063)|[不同路径-ii](#0063)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0063.cpp)|
+|[0064](#0064)|[最小路径和](#0064)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0064.cpp)|
 
 #### <span id=0051>[51] n-皇后</span>
 题目链接：[https://leetcode-cn.com/problems/n-queens](https://leetcode-cn.com/problems/n-queens)  
@@ -100,3 +101,8 @@
 代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0063.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0063.cpp)  
 运行时间：beats 56.13%  
 解题思路：类似[62 不同路径](#0062)，由于在网格中加入了障碍物，所以上述两种方法中只能选择dp求解
+#### <span id=0064>[64] 最小路径和</span>
+题目链接：[https://leetcode-cn.com/problems/minimum-path-sum](https://leetcode-cn.com/problems/minimum-path-sum)  
+代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0064.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0064.cpp)  
+运行时间：beats 76.92%  
+解题思路：类似[63 不同路径](#0063)，只是记录路径数变成记录了最小路径和

@@ -19,6 +19,7 @@
 |[0066](#0066)|[加一](#0066)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0066.cpp)|
 |[0067](#0067)|[二进制求和](#0067)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0067.cpp)|
 |[0068](#0068)|[文本左右对齐](#0068)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0068.cpp)|
+|[0069](#0069)|[x-的平方根](#0069)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0069.cpp)|
 
 #### <span id=0051>[51] n-皇后</span>
 题目链接：[https://leetcode-cn.com/problems/n-queens](https://leetcode-cn.com/problems/n-queens)  
@@ -131,3 +132,8 @@
 代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0068.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0068.cpp)  
 运行时间：beats 100%  
 解题思路：有点奇怪的题目，没有get到考察点。具体做法很简单，首先尽可能多的放置单词，即每个单词之间只留一个空格，长度超出maxWidth时结束放置，期间记录所有单词总长度length，这时候通过(maxWidth - length) / 空格集合数，计算出当前空格集合应该放置多少个空格c，因为左边空格必须多于右边空格，当c * 空格集合数 != maxWidth - length时，c自增1；循环计算，直至插完当前的所有单词；当插入的是最后一行时，特殊处理一下，即每个单词间空格数恒定为1
+#### <span id=0069>[69] x-的平方根</span>
+题目链接：[https://leetcode-cn.com/problems/sqrtx](https://leetcode-cn.com/problems/sqrtx)  
+代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0069.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0069.cpp)  
+运行时间：beats 100%  
+解题思路：采用二分法进行渐进处理，其中右边数为min(x/2+1, 46340)，其中46340是2^31-1的平方根，故所有数平方根必然不大于46340。[题解](https://leetcode.cn/problems/sqrtx/solution/x-de-ping-fang-gen-by-leetcode-solution/)中的 **袖珍计算器算法** 和 **牛顿迭代** 能更巧妙的解决这道题

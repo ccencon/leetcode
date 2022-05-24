@@ -17,6 +17,8 @@
 |[0064](#0064)|[最小路径和](#0064)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0064.cpp)|
 |[0065](#0065)|[有效数字](#0065)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0065.cpp)|
 |[0066](#0066)|[加一](#0066)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0066.cpp)|
+|[0067](#0067)|[二进制求和](#0067)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0067.cpp)|
+|[0068](#0068)|[文本左右对齐](#0068)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0068.cpp)|
 
 #### <span id=0051>[51] n-皇后</span>
 题目链接：[https://leetcode-cn.com/problems/n-queens](https://leetcode-cn.com/problems/n-queens)  
@@ -119,3 +121,13 @@
 代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0066.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0066.cpp)  
 运行时间：beats 100%  
 解题思路：设置溢出位从后往前加，如果溢出位为0，提前结束返回，如果遍历结束后仍没有返回，则说明此时溢出位为1，往数组头部插入1返回即可
+#### <span id=0067>[67] 二进制求和</span>
+题目链接：[https://leetcode-cn.com/problems/add-binary](https://leetcode-cn.com/problems/add-binary)  
+代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0067.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0067.cpp)  
+运行时间：beats 100%  
+解题思路：设置溢出位从后往前加，先加两个字符串处于同一加法位置的部分，再单独加最长字符串的剩余部分，如果到最后仍然有溢出位，则向返回字符串头部插入'1'
+#### <span id=0068>[68] 文本左右对齐</span>
+题目链接：[https://leetcode-cn.com/problems/text-justification](https://leetcode-cn.com/problems/text-justification)  
+代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0068.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0068.cpp)  
+运行时间：beats 100%  
+解题思路：有点奇怪的题目，没有get到考察点。具体做法很简单，首先尽可能多的放置单词，即每个单词之间只留一个空格，长度超出maxWidth时结束放置，期间记录所有单词总长度length，这时候通过(maxWidth - length) / 空格集合数，计算出当前空格集合应该放置多少个空格c，因为左边空格必须多于右边空格，当c * 空格集合数 != maxWidth - length时，c自增1；循环计算，直至插完当前的所有单词；当插入的是最后一行时，特殊处理一下，即每个单词间空格数恒定为1

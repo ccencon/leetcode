@@ -16,6 +16,7 @@
 |[0063](#0063)|[不同路径-ii](#0063)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0063.cpp)|
 |[0064](#0064)|[最小路径和](#0064)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0064.cpp)|
 |[0065](#0065)|[有效数字](#0065)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0065.cpp)|
+|[0066](#0066)|[加一](#0066)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0066.cpp)|
 
 #### <span id=0051>[51] n-皇后</span>
 题目链接：[https://leetcode-cn.com/problems/n-queens](https://leetcode-cn.com/problems/n-queens)  
@@ -113,3 +114,8 @@
 运行时间：beats 58.06%  
 解题思路：有效数字的状态不多，可以很容易的通过分支判断进行解答，但是相比之下，有限状态自动机的做法才是正途，将每一个状态都作为状态转换的枢纽，简化转换策略，思路更加清晰简洁  
 参考：[确定有限状态自动机](https://leetcode.cn/problems/valid-number/solution/you-xiao-shu-zi-by-leetcode-solution-298l/) [有限状态自动机](https://zhuanlan.zhihu.com/p/400108593) [有限自动机](https://baike.baidu.com/item/%E6%9C%89%E9%99%90%E8%87%AA%E5%8A%A8%E6%9C%BA/8700995?fr=aladdin)
+#### <span id=0066>[66] 加一</span>
+题目链接：[https://leetcode-cn.com/problems/plus-one](https://leetcode-cn.com/problems/plus-one)  
+代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0066.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0066.cpp)  
+运行时间：beats 100%  
+解题思路：设置溢出位从后往前加，如果溢出位为0，提前结束返回，如果遍历结束后仍没有返回，则说明此时溢出位为1，往数组头部插入1返回即可

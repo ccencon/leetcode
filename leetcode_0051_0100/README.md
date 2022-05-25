@@ -21,6 +21,7 @@
 |[0068](#0068)|[文本左右对齐](#0068)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0068.cpp)|
 |[0069](#0069)|[x-的平方根](#0069)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0069.cpp)|
 |[0070](#0070)|[爬楼梯](#0070)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0070.cpp)|
+|[0071](#0071)|[简化路径](#0071)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0071.cpp)|
 
 #### <span id=0051>[51] n-皇后</span>
 题目链接：[https://leetcode-cn.com/problems/n-queens](https://leetcode-cn.com/problems/n-queens)  
@@ -142,5 +143,10 @@
 题目链接：[https://leetcode-cn.com/problems/climbing-stairs](https://leetcode-cn.com/problems/climbing-stairs)  
 代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0070.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0070.cpp)  
 运行时间：beats 100%  
-解题思路：斐波那契数列问题，题目要求每次只能走1个或2个台阶，所以从第三项开始，每一项等于前面两项之和，通俗点讲就是前第2项走2个台阶到达当前台阶，前第1项走1个台阶到达当前台阶，故当前台阶走法等于前两项之和  
-也可以采用排列组合的思想解答，假设走0个2阶，走法有$C_n^0$种，走1个两阶时，走法有$C_{n-1}^1$种，走2个两阶时，走法有$C_{n-2}^2$种，将所有和相加便得到第n阶台阶的走法。组合的方式适用于每次走法只能两种的情况，当存在多种走法时，计算组合数将会变得繁杂，这个时候还是按照斐波那契数列的解法比较简单
+解题思路：斐波那契数列问题，题目要求每次只能走1个或2个台阶，所以从第三项开始，每一项等于前面两项之和，通俗点理解就是前第2项走2个台阶到达当前台阶，前第1项走1个台阶到达当前台阶，故当前台阶走法等于前两项之和  
+也可以采用排列组合的思想解答，假设走0个2阶，走法有$C_n^0$种，走1个两阶时，走法有$C_{n-1}^1$种，走2个两阶时，走法有$C_{n-2}^2$种，将所有和相加便得到第n阶台阶的走法。组合的方式适用于每次走法只能两种的情况，当存在多种走法时，计算组合数将会变得繁杂，这个时候还是斐波那契数列的解法比较简单
+#### <span id=0071>[71] 简化路径</span>
+题目链接：[https://leetcode-cn.com/problems/simplify-path](https://leetcode-cn.com/problems/simplify-path)  
+代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0071.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0071.cpp)  
+运行时间：beats 100%  
+解题思路：可以使用双向队列记录目录名，遇到'.'忽略，遇到'..'弹出尾部元素，遇到目录或文件名尾部插入，最后组装返回。但这种方式会产生过多临时变量，从而导致内存拷贝的开销，可以初始化一个返回字符串ans，遇到文件名插入，遇到'..'便回溯到上一个文件名，因为涉及到'/'的状态简单，这种方法的思路也清晰明了，可以有效的减少内存拷贝，提升效率

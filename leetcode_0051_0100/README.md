@@ -22,6 +22,7 @@
 |[0069](#0069)|[x-的平方根](#0069)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0069.cpp)|
 |[0070](#0070)|[爬楼梯](#0070)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0070.cpp)|
 |[0071](#0071)|[简化路径](#0071)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0071.cpp)|
+|[0072](#0072)|[编辑距离](#0072)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0072.cpp)|
 
 #### <span id=0051>[51] n-皇后</span>
 题目链接：[https://leetcode-cn.com/problems/n-queens](https://leetcode-cn.com/problems/n-queens)  
@@ -32,9 +33,9 @@
 2. 从traceIdx开始到结束确定一个新的序列，每一个位置确定的状态应该具有次序性，这样回溯的时候可以容易确定下一个状态
 3. 回溯traceIdx，从后往前恢复状态，当某个位置有未执行的状态时，转到步骤2执行；若回溯了所有位置，结束执行
 
-这种思路的解答基本上运行时间和内存占用都是击败100%，目前在网上还没见到这种思路的出现，这来源于当初写[有向图](https://github.com/ccencon/structdata#DirectedGraph)输出所有拓扑序列和所有关键路径的做法，目前在所有回溯类的题目中，基本上采用了这种解答方式  
+这种思路的解答运行时间基本都是击败100%，目前在网上还没见到类似思路的出现，都是递归或其它，这来源于当初写[有向图](https://github.com/ccencon/structdata#DirectedGraph)输出所有拓扑序列和所有关键路径的做法，在当前所有回溯类的题目中，基本上采用了这种解答方式  
 
-这题的具体做法时，设定数组保存每一行，每一列，每一条斜线的匹配状态，初始trace_i，trace_j，从开始到结束确定第一个结果，然后对trace_i，trace_j进行回溯并恢复状态，并从新的trace_i，trace_j开始确定新的结果
+这题的具体做法是，设定数组保存每一行，每一列，每一条斜线的匹配状态，初始trace_i，trace_j，从开始到结束确定第一个结果，然后对trace_i，trace_j进行回溯并恢复状态，并从新的trace_i，trace_j开始确定新的结果
 #### <span id=0052>[52] n皇后-ii</span>
 题目链接：[https://leetcode-cn.com/problems/n-queens-ii](https://leetcode-cn.com/problems/n-queens-ii)  
 代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0052.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0052.cpp)  
@@ -51,7 +52,7 @@
 运行时间：beats 100%  
 解题思路：哀过程之多艰，这道中等题足足花费了两天的零碎时间。如果按照一般套路来做的话，这道题其实可以归纳为简单题，具体有两种做法：一种是给螺旋轨迹设定一个运动规则，右→下→左→上，即每运动到一个点，便依次判断右下左上是否已经到达过，选出下一个未到达过的点，直至所有点均与到达，但这种方式会存在较多分支判断，可以采用另外一种方法；另外一种方法是模拟旋转路径，按照运动轨迹一层一层地遍历，先往右走，遇到边界往下走，再然后往左走，最后往上走  
 
-在开始码代码之前，脑海里偏向的是第二种做法，但同时也产生了一个疑问，对于m*n阶矩阵，无论这两种的哪一种解答方式，cpu cache命中率都不高，因为不是顺序遍历，而且在已知m，n大小的情况下，矩阵中的每一对下标应该都能确定在answer中的索引值，那应该如何将下标对进行转换，使得能够以顺序遍历矩阵的方式解答这道题？作为一个极容易为想法而纠结的人，也由此开始了多艰的推导之旅  
+在开始码代码之前，脑海里偏向的是第二种做法，但同时也产生了一个疑问，对于m*n阶矩阵，无论这两种的哪一种解答方式，cpu cache命中率都不高，因为不是顺序遍历，而且在已知m，n大小的情况下，矩阵中的每一对下标应该都能确定在answer中的索引值，那应该如何将下标对(x,y)进行转换成i，使得能够以顺序遍历矩阵的方式解答这道题？作为一个极容易为想法而纠结的人，也由此开始了多艰的推导之旅  
 
 > 因为索引值的规律性，第一个想法肯定是希望能够找到一个数学方程式进行统一的下标转换，即$i=f(x,y)$，在推导好一会之后发现，螺旋的特性必然要涉及到复杂的三角函数，作为一个数学渣，最后只能不甘心的放弃了这个做法；那既然统一函数不行，那分段函数呢？通过把(x,y)分为上右和左下两部分，因为这两部分的(x,y)跟i存在线性关系，不过这个推导也放弃了，因为某层的计算需要依赖上一层的状态，这样实在太过复杂  
 
@@ -150,3 +151,13 @@
 代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0071.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0071.cpp)  
 运行时间：beats 100%  
 解题思路：可以使用双向队列记录目录名，遇到'.'忽略，遇到'..'弹出尾部元素，遇到目录或文件名尾部插入，最后组装返回。但这种方式会产生过多临时变量，从而导致内存拷贝的开销，可以初始化一个返回字符串ans，遇到文件名插入，遇到'..'便回溯到上一个文件名，因为涉及到'/'的状态简单，这种方法的思路也清晰明了，可以有效的减少内存拷贝，提升效率
+#### <span id=0072>[72] 编辑距离</span>
+题目链接：[https://leetcode-cn.com/problems/edit-distance](https://leetcode-cn.com/problems/edit-distance)  
+代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0072.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0072.cpp)  
+运行时间：beats 49.01%  
+解题思路：一般题目在看完之后意识里都会有一个符合直观的大致方向，而这道两个单词转换的题目完全不符合人的直观思维，在苦思良久之后还是毫无头绪，最终还是借助了官方题解进行理解，以官方例子"horse"-->"ros"为例，要计算出它们的最小转换次数，可以先计算出下面3种情况的最小转换次数：  
+1. "hors"-->"ro"，对应 **替换** 操作，这个时候需要将"horse"中剩余未转换的'e'替换成's'，假设D("hors", "ro")=k，那么D("horse", "ros")=k+1；特殊情况是，如果他们的后一个字符相同，则不需要进行替换操作，如D("horss", "ros")=k
+2. "horse"-->"ro"，对应 **插入** 操作，这个时候需要往转换后的"horse"中插入's'，形成"ros"，假设D("horse", "ro")=m，那么D("horse", "ros")=m+1
+3. "hors"-->"ros"，对应 **删除** 操作，这个时候需要将"horse"中剩余未转换的'e'删除，假设D("hors", "ro")=k，那么D("horse", "ros")=k+1
+
+由上可知，当计算D(i, j)时，如果word1[i] == word2[j]，那么D(i, j) = D(i-1, j-1)，否则，D(i, j) = min(k, m, n) + 1。在评论看到一个很有意思的问题，就是word1[i] == word2[j]时，D(i, j) = D(i-1, j-1)，为什么不需要继续进行min(D(i-1, j-1), m+1, n+1)的比较，这是因为在i或j在递增过程中，D的取值要么多1，要么少1，比如D(i-1, j-1)和D(i, j-1)，D(i-1, j-1)永远小于或等于D(i, j-1) + 1

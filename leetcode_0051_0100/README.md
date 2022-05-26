@@ -23,6 +23,7 @@
 |[0070](#0070)|[爬楼梯](#0070)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0070.cpp)|
 |[0071](#0071)|[简化路径](#0071)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0071.cpp)|
 |[0072](#0072)|[编辑距离](#0072)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0072.cpp)|
+|[0073](#0073)|[矩阵置零](#0073)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0073.cpp)|
 
 #### <span id=0051>[51] n-皇后</span>
 题目链接：[https://leetcode-cn.com/problems/n-queens](https://leetcode-cn.com/problems/n-queens)  
@@ -169,3 +170,8 @@
 回到题目，从dp的解法来看，求解D(i, j)，需要先求解D(i-1, j-1)，D(i, j-1)，D(i-1, j)，这是一个从前往后的过程（实际操作也可以从后往前，因为思路是对称的）；所以不妨直接从前往后看，对于word1中的每一个字符，要转换成word2，都要经历下面4个步骤之一：**不变，替换，删除，增加**（这个增加指的是字符前增加，假设当前转换word1[i]-->word2[j]，如果word1[i]== word2[j]，这时候对应的步骤应该是不变，如果不相等往后增加字符是没有意义的，只有往i前增加一个word2[j]才能完成转换）；所以对每一对i，j进行求解，就是当i分别选择**不变，替换，删除，增加**时的最小转换次数  
 
 这是一个从现象看本质的过程，具体代码看链接
+#### <span id=0073>[73] 矩阵置零</span>
+题目链接：[https://leetcode-cn.com/problems/set-matrix-zeroes](https://leetcode-cn.com/problems/set-matrix-zeroes)  
+代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0073.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0073.cpp)  
+运行时间：beats 76.12%  
+解题思路：向来对空间不太感冒。设定数组row_flag，哈希表column_flag，对matrix进行第一次遍历，matrix[i][j]等于0时，将row_flag[i]置true，column_flag插入j；对matrix进行第二次遍历，当row_flag[i]为true时，整行置0，否则，遍历column_flag，将对应j的位置置0。事后发现column_flag应该改用数组存储，效率会更好一点

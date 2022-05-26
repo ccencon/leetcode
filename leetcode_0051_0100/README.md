@@ -24,6 +24,7 @@
 |[0071](#0071)|[简化路径](#0071)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0071.cpp)|
 |[0072](#0072)|[编辑距离](#0072)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0072.cpp)|
 |[0073](#0073)|[矩阵置零](#0073)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0073.cpp)|
+|[0074](#0074)|[搜索二维矩阵](#0074)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0074.cpp)|
 
 #### <span id=0051>[51] n-皇后</span>
 题目链接：[https://leetcode-cn.com/problems/n-queens](https://leetcode-cn.com/problems/n-queens)  
@@ -175,3 +176,8 @@
 代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0073.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0073.cpp)  
 运行时间：beats 76.12%  
 解题思路：向来对空间不太感冒。设定数组row_flag，哈希表column_flag，对matrix进行第一次遍历，matrix[i][j]等于0时，将row_flag[i]置true，column_flag插入j；对matrix进行第二次遍历，当row_flag[i]为true时，整行置0，否则，遍历column_flag，将对应j的位置置0。事后发现column_flag应该改用数组存储，效率会更好一点
+#### <span id=0074>[74] 搜索二维矩阵</span>
+题目链接：[https://leetcode-cn.com/problems/search-a-2d-matrix](https://leetcode-cn.com/problems/search-a-2d-matrix)  
+代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0074.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0074.cpp)  
+运行时间：beats 72.86%  
+解题思路：遍历matrix，找到最后一个元素比target小的一维数组，然后在这个数组上进行二分查找

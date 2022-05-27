@@ -26,6 +26,7 @@
 |[0073](#0073)|[矩阵置零](#0073)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0073.cpp)|
 |[0074](#0074)|[搜索二维矩阵](#0074)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0074.cpp)|
 |[0075](#0075)|[颜色分类](#0075)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0075.cpp)|
+|[0076](#0076)|[最小覆盖子串](#0076)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0076.cpp)|
 
 #### <span id=0051>[51] n-皇后</span>
 题目链接：[https://leetcode-cn.com/problems/n-queens](https://leetcode-cn.com/problems/n-queens)  
@@ -187,3 +188,10 @@
 代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0075.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0075.cpp)  
 运行时间：beats 40.51%  
 解题思路：因为只有'0 1 2'三位数字，所以不需要使用普通的排序方式对数组进行排序，可以先遍历一次数组，计算出数字总和与数字'1'的个数，然后通过总和与'1'的个数计算出其它两个数字个数，然后按照个数重写数组即可。这种方法需要对数组进行两次遍历，可以采用3指针的方式，仅需一次遍历：设置指针p0指向数组头，p2指向数组尾，pm从p0开始往p2移动，如果nums[pm]等于0，与p0所指向的数进行交换，如果nums[pm]等于2，便与p2所指向的数进行交换，直至pm大于等于p2
+#### <span id=0076>[76] 最小覆盖子串</span>
+题目链接：[https://leetcode-cn.com/problems/minimum-window-substring](https://leetcode-cn.com/problems/minimum-window-substring)  
+代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0076.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0076.cpp)  
+运行时间：beats 66.49%  
+解题思路：用哈希表T记录t中出现的字母次数，哈希表S记录已遍历s中出现t字母的次数，队列Q记录s中出现t字母的下标，同时为了方便判断遍历s的时候是否包含了t中所有字母，设置num为t中所有字母之和，对s进行遍历，如果字母c存在于t中，执行以下操作：  
+1. 将字母c的坐标压入Q中，同时S[c]++
+2. 如果S[c] <= T[c]，那么num -= c；如果此时num为0，说明匹配了t中所有字母，便不断弹出Q队首元素直至S中记录的队首元素对应的字母个数等于T中的记录，然后通过新的队首元素e和队尾元素刷新最短长度；最后将num加上s[e]，rec_map[s[e]]--，弹出e进行下一轮遍历寻找s[e]

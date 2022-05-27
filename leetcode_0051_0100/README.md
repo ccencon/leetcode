@@ -25,6 +25,7 @@
 |[0072](#0072)|[编辑距离](#0072)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0072.cpp)|
 |[0073](#0073)|[矩阵置零](#0073)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0073.cpp)|
 |[0074](#0074)|[搜索二维矩阵](#0074)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0074.cpp)|
+|[0075](#0075)|[颜色分类](#0075)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0075.cpp)|
 
 #### <span id=0051>[51] n-皇后</span>
 题目链接：[https://leetcode-cn.com/problems/n-queens](https://leetcode-cn.com/problems/n-queens)  
@@ -181,3 +182,8 @@
 代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0074.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0074.cpp)  
 运行时间：beats 72.86%  
 解题思路：遍历matrix，找到最后一个元素比target小的一维数组，然后在这个数组上进行二分查找
+#### <span id=0075>[75] 颜色分类</span>
+题目链接：[https://leetcode-cn.com/problems/sort-colors](https://leetcode-cn.com/problems/sort-colors)  
+代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0075.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0075.cpp)  
+运行时间：beats 40.51%  
+解题思路：因为只有'0 1 2'三位数字，所以不需要使用普通的排序方式对数组进行排序，可以先遍历一次数组，计算出数字总和与数字'1'的个数，然后通过总和与'1'的个数计算出其它两个数字个数，然后按照个数重写数组即可。这种方法需要对数组进行两次遍历，可以采用3指针的方式，仅需一次遍历：设置指针p0指向数组头，p2指向数组尾，pm从p0开始往p2移动，如果nums[pm]等于0，与p0所指向的数进行交换，如果nums[pm]等于2，便与p2所指向的数进行交换，直至pm大于等于p2

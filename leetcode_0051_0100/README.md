@@ -27,6 +27,7 @@
 |[0074](#0074)|[搜索二维矩阵](#0074)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0074.cpp)|
 |[0075](#0075)|[颜色分类](#0075)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0075.cpp)|
 |[0076](#0076)|[最小覆盖子串](#0076)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0076.cpp)|
+|[0077](#0077)|[组合](#0077)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0077.cpp)|
 
 #### <span id=0051>[51] n-皇后</span>
 题目链接：[https://leetcode-cn.com/problems/n-queens](https://leetcode-cn.com/problems/n-queens)  
@@ -195,3 +196,8 @@
 解题思路：用哈希表T记录t中出现的字母次数，哈希表S记录已遍历s中出现t字母的次数，队列Q记录s中出现t字母的下标，同时为了方便判断遍历s的时候是否包含了t中所有字母，设置num为t中所有字母之和，对s进行遍历，如果字母c存在于t中，执行以下操作：  
 1. 将字母c的坐标压入Q中，同时S[c]++
 2. 如果S[c] <= T[c]，那么num -= c；如果此时num为0，说明匹配了t中所有字母，便不断弹出Q队首元素直至S中记录的队首元素对应的字母个数等于T中的记录，然后通过新的队首元素e和队尾元素刷新最短长度；最后将num加上s[e]，rec_map[s[e]]--，弹出e进行下一轮遍历寻找s[e]
+#### <span id=0077>[77] 组合</span>
+题目链接：[https://leetcode-cn.com/problems/combinations](https://leetcode-cn.com/problems/combinations)  
+代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0077.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0077.cpp)  
+运行时间：beats 98.7%  
+解题思路：初始tmp="123..k-1"，故第k个数的取值从k到n，分别插入后，然后对tmp回溯到第k-1个数，对其加一，此时第k个数取值变为k-1到n；重复上面步骤，当第k-1个数超出它的最大值时，便继续回溯到第k-2个数，重复以上步骤，直至回溯索引小于0

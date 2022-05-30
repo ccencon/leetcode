@@ -29,6 +29,7 @@
 |[0076](#0076)|[最小覆盖子串](#0076)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0076.cpp)|
 |[0077](#0077)|[组合](#0077)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0077.cpp)|
 |[0078](#0078)|[子集](#0078)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0078.cpp)|
+|[0079](#0079)|[单词搜索](#0079)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0079.cpp)|
 
 #### <span id=0051>[51] n-皇后</span>
 题目链接：[https://leetcode-cn.com/problems/n-queens](https://leetcode-cn.com/problems/n-queens)  
@@ -207,3 +208,8 @@
 代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0078.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0078.cpp)  
 运行时间：beats 100%  
 解题思路：因为对于集合中每个元素，都只存在出现和不出现两种情况，故一个有n个元素的集合的所有子集数为2^n，又因为只存在两种情况，所以可以使用位计数法对子集数进行迭代以消除回溯的步骤。同样的，也可以使用递归方法进行解答，对当前的数执行以上两种情况下的操作
+#### <span id=0079>[79] 单词搜索</span>
+题目链接：[https://leetcode-cn.com/problems/word-search](https://leetcode-cn.com/problems/word-search)  
+代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0079.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0079.cpp)  
+运行时间：beats 42.65%  
+解题思路：

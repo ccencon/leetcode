@@ -30,6 +30,7 @@
 |[0077](#0077)|[组合](#0077)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0077.cpp)|
 |[0078](#0078)|[子集](#0078)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0078.cpp)|
 |[0079](#0079)|[单词搜索](#0079)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0079.cpp)|
+|[0080](#0080)|[删除有序数组中的重复项-ii](#0080)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0080.cpp)|
 
 #### <span id=0051>[51] n-皇后</span>
 题目链接：[https://leetcode-cn.com/problems/n-queens](https://leetcode-cn.com/problems/n-queens)  
@@ -212,4 +213,9 @@
 题目链接：[https://leetcode-cn.com/problems/word-search](https://leetcode-cn.com/problems/word-search)  
 代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0079.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0079.cpp)  
 运行时间：beats 42.65%  
-解题思路：
+解题思路：深度优先搜索的一个非常典型的应用，以前写过的消消乐也是类似需求，在一个二维数组内进行DFS，遵循上→右→下→左的递归顺序。题目在最后的进阶提示能否用搜索剪枝的技术来优化解决方案，最开始想到的采用类似KMP算法的解决方案，对word进行运算，计算出某个字母匹配失败的时候应该回退到哪个字符，但对单词来说貌似效率不会太高；于是用另外一个数组flag进行记录，当第k个字母失配时，路径上的坐标在flag记录上各自对应的k，表示这些坐标作为第x个字符进行匹配时，不会成功。这种剪枝方案在提交的运行时间上还不如未优化的方案，这应该是跟测试用例有关，如果是类似迷宫那种存在比较多的重复集合，这种方案应该会比较理想
+#### <span id=0080>[80] 删除有序数组中的重复项-ii</span>
+题目链接：[https://leetcode-cn.com/problems/remove-duplicates-from-sorted-array-ii](https://leetcode-cn.com/problems/remove-duplicates-from-sorted-array-ii)  
+代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0080.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0080.cpp)  
+运行时间：beats 31.55%  
+解题思路：采用双指针做法，指针forward向前移动，遇到不同的元素前停下，从指针back开始赋值最多2个forward所指向的元素，重复这些步骤直至forward移动到数组末尾。官方的双指针思路更加优雅

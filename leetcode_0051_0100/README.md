@@ -31,6 +31,7 @@
 |[0078](#0078)|[子集](#0078)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0078.cpp)|
 |[0079](#0079)|[单词搜索](#0079)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0079.cpp)|
 |[0080](#0080)|[删除有序数组中的重复项-ii](#0080)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0080.cpp)|
+|[0081](#0081)|[搜索旋转排序数组-ii](#0081)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0081.cpp)|
 
 #### <span id=0051>[51] n-皇后</span>
 题目链接：[https://leetcode-cn.com/problems/n-queens](https://leetcode-cn.com/problems/n-queens)  
@@ -219,3 +220,8 @@
 代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0080.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0080.cpp)  
 运行时间：beats 31.55%  
 解题思路：采用双指针做法，指针forward向前移动，遇到不同的元素前停下，从指针back开始赋值最多2个forward所指向的元素，重复这些步骤直至forward移动到数组末尾。官方的双指针思路更加优雅
+#### <span id=0081>[81] 搜索旋转排序数组-ii</span>
+题目链接：[https://leetcode-cn.com/problems/search-in-rotated-sorted-array-ii](https://leetcode-cn.com/problems/search-in-rotated-sorted-array-ii)  
+代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0081.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0081.cpp)  
+运行时间：beats 83.22%  
+解题思路：折腾了一个下午，最终还是借助了官方题解以自己的方式完成解答。当初做[搜索旋转排序数组](https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/#0033)的时候，采用的是先找到旋转点，再进行二分查找的做法，但事实上可以直接在原旋转数组进行二分查找。这题类似，不同点在于存在重复元素，当存在重复元素的时候会发生nums[left] == nums[mid] == nums[right]的情况，这时候就不知道数组的旋转点位于mid的左边还是右边；受官方思路的启发，解决这种情况也很简单，不断靠拢left，right就行，直至三者不全相等

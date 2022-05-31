@@ -32,6 +32,8 @@
 |[0079](#0079)|[单词搜索](#0079)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0079.cpp)|
 |[0080](#0080)|[删除有序数组中的重复项-ii](#0080)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0080.cpp)|
 |[0081](#0081)|[搜索旋转排序数组-ii](#0081)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0081.cpp)|
+|[0082](#0082)|[删除排序链表中的重复元素-ii](#0082)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0082.cpp)|
+|[0083](#0083)|[删除排序链表中的重复元素](#0083)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0083.cpp)|
 
 #### <span id=0051>[51] n-皇后</span>
 题目链接：[https://leetcode-cn.com/problems/n-queens](https://leetcode-cn.com/problems/n-queens)  
@@ -225,3 +227,13 @@
 代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0081.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0081.cpp)  
 运行时间：beats 83.22%  
 解题思路：折腾了一个下午，最终还是借助了官方题解以自己的方式完成解答。当初做[搜索旋转排序数组](https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/#0033)的时候，采用的是先找到旋转点，再进行二分查找的做法，但事实上可以直接在原旋转数组进行二分查找。这题类似，不同点在于存在重复元素，当存在重复元素的时候会发生nums[left] == nums[mid] == nums[right]的情况，这时候就不知道数组的旋转点位于mid的左边还是右边；受官方思路的启发，解决这种情况也很简单，不断靠拢left，right就行，直至三者不全相等
+#### <span id=0082>[82] 删除排序链表中的重复元素-ii</span>
+题目链接：[https://leetcode-cn.com/problems/remove-duplicates-from-sorted-list-ii](https://leetcode-cn.com/problems/remove-duplicates-from-sorted-list-ii)  
+代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0082.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0082.cpp)  
+运行时间：beats 100%  
+解题思路：最开始理解错了题意，以为是去重，提交失败之后才发现是去除所有重复元素，不过按照leetcode的套路，紧挨着的第83题必然是去重，于是用原本82题的错误答案去提交了第83题...大体做法是双指针思路，设定指针slow和fast，如果fast前面没有重复元素，则slow->next = fast，slow = fast，否则忽略；为了方便头结点的操作，可以设定一个新的头结点hair指向原头结点，最后返回hair.next
+#### <span id=0083>[83] 删除排序链表中的重复元素</span>
+题目链接：[https://leetcode-cn.com/problems/remove-duplicates-from-sorted-list](https://leetcode-cn.com/problems/remove-duplicates-from-sorted-list)  
+代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0083.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0083.cpp)  
+运行时间：beats 98.52%  
+解题思路：链表的去重，同样是双指针操作，没什么好说的

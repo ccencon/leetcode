@@ -278,7 +278,7 @@
 题目链接：[https://leetcode-cn.com/problems/count-and-say](https://leetcode-cn.com/problems/count-and-say)  
 代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0038.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0038.cpp)  
 运行时间：beats 100%  
-解题思路：比较简单的题目，虽然题意是考察对字符串的遍历，但实际操作起来的难点应该是在于如何减少产生临时字符串，解决方法也很简单，定义两个字符串和两个指向它们的指针，对n的每一次遍历完成后交换这两个指针即可
+解题思路：比较简单的题目，虽然题意是考察对字符串的遍历，但实际操作起来的难点应该是在于如何减少临时字符串的产生，解决方法也很简单，定义两个字符串和两个指向它们的指针，对n的每一次遍历完成后交换这两个指针即可
 #### <span id=0039>[39] 组合总和</span>
 题目链接：[https://leetcode-cn.com/problems/combination-sum](https://leetcode-cn.com/problems/combination-sum)  
 代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0039.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0039.cpp)  

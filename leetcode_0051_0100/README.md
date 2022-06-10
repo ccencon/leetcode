@@ -35,6 +35,7 @@
 |[0082](#0082)|[删除排序链表中的重复元素-ii](#0082)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0082.cpp)|
 |[0083](#0083)|[删除排序链表中的重复元素](#0083)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0083.cpp)|
 |[0084](#0084)|[柱状图中最大的矩形](#0084)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0084.cpp)|
+|[0085](#0085)|[最大矩形](#0085)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0085.cpp)|
 
 #### <span id=0051>[51] n-皇后</span>
 题目链接：[https://leetcode-cn.com/problems/n-queens](https://leetcode-cn.com/problems/n-queens)  
@@ -243,3 +244,8 @@
 代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0084.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0084.cpp)  
 运行时间：beats 32%  
 解题思路：一开始希望能以纯粹的O(n)时间复杂度解答，大体做法是遇到递增的矩形集合时刷新最大面积，但是这样相邻集合的面积难以协调计算，时间复杂度也退化到了O(n^2)。在官方题解的启发下，学会了使用单调栈来解答，事先遍历一次数组，计算出当前柱形左右两边形成最大矩形面积的边界，最后再遍历一次数组，通过两个边界相减再乘以当前高度刷新最大面积。官方题解还是比较“官方”的，但是cpp的运行时间只打败了32-51%的提交，这应该还有能继续优化的方法，看评论发现可以向数组插入一个哨兵减少分支判断，这的确精妙，但是运行时间依然不理想；继续往下翻评论，发现一个能以一次循环进行解答的方法，在单调栈处理的过程中，栈中元素左边界或者右边界已知，这时候只需要在当前循环刷新面积即可，提交之后发现运行时间打败了76%，时间的优化在于两个边界数组的创建和赋值处理；继续往下翻评论，也没能发现运行时间更理想的做法了
+#### <span id=0085>[85] 最大矩形</span>
+题目链接：[https://leetcode-cn.com/problems/maximal-rectangle](https://leetcode-cn.com/problems/maximal-rectangle)  
+代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0085.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0085.cpp)  
+运行时间：beats 68.79%  
+解题思路：[最大矩形](#0085)可以转化为[柱状图中最大的矩形](#0084)的求解，用heights数组记录matrix当前行的每一列的柱形高度，然后通过单调栈的方式求得当前最大矩形，时间复杂度为O(mn)；此题同样可以采用BF的方式进行求解，具体操作为用二维数组记录每一行每一列连续'1'的数目，假设遍历到位置(i, j)，设定高度从1开始往上生长，设定长为二维数组记录的最小值，将高度乘以长刷新最大矩形面积，时间复杂度为O(m^2n)

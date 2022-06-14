@@ -36,6 +36,7 @@
 |[0083](#0083)|[删除排序链表中的重复元素](#0083)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0083.cpp)|
 |[0084](#0084)|[柱状图中最大的矩形](#0084)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0084.cpp)|
 |[0085](#0085)|[最大矩形](#0085)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0085.cpp)|
+|[0086](#0086)|[分隔链表](#0086)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0086.cpp)|
 
 #### <span id=0051>[51] n-皇后</span>
 题目链接：[https://leetcode-cn.com/problems/n-queens](https://leetcode-cn.com/problems/n-queens)  
@@ -249,3 +250,8 @@
 代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0085.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0085.cpp)  
 运行时间：beats 68.79%  
 解题思路：[最大矩形](#0085)可以转化为[柱状图中最大的矩形](#0084)的求解，用heights数组记录matrix当前行的每一列的柱形高度，然后通过单调栈的方式求得当前最大矩形，时间复杂度为O(mn)；此题同样可以采用BF的方式进行求解，具体操作为用二维数组记录每一行每一列连续'1'的数目，假设遍历到位置(i, j)，设定高度从1开始往上生长，设定长为二维数组记录的最小值，将高度乘以长刷新最大矩形面积，时间复杂度为O(m^2n)
+#### <span id=0086>[86] 分隔链表</span>
+题目链接：[https://leetcode-cn.com/problems/partition-list](https://leetcode-cn.com/problems/partition-list)  
+代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0086.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0086.cpp)  
+运行时间：beats 89.7%  
+解题思路：双指针策略，fast往后遍历，遇到比x小的扔到slow后面，同时slow往后移

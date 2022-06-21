@@ -38,6 +38,7 @@
 |[0085](#0085)|[最大矩形](#0085)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0085.cpp)|
 |[0086](#0086)|[分隔链表](#0086)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0086.cpp)|
 |[0087](#0087)|[扰乱字符串](#0087)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0087.cpp)|
+|[0088](#0088)|[合并两个有序数组](#0088)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0088.cpp)|
 
 #### <span id=0051>[51] n-皇后</span>
 题目链接：[https://leetcode-cn.com/problems/n-queens](https://leetcode-cn.com/problems/n-queens)  
@@ -261,3 +262,8 @@
 代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0087.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0087.cpp)  
 运行时间：beats 98.65%  
 解题思路：s2作为s1的扰乱字符串，是s1于某个随机下标处进行分割，然后选择是否进行交换，再对分割后的两部分递归执行以上操作得到，所以可以对s1，s2进行遍历，将s1开头和结尾，s2开头的字符添加到独立的变量当中进行排序，当它们相等时，表示可以在当前位置进行分割，然后递归判断两部分字符串是否是扰乱字符串，递归的结束条件是长度为1，且s1 == s2。由于在递归过程中会对字符串产生重复的判断操作，所以可以使用记忆化搜索，用哈希表记录两个字符串的执行结果。这题比较容易让人纠结的点在于如何判断两个子串包含了相等的字符集合，解决方法是将字符插入到字符串变量之后对字符串进行一次排序，因为每次插入前字符串都是有序的，所以可以采用二分法对字符串进行优化插入，同时为了减少字符拷贝，可以采用lambda表达式对s1，s2进行引用捕获，传入对应下标和长度即可，但由于测试用例s1，s2的长度问题，优化版本对未优化版本的提升不是特别明显
+#### <span id=0088>[88] 合并两个有序数组</span>
+题目链接：[https://leetcode-cn.com/problems/merge-sorted-array](https://leetcode-cn.com/problems/merge-sorted-array)  
+代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0088.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0088.cpp)  
+运行时间：beats 100%  
+解题思路：由于nums1末尾存储了0，所以为了减少元素的拷贝，可以从数组末尾开始合并元素，令total = m + n，取nums1[m]，nums2[n]较大者合并到nums1[total]，同时total和对应m或n自减1，当某一方合并完成后，合并剩余元素即可

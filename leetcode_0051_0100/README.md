@@ -40,6 +40,7 @@
 |[0087](#0087)|[扰乱字符串](#0087)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0087.cpp)|
 |[0088](#0088)|[合并两个有序数组](#0088)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0088.cpp)|
 |[0089](#0089)|[格雷编码](#0089)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0089.cpp)|
+|[0090](#0090)|[子集-ii](#0090)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0090.cpp)|
 
 #### <span id=0051>[51] n-皇后</span>
 题目链接：[https://leetcode-cn.com/problems/n-queens](https://leetcode-cn.com/problems/n-queens)  
@@ -273,3 +274,8 @@
 代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0089.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0089.cpp)  
 运行时间：beats 58.73%  
 解题思路：[格雷码](https://baike.baidu.com/item/%E6%A0%BC%E9%9B%B7%E7%A0%81/6510858?fr=aladdin)的转换方法通常有以下四种：递归生成码表，异或转换，卡诺图，异或乘除，前两种因为实现简单而最为常见，这里采用了第二种异或转换进行解答，下面是异或转换的证明：假设a = b + 1，则在a和b的二进制表示中，b最末尾开始连续的1将会变为0，而从末尾开始的第一个0将会变为1，从而形成了a，因为异或运算是相同为0，不同为1，a ^ (a >> 1)和b ^ (b >> 1)错位异或只会有一位不同（0变为1的那一位，本质就是异或1进行取反），从而形成了格雷码，且格雷码的取值范围为[0, 2^n - 1]
+#### <span id=0090>[90] 子集-ii</span>
+题目链接：[https://leetcode-cn.com/problems/subsets-ii](https://leetcode-cn.com/problems/subsets-ii)  
+代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0090.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0090.cpp)  
+运行时间：beats 54.1%  
+解题思路：第[[78] 子集](#0078)的兄弟版本，区别在于此题会包含重复元素，一开始想用第78题类似的解法，但是纠结于如何判断已经包含重复元素；于是便采用递归的方法，每碰到一个元素，便分为包含和不包含两种情况进行递归，如果碰到的是重复元素，便计算出重复元素的个数，按照取0个，1个，2个...的情况递归。后来浏览题解的时候发现，采用第78题的方式也可以很好解决包含重复元素的问题，具体方法是遇到重复元素时，如果上一个元素没有被选取，则跳过当前元素，因为上一位的变化已经是从1变0，代表重复元素已经被选取

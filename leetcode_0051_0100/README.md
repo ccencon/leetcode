@@ -41,6 +41,7 @@
 |[0088](#0088)|[合并两个有序数组](#0088)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0088.cpp)|
 |[0089](#0089)|[格雷编码](#0089)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0089.cpp)|
 |[0090](#0090)|[子集-ii](#0090)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0090.cpp)|
+|[0091](#0091)|[解码方法](#0091)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0091.cpp)|
 
 #### <span id=0051>[51] n-皇后</span>
 题目链接：[https://leetcode-cn.com/problems/n-queens](https://leetcode-cn.com/problems/n-queens)  
@@ -279,3 +280,8 @@
 代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0090.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0090.cpp)  
 运行时间：beats 54.1%  
 解题思路：第[[78] 子集](#0078)的兄弟版本，区别在于此题会包含重复元素，一开始想用第78题类似的解法，但是纠结于如何判断已经包含重复元素；于是便采用递归的方法，每碰到一个元素，便分为包含和不包含两种情况进行递归，如果碰到的是重复元素，便计算出重复元素的个数，按照取0个，1个，2个...的情况递归。后来浏览题解的时候发现，采用第78题的方式也可以很好解决包含重复元素的问题，具体方法是遇到重复元素时，如果上一个元素没有被选取，则跳过当前元素，因为上一位的变化已经是从1变0，代表重复元素已经被选取
+#### <span id=0091>[91] 解码方法</span>
+题目链接：[https://leetcode-cn.com/problems/decode-ways](https://leetcode-cn.com/problems/decode-ways)  
+代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0091.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0091.cpp)  
+运行时间：beats 100%  
+解题思路：对于当前位置的数字，如果它可以单独组成一个字母，则当前位置继承前一个位置的解码数目，如果与前一个位置同样可以组成一个字母，则同样继承前第二个位置的解法数目，故可以采用动态规划的求解方式，时间复杂度为O(N)；也可以采用递归的方法，以当前位置取一个数和两个数进行递归求解，不过时间复杂度会退化到O(2^N)

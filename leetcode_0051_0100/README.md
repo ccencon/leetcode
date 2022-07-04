@@ -42,6 +42,7 @@
 |[0089](#0089)|[格雷编码](#0089)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0089.cpp)|
 |[0090](#0090)|[子集-ii](#0090)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0090.cpp)|
 |[0091](#0091)|[解码方法](#0091)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0091.cpp)|
+|[0092](#0092)|[反转链表-ii](#0092)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0092.cpp)|
 
 #### <span id=0051>[51] n-皇后</span>
 题目链接：[https://leetcode-cn.com/problems/n-queens](https://leetcode-cn.com/problems/n-queens)  
@@ -285,3 +286,8 @@
 代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0091.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0091.cpp)  
 运行时间：beats 100%  
 解题思路：对于当前位置的数字，如果它可以单独组成一个字母，则当前位置继承前一个位置的解码数目，如果与前一个位置同样可以组成一个字母，则同样继承前第二个位置的解法数目，故可以采用动态规划的求解方式，时间复杂度为O(N)；也可以采用递归的方法，以当前位置取一个数和两个数进行递归求解，不过时间复杂度会退化到O(2^N)
+#### <span id=0092>[92] 反转链表-ii</span>
+题目链接：[https://leetcode-cn.com/problems/reverse-linked-list-ii](https://leetcode-cn.com/problems/reverse-linked-list-ii)  
+代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0092.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0092.cpp)  
+运行时间：beats 100%  
+解题思路：先确认插入的基准点，然后对区间进行遍历，将每一次遍历到的结点都插入到基准点后面，最后链接right后面的结点

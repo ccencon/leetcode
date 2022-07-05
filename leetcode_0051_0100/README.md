@@ -43,6 +43,7 @@
 |[0090](#0090)|[子集-ii](#0090)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0090.cpp)|
 |[0091](#0091)|[解码方法](#0091)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0091.cpp)|
 |[0092](#0092)|[反转链表-ii](#0092)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0092.cpp)|
+|[0093](#0093)|[复原-ip-地址](#0093)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0093.cpp)|
 
 #### <span id=0051>[51] n-皇后</span>
 题目链接：[https://leetcode-cn.com/problems/n-queens](https://leetcode-cn.com/problems/n-queens)  
@@ -291,3 +292,8 @@
 代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0092.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0092.cpp)  
 运行时间：beats 100%  
 解题思路：先确认插入的基准点，然后对区间进行遍历，将每一次遍历到的结点都插入到基准点后面，最后链接right后面的结点
+#### <span id=0093>[93] 复原-ip-地址</span>
+题目链接：[https://leetcode-cn.com/problems/restore-ip-addresses](https://leetcode-cn.com/problems/restore-ip-addresses)  
+代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0093.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0093.cpp)  
+运行时间：beats 100%  
+解题思路：对于这种回溯类的题目，可以采用类似[[51] n-皇后](#0051)的思路代替递归，这里不再详细叙述

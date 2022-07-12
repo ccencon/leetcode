@@ -45,6 +45,8 @@
 |[0092](#0092)|[反转链表-ii](#0092)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0092.cpp)|
 |[0093](#0093)|[复原-ip-地址](#0093)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0093.cpp)|
 |[0094](#0094)|[二叉树的中序遍历](#0094)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0094.cpp)|
+|[0095](#0095)|[不同的二叉搜索树-ii](#0095)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0095.cpp)|
+|[0096](#0096)|[不同的二叉搜索树](#0096)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0096.cpp)|
 
 #### <span id=0051>[51] n-皇后</span>
 题目链接：[https://leetcode-cn.com/problems/n-queens](https://leetcode-cn.com/problems/n-queens)  
@@ -303,3 +305,14 @@
 代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0094.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0094.cpp)  
 运行时间：beats 40.8%  
 解题思路：手撕过[线索AVL树](https://github.com/ccencon/structdata#5)，[红黑树](https://github.com/ccencon/structdata#6)，基于磁盘聚簇实现的[B-树](https://github.com/ccencon/structdata#7)，非聚簇实现的[B+树](https://github.com/ccencon/structdata#8)，树的中序遍历还是非常简单的
+#### <span id=0096>[96] 不同的二叉搜索树</span>
+题目链接：[https://leetcode-cn.com/problems/unique-binary-search-trees](https://leetcode-cn.com/problems/unique-binary-search-trees)  
+代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0096.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0096.cpp)  
+运行时间：beats 100%  
+解题思路：这题苦思良久还是没做出来...其实在一开始就陷入了死胡同，应该说是一条很复杂的胡同，奇怪于为什么题目需要额外告诉我们一个结点编号，所谓不同的二叉搜索树不就是形状不一样的树吗，为什么还需要编号这东西？所以在一开始就没有借助编号进行解答，而是基于“一棵具有n个结点的二叉树必然有n+1个空指针”的思想尝试求解，比如结点数为2不同的树有两棵，它有2+1=3个空指针，那么结点数加1变为3时，不同树的棵数为2*3=6棵，然后这6棵树里面会包含重复的树，所以还需要进行去重，最终在这条去重，包含微弱曙光的黑暗道路上越走越远...  
+
+先记录一下官方题解，这对后面自己的推导具有启发式的帮助。假设有一棵结点数为n的二叉搜索树，结点编号为1，2，3，...，n，当编号1为根结点时，这时候树的数目为$G(0)*G(n-1)$；当编号2为根结点时，这时候树的数目为$G(1)*G(n-2)$，上述的$G(0),G(1)$为左子树数，$G(n-1),G(n-2)$为右子树数，故有$G(n)=G(0)G(n-1)+G(1)G(n-2)+G(2)G(n-3)+...+G(n-1)G(0)=\sum_{i=1}^{n}G(i-1)G(n-i)$；所以可以采用动态规划的思想，使结点数n从2开始递增，分别求解当左子树数取0，1，2...对应右子树数取n-1，n-2，n-3...时的树的数目，再将所有结果相加便得出当前结点数n的二叉搜索树数目  
+
+特别地，上述$G(n)$的函数值在数学上被称为卡特兰数$C_n$，[这里](https://zhuanlan.zhihu.com/p/97619085)有对卡特兰数的详细介绍，里面说到卡特兰数问题经过一定转换都可以还原成进栈出栈的问题，以里面最简单的例子为例：n 个元素进栈序列为：1，2，3，4，...，n，则有多少种出栈序列？题目的解决方法是通过总序列数减去非法序列数，总序列数为组合数$C_{2n}^{n}$，而非法序列数文章中用了一种"取巧"的方法计算，因为非法序列就是出现前缀和小于0的序列，对这个前缀进行取反后得到一个新序列，新序列有n+1个"+1"和n-1个"-1"，因为转换前后的序列一一对应，所以非法序列数为$C_{2n}^{n+1}$；$C_{2n}^{n+1}$其实可以通过另外一种更加“传统”的方式计得，当非法序列第一个数为"-1"时，这时候的序列数为$C_{2n-1}^{n}$；当前两个数都为"-1"时，这时候的序列数为$C_{2n-2}^{n}$；... 当前n个数都为"-1"时，这时候的序列数为$C_{2n-n}^{n}$；所以总非法序列数为$C_{2n-1}^{n}+C_{2n-2}^{n}+...+C_{2n-n}^{n}$，将式子反转成$C_{n}^{n}+C_{n+1}^{n}+...+C_{2n-1}^{n}$，将第一项转化为$C_{n+1}^{n+1}$，通过消项相加得出和为$C_{2n}^{n+1}$。故合法的出栈序列数目为$C_{2n}^{n}-C_{2n}^{n+1}=\frac{C_{2n}^{n}}{n+1}$，而$C_{2n}^{n}$也是卡特兰数的通项公式，因为程序计算的特殊性，在计算卡特兰数时，往往是通过递推公式求得：$C_{n+1}=\frac{4n+2}{n+2}C_n$ 或 $C_{n}=\frac{4n-2}{n+1}C_{n-1}$  
+
+那么像原题目中的不同的二叉搜索树该怎么转变为进栈出栈的问题呢？btw，这个转变足足花费了昨天一下午的摸鱼时间，不过这个时间很值得，这个思路跟原创的[螺旋矩阵](#0054)和[非递归回溯](#0051)一样，翻遍全网也没有同样的思路...留意到介绍卡特兰数文章中有这么一道题：有n+1个叶子结点能够构成多少种形状不同的（国际）满二叉树？这也是非常简单的进出栈问题，（国际）满二叉树的结点要么无孩子，要么两个孩子，所有可以用"+1"表示左孩子，"-1"表示右孩子，左右孩子数目相等，故不同的（国际）满二叉树数目为$\frac{C_{2n}^{n}}{n+1}$；回到这个题目，不妨把二叉搜索树的null结点看作一个具体的结点，那么一种二叉搜索树就唯一对应了一种（国际）满二叉树，又因为二叉搜索树必然有n+1个null结点，所以不同的二叉搜索树数目同样为$\frac{C_{2n}^{n}}{n+1}$，通过这种进出栈思想可以直接跳过官方题解中的推导过程，一步到位

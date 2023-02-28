@@ -48,6 +48,7 @@
 |[0095](#0095)|[不同的二叉搜索树-ii](#0095)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0095.cpp)|
 |[0096](#0096)|[不同的二叉搜索树](#0096)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0096.cpp)|
 |[0097](#0097)|[交错字符串](#0097)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0097.cpp)|
+|[0098](#0098)|[验证二叉搜索树](#0098)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0098.cpp)|
 
 #### <span id=0051>[51] n-皇后</span>
 题目链接：[https://leetcode-cn.com/problems/n-queens](https://leetcode-cn.com/problems/n-queens)  
@@ -331,3 +332,8 @@
 在写解题思路时突然发现，上述记忆化的思路可以换个角度理解，就是失败回溯时，证明以当前s1剩下的字符数和s2剩下的字符数不能够匹配s3剩下的字符
 
 这个角度转换很容易带来递归写法的实现，在遇到回溯类的题目时，很喜欢使用非递归的实现，因为效率更高，更加复杂难以理解，但这次运行时间却不理想，估计是使用数据结构的问题，解这题花了很多时间，这里也不再纠结了
+#### <span id=0098>[98] 验证二叉搜索树</span>
+题目链接：[https://leetcode-cn.com/problems/validate-binary-search-tree](https://leetcode-cn.com/problems/validate-binary-search-tree)  
+代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0098.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0098.cpp)  
+运行时间：beats 85.78%  
+解题思路：一开始想当然的以为层级遍历就可以解决，只需判断当前结点和左右结点的值便可，结果提交时毫无疑问被打脸。因为两棵满足条件的树组合在一起不一定还满足条件，于是乎还是老老实实按照中序遍历的方式进行比较解答

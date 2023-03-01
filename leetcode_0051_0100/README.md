@@ -49,6 +49,7 @@
 |[0096](#0096)|[不同的二叉搜索树](#0096)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0096.cpp)|
 |[0097](#0097)|[交错字符串](#0097)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0097.cpp)|
 |[0098](#0098)|[验证二叉搜索树](#0098)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0098.cpp)|
+|[0099](#0099)|[恢复二叉搜索树](#0099)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0099.cpp)|
 
 #### <span id=0051>[51] n-皇后</span>
 题目链接：[https://leetcode-cn.com/problems/n-queens](https://leetcode-cn.com/problems/n-queens)  
@@ -337,3 +338,8 @@
 代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0098.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0098.cpp)  
 运行时间：beats 85.78%  
 解题思路：一开始想当然的以为层级遍历就可以解决，只需判断当前结点和左右结点的值便可，结果提交时毫无疑问被打脸。因为两棵满足条件的树组合在一起不一定还满足条件，于是乎还是老老实实按照中序遍历的方式进行比较解答
+#### <span id=0099>[99] 恢复二叉搜索树</span>
+题目链接：[https://leetcode-cn.com/problems/recover-binary-search-tree](https://leetcode-cn.com/problems/recover-binary-search-tree)  
+代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0099.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100/cpp/leetcode_0099.cpp)  
+运行时间：beats 10.34%  
+解题思路：解答时思路有点混乱，中序遍历的时候遇到打乱的结点不清楚应该交换哪几个，所以干脆用容器保存打乱的结点（最多4个），然后进行排序，因为最终只有打乱的两个结点会交换顺序，所以找到这两个结点交换即可。在对比官方题解之后，发现自己应该列举几个例子进行比较，这样思路会更加清晰；比如序列“1 7 2 4 5 6 3 8”...，其实就只需要交换7和3，但因为自己理不清思路，觉得7、2、6、3任意两个都有可能进行交换，所以画蛇添足用容器进行了保存排序

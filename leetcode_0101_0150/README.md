@@ -6,6 +6,7 @@
 |[0103](#0103)|[二叉树的锯齿形层序遍历](#0103)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0103.cpp)|
 |[0104](#0104)|[二叉树的最大深度](#0104)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0104.cpp)|
 |[0105](#0105)|[从前序与中序遍历序列构造二叉树](#0105)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0105.cpp)|
+|[0106](#0106)|[从中序与后序遍历序列构造二叉树](#0106)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0106.cpp)|
 
 #### <span id=0101>[101] 对称二叉树</span>
 题目链接：[https://leetcode-cn.com/problems/symmetric-tree](https://leetcode-cn.com/problems/symmetric-tree)  
@@ -31,6 +32,11 @@
 题目链接：[https://leetcode-cn.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal](https://leetcode-cn.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal)  
 代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0105.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0105.cpp)  
 运行时间：beats 37.3%  
-解题思路：先序序列的组成，是`根结点+左子树的先序序列+右子树的先序序列`；而中序序列，是`左子树的先序序列+根结点+右子树的先序序列`；所以创建根结点，按照相同的方法递归创建其左右子树，即可构造出完成的二叉树
+解题思路：先序序列的组成，是`根结点+左子树的先序序列+右子树的先序序列`；而中序序列，是`左子树的中序序列+根结点+右子树的中序序列`；所以创建根结点，按照相同的方法递归创建其左右子树，即可构造出完成的二叉树
 
 记得上述方法在数据结构教材中就有，但是一开始并不打算按照这种方式解答；在最初的思路中，是先通过中序序列构建一棵通过右指针连接的单链表树，然后希望通过观察先序序列的规律对其进行左旋从而得出正确的二叉树；因为左旋不改变树的中序，但却可以调整树的先序，潜意思里总觉得这思路可行，但最后要么转化成了递归，要么碰到了死角；由于在这思路上浪费了太多的时间，这里特地记录一下，也不再纠结了
+#### <span id=0106>[106] 从中序与后序遍历序列构造二叉树</span>
+题目链接：[https://leetcode-cn.com/problems/construct-binary-tree-from-inorder-and-postorder-traversal](https://leetcode-cn.com/problems/construct-binary-tree-from-inorder-and-postorder-traversal)  
+代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0106.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0106.cpp)  
+运行时间：beats 14.81%  
+解题思路：与[[105] 从前序与中序遍历序列构造二叉树](https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150#0105)一样的思路，其中后序序列的组成，是`左子树的后序序列+右子树的后序序列+根结点`

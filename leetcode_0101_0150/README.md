@@ -8,6 +8,7 @@
 |[0105](#0105)|[从前序与中序遍历序列构造二叉树](#0105)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0105.cpp)|
 |[0106](#0106)|[从中序与后序遍历序列构造二叉树](#0106)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0106.cpp)|
 |[0107](#0107)|[二叉树的层序遍历-ii](#0107)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0107.cpp)|
+|[0108](#0108)|[将有序数组转换为二叉搜索树](#0108)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0108.cpp)|
 
 #### <span id=0101>[101] 对称二叉树</span>
 题目链接：[https://leetcode-cn.com/problems/symmetric-tree](https://leetcode-cn.com/problems/symmetric-tree)  
@@ -46,3 +47,8 @@
 代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0107.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0107.cpp)  
 运行时间：beats 5.12%  
 解题思路：题目要求从最底层开始往最上层遍历，这在不知道所有底层结点和父结点的情况下不可能做到，所以只能是按照从顶层往下遍历的方式，最后反转列表。题目提示树的结点数在2000以内，一般情况下树的层数也只是在11层左右，所以解答中采用了头插法；测试用例应该有比较极端的情况，如类似单链表树，使得头插法会导致了过多元素移动，运行时间较长
+#### <span id=0108>[108] 将有序数组转换为二叉搜索树</span>
+题目链接：[https://leetcode-cn.com/problems/convert-sorted-array-to-binary-search-tree](https://leetcode-cn.com/problems/convert-sorted-array-to-binary-search-tree)  
+代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0108.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0108.cpp)  
+运行时间：beats 94.03%  
+解题思路：每次选择数组中间的结点为根结点，左右序列作为左右子树，如此递归下去；因为左右子树结点数之差不会超过1，所以最终得到的树也必然是平衡二叉树

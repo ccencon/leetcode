@@ -12,6 +12,7 @@
 |[0109](#0109)|[有序链表转换二叉搜索树](#0109)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0109.cpp)|
 |[0110](#0110)|[平衡二叉树](#0110)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0110.cpp)|
 |[0111](#0111)|[二叉树的最小深度](#0111)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0111.cpp)|
+|[0112](#0112)|[路径总和](#0112)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0112.cpp)|
 
 #### <span id=0101>[101] 对称二叉树</span>
 题目链接：[https://leetcode-cn.com/problems/symmetric-tree](https://leetcode-cn.com/problems/symmetric-tree)  
@@ -76,3 +77,8 @@
 代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0111.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0111.cpp)  
 运行时间：beats 92.09%  
 解题思路：对树进行层级遍历，当遇到没有左右孩子的结点时返回层数
+#### <span id=0112>[112] 路径总和</span>
+题目链接：[https://leetcode-cn.com/problems/path-sum](https://leetcode-cn.com/problems/path-sum)  
+代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0112.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0112.cpp)  
+运行时间：beats 82.68%  
+解题思路：计算路径上结点的数字总和，需要在路径回溯时减去回溯结点的值，如果不使用递归，可以使用后序遍历的栈实现方式，这种方式在遍历时会保留完整的路径，回溯时可以减去相应结点的值

@@ -14,6 +14,7 @@
 |[0111](#0111)|[二叉树的最小深度](#0111)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0111.cpp)|
 |[0112](#0112)|[路径总和](#0112)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0112.cpp)|
 |[0113](#0113)|[路径总和-ii](#0113)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0113.cpp)|
+|[0114](#0114)|[二叉树展开为链表](#0114)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0114.cpp)|
 
 #### <span id=0101>[101] 对称二叉树</span>
 题目链接：[https://leetcode-cn.com/problems/symmetric-tree](https://leetcode-cn.com/problems/symmetric-tree)  
@@ -87,4 +88,9 @@
 题目链接：[https://leetcode-cn.com/problems/path-sum-ii](https://leetcode-cn.com/problems/path-sum-ii)  
 代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0113.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0113.cpp)  
 运行时间：beats 94.1%  
-解题思路：比[[112] 路径总和](https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150#0112)多了一个路径返回操作，把记录路径的容器由stack改为vector，当遇到符合的路径时，把当前路径记录到返回集合
+解题思路：比[[112] 路径总和](https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150#0112)多了一个路径返回操作，把记录路径的容器由stack改为vector，当遇到符合的路径时，便将当前路径记录到返回集合中
+#### <span id=0114>[114] 二叉树展开为链表</span>
+题目链接：[https://leetcode-cn.com/problems/flatten-binary-tree-to-linked-list](https://leetcode-cn.com/problems/flatten-binary-tree-to-linked-list)  
+代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0114.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0114.cpp)  
+运行时间：beats 88.48%  
+解题思路：先序序列是`根结点+左子树先序序列+右子树先序序列`，在将当前结点转化为链表前，用栈记录右子树的根结点，然后记录左子树的根结点，这样的出栈顺序将会演变为先序序列的顺序，按照这个顺序构造链表

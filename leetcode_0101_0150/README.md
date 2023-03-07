@@ -10,6 +10,7 @@
 |[0107](#0107)|[二叉树的层序遍历-ii](#0107)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0107.cpp)|
 |[0108](#0108)|[将有序数组转换为二叉搜索树](#0108)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0108.cpp)|
 |[0109](#0109)|[有序链表转换二叉搜索树](#0109)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0109.cpp)|
+|[0110](#0110)|[平衡二叉树](#0110)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0110.cpp)|
 
 #### <span id=0101>[101] 对称二叉树</span>
 题目链接：[https://leetcode-cn.com/problems/symmetric-tree](https://leetcode-cn.com/problems/symmetric-tree)  
@@ -64,3 +65,8 @@
 由于不可能每一个结点数都映射一个旋转位置，所以在具体实现中，上面两个思路的时间复杂度都为 $O(nlog_2 n)$
 
 题解中有一种分治+中序遍历优化的方法可以达到 $O(n)$ 的时间复杂度，通过链表长度结合中序遍历按照先构建左子树的方式构建整棵树，虽然不喜欢要先遍历一次链表的做法，但这种思路值得记录一下
+#### <span id=0110>[110] 平衡二叉树</span>
+题目链接：[https://leetcode-cn.com/problems/balanced-binary-tree](https://leetcode-cn.com/problems/balanced-binary-tree)  
+代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0110.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0110.cpp)  
+运行时间：beats 87.96%  
+解题思路：递归计算左右子树高度进行判断即可

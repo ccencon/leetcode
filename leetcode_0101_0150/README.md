@@ -9,6 +9,7 @@
 |[0106](#0106)|[从中序与后序遍历序列构造二叉树](#0106)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0106.cpp)|
 |[0107](#0107)|[二叉树的层序遍历-ii](#0107)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0107.cpp)|
 |[0108](#0108)|[将有序数组转换为二叉搜索树](#0108)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0108.cpp)|
+|[0109](#0109)|[有序链表转换二叉搜索树](#0109)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0109.cpp)|
 
 #### <span id=0101>[101] 对称二叉树</span>
 题目链接：[https://leetcode-cn.com/problems/symmetric-tree](https://leetcode-cn.com/problems/symmetric-tree)  
@@ -52,3 +53,14 @@
 代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0108.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0108.cpp)  
 运行时间：beats 94.03%  
 解题思路：每次选择数组中间的结点为根结点，左右序列作为左右子树，如此递归下去；因为左右子树结点数之差不会超过1，所以最终得到的树也必然是平衡二叉树
+#### <span id=0109>[109] 有序链表转换二叉搜索树</span>
+题目链接：[https://leetcode-cn.com/problems/convert-sorted-list-to-binary-search-tree](https://leetcode-cn.com/problems/convert-sorted-list-to-binary-search-tree)  
+代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0109.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0109.cpp)  
+运行时间：beats 88.9%  
+解题思路：遍历链表，因为链表已经升序排列，所以只需不断在树的最右边增加新结点，然后进行左旋调整；树的旋转需要计算平衡因子，但一般平衡树的实现会在结点记录高度，如果在这里的实现中用额外空间给每一个结点记录高度，还不如直接将问题转化为[[108] 将有序数组转换为二叉搜索树](https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150#0108)更加来得方便。留意到新结点的插入永远是位于树的最右边，那么在插入过程中，只需保存树最右边的路径和路径上结点的左子树高度，在插入后，沿着路径回溯，通过记录的左子树高度计算每一个结点的平衡因子，大于1便进行左旋，由于左旋后的树总体高度不变，所以仅需旋转一次
+
+其实对于不断在树最右边进行插入，树的每一次左旋的时机都可以事先确认；在实现上述思路之前，便打算通过插入的结点数来确定要左旋的位置，不过随着结点数越来越多，计算左旋的位置也越来越复杂；在实现上述思路之后，便通过打印当前结点数来获得旋转位置；可以发现，当结点数为2n+3时（如3、5、7、9...），要左旋的位置为3；当结点数为4n+6时（如6、10、14、18...），要左旋的位置为4；当结点数为8n+12时（如12、20、28、36...），要左旋的位置为5...可以发现，当结点数满足 $(2n+1)*2^k, n>1$ 的时候，要左旋的位置为 $k+3$ ；这种规律可以在平衡二叉树上得到印证：当一棵树进行左旋时，假设往左偏了n个结点，那么这棵树必须补足n个结点才能使它的右子树恢复到这棵树原本的状态；比如一棵只有3个结点，通过右孩子连接的单支树，在往左旋转后，必须再往右补足2个结点才能使它此时的右子树恢复到它原本的状态
+
+由于不可能每一个结点数都映射一个旋转位置，所以在具体实现中，上面两个思路的时间复杂度都为 $O(nlog_2 n)$
+
+题解中有一种分治+中序遍历优化的方法可以达到 $O(n)$ 的时间复杂度，通过链表长度结合中序遍历按照先构建左子树的方式构建整棵树，虽然不喜欢要先遍历一次链表的做法，但这种思路值得记录一下

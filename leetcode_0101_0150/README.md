@@ -11,6 +11,7 @@
 |[0108](#0108)|[将有序数组转换为二叉搜索树](#0108)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0108.cpp)|
 |[0109](#0109)|[有序链表转换二叉搜索树](#0109)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0109.cpp)|
 |[0110](#0110)|[平衡二叉树](#0110)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0110.cpp)|
+|[0111](#0111)|[二叉树的最小深度](#0111)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0111.cpp)|
 
 #### <span id=0101>[101] 对称二叉树</span>
 题目链接：[https://leetcode-cn.com/problems/symmetric-tree](https://leetcode-cn.com/problems/symmetric-tree)  
@@ -70,3 +71,8 @@
 代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0110.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0110.cpp)  
 运行时间：beats 87.96%  
 解题思路：递归计算左右子树高度进行判断即可
+#### <span id=0111>[111] 二叉树的最小深度</span>
+题目链接：[https://leetcode-cn.com/problems/minimum-depth-of-binary-tree](https://leetcode-cn.com/problems/minimum-depth-of-binary-tree)  
+代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0111.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0111.cpp)  
+运行时间：beats 92.09%  
+解题思路：对树进行层级遍历，当遇到没有左右孩子的结点时返回层数

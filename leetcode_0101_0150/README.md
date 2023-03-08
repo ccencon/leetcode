@@ -16,6 +16,7 @@
 |[0113](#0113)|[路径总和-ii](#0113)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0113.cpp)|
 |[0114](#0114)|[二叉树展开为链表](#0114)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0114.cpp)|
 |[0115](#0115)|[不同的子序列](#0115)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0115.cpp)|
+|[0116](#0116)|[填充每个节点的下一个右侧节点指针](#0116)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0116.cpp)|
 
 #### <span id=0101>[101] 对称二叉树</span>
 题目链接：[https://leetcode-cn.com/problems/symmetric-tree](https://leetcode-cn.com/problems/symmetric-tree)  
@@ -102,3 +103,8 @@
 解题思路：回溯类解法，类似[[51] n-皇后](https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100#0051)。将s和t从前往后匹配，用数组记录s的匹配下标，当匹配完成时，对数组记录的下标进行回溯，在原来的基础上往右偏移一位进行重新匹配。对于字符串这类题目，会存在许多重复子串的比较，基本上都需要记忆化搜索进行优化。在本题，记忆化在于记录s中每一个位置可以匹配t中剩余字符的序列数；举个例子，假设s与t完成了一次匹配，这时候坐标数组分别记录了a，b，c，d，表示s的a，b，c，d四个位置匹配了整个t串，那么(c,d]，(b,c]，(a,b]区间内对应的匹配数如mem[d][3]，mem[b][1]将会增加1，mem表示记忆化数组，两个坐标分别对应s和t的匹配位置，以mem[d][3]为例，表示的就是从s的下标d开始匹配t从下标3开始的子序列数
 
 回溯+记忆化的思路总体上有点隐晦难懂，这是为了锻炼思维能力的选择；相比之下递归永远更加容易理解，解决方案中同样以递归的方式进行了解答；动态规划也是本题解答方法之一，一般来说动态规划可以看作递归的另外一种形式，官方题解对动态规划有详细的解释，这里不再叙述
+#### <span id=0116>[116] 填充每个节点的下一个右侧节点指针</span>
+题目链接：[https://leetcode-cn.com/problems/populating-next-right-pointers-in-each-node](https://leetcode-cn.com/problems/populating-next-right-pointers-in-each-node)  
+代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0116.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0116.cpp)  
+运行时间：beats 87.76%  
+解题思路：按照广度优先的层序遍历即可完成解答，这应该算一道简单题

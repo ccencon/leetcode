@@ -19,6 +19,7 @@
 |[0116](#0116)|[填充每个节点的下一个右侧节点指针](#0116)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0116.cpp)|
 |[0117](#0117)|[填充每个节点的下一个右侧节点指针-ii](#0117)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0117.cpp)|
 |[0118](#0118)|[杨辉三角](#0118)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0118.cpp)|
+|[0119](#0119)|[杨辉三角-ii](#0119)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0119.cpp)|
 
 #### <span id=0101>[101] 对称二叉树</span>
 题目链接：[https://leetcode-cn.com/problems/symmetric-tree](https://leetcode-cn.com/problems/symmetric-tree)  
@@ -120,3 +121,10 @@
 代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0118.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0118.cpp)  
 运行时间：beats 36.63%  
 解题思路：从第二行开始遍历每一行，每一行除首位外位置的数值等于左上方和右上方两数之和
+#### <span id=0119>[119] 杨辉三角-ii</span>
+题目链接：[https://leetcode-cn.com/problems/pascals-triangle-ii](https://leetcode-cn.com/problems/pascals-triangle-ii)  
+代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0119.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0119.cpp)  
+运行时间：beats 100%  
+解题思路：还记得高中课本在介绍杨辉三角的时候，将杨辉三角与二项式还有斐波那契数列联系在一起，每一行的数值可以不需要借助上一行计算出来；这题目要求返回某一行数列，如果按照[[118] 杨辉三角](https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150#0118)的做法将会多出不必要的推导过程；在温习相关知识后发现，杨辉三角每一行都复合二项式展开，那么只需要计算相关的组合数即可，如第n+1行的第个m+1位置，数值为 $C_{n}^{m}$ ，这个数值可以反推杨辉三角，因为 $C_{n}^{m}=C_{n-1}^{m-1} + C_{n-1}^{m}$ ，等式右边两个数恰好对应了杨辉三角第n+1行第个m+1位置的左上方和右上方两个位置
+
+计算组合数要注意溢出问题，这里又犯了这个错误，特地记录一下。如计算 $C_{n}^{m}$ ，应该将计算转化为 $\frac{n-m+1}{1}×\frac{n-m+2}{2}×\frac{n-m+3}{3}...×\frac{n}{m}$ ，按照顺序从左往右，先乘后除，这样既不会溢出，也不会损失精度；在组合数比较多的情况下，还可以采用数组进行记忆化储存

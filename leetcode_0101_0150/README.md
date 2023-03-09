@@ -18,6 +18,7 @@
 |[0115](#0115)|[不同的子序列](#0115)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0115.cpp)|
 |[0116](#0116)|[填充每个节点的下一个右侧节点指针](#0116)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0116.cpp)|
 |[0117](#0117)|[填充每个节点的下一个右侧节点指针-ii](#0117)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0117.cpp)|
+|[0118](#0118)|[杨辉三角](#0118)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0118.cpp)|
 
 #### <span id=0101>[101] 对称二叉树</span>
 题目链接：[https://leetcode-cn.com/problems/symmetric-tree](https://leetcode-cn.com/problems/symmetric-tree)  
@@ -114,3 +115,8 @@
 代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0117.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0117.cpp)  
 运行时间：beats 96.43%  
 解题思路：如果不理会进阶要求，这跟[[116] 填充每个节点的下一个右侧节点指针](https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150#0116)是一样的思路；进阶要求使用常数级的额外空间，而列队做法的空间复杂度为 $O(n/2)$，故其不再适用；因为每一层的结点都是通过next指针连接，可以基于树的顶层连接第二层并保留第二层的起始结点，下一次迭代将从这个起始结点开始再次连接下一层，当起始结点为空时，表明已经连接了最底层，迭代结束
+#### <span id=0118>[118] 杨辉三角</span>
+题目链接：[https://leetcode-cn.com/problems/pascals-triangle](https://leetcode-cn.com/problems/pascals-triangle)  
+代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0118.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0118.cpp)  
+运行时间：beats 36.63%  
+解题思路：从第二行开始遍历每一行，每一行除首位外位置的数值等于左上方和右上方两数之和

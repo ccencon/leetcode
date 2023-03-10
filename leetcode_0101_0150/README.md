@@ -22,6 +22,7 @@
 |[0119](#0119)|[杨辉三角-ii](#0119)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0119.cpp)|
 |[0120](#0120)|[三角形最小路径和](#0120)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0120.cpp)|
 |[0121](#0121)|[买卖股票的最佳时机](#0121)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0121.cpp)|
+|[0122](#0122)|[买卖股票的最佳时机-ii](#0122)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0122.cpp)|
 
 #### <span id=0101>[101] 对称二叉树</span>
 题目链接：[https://leetcode-cn.com/problems/symmetric-tree](https://leetcode-cn.com/problems/symmetric-tree)  
@@ -144,3 +145,8 @@ BFS的方法与题解中dp的思路一致，其实题解中的dp本质也是BFS�
 代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0121.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0121.cpp)  
 运行时间：beats 33.08%  
 解题思路：采用双指针做法，设定left从0，right从1开始，当right指向的数比left指向的数小时，将right赋值给left；当right指向的数比left指向的数大时，刷新最大差值；right往后移动，直至到达数组末尾
+#### <span id=0122>[122] 买卖股票的最佳时机-ii</span>
+题目链接：[https://leetcode-cn.com/problems/best-time-to-buy-and-sell-stock-ii](https://leetcode-cn.com/problems/best-time-to-buy-and-sell-stock-ii)  
+代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0122.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0122.cpp)  
+运行时间：beats 90.41%  
+解题思路：不限制购买次数，可以看作实际股市中的做波段，低位买，高位卖；只需要遍历数组找到每一个单调递增区间，加上其差值即可

@@ -21,6 +21,7 @@
 |[0118](#0118)|[杨辉三角](#0118)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0118.cpp)|
 |[0119](#0119)|[杨辉三角-ii](#0119)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0119.cpp)|
 |[0120](#0120)|[三角形最小路径和](#0120)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0120.cpp)|
+|[0121](#0121)|[买卖股票的最佳时机](#0121)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0121.cpp)|
 
 #### <span id=0101>[101] 对称二叉树</span>
 题目链接：[https://leetcode-cn.com/problems/symmetric-tree](https://leetcode-cn.com/problems/symmetric-tree)  
@@ -138,3 +139,8 @@
 同样可以使用DFS或BFS进行求解，使用DFS，类似二叉树的中序遍历，能往左走往左走，左走返回时能往右走往右走；可以优化的点在于记录每一个结点的最小权重，如果走到重复的点发现新权重大于旧权重便不用再走下去了
 
 BFS的方法与题解中dp的思路一致，其实题解中的dp本质也是BFS；按照逐行逐列的方式，计算出当前点的最小权重，最后返回末尾一行的最小权重；可以优化的点在于从底往上遍历，因为第1行只有一个权重，当遍历到第一行时直接返回其权重便可
+#### <span id=0121>[121] 买卖股票的最佳时机</span>
+题目链接：[https://leetcode-cn.com/problems/best-time-to-buy-and-sell-stock](https://leetcode-cn.com/problems/best-time-to-buy-and-sell-stock)  
+代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0121.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0121.cpp)  
+运行时间：beats 33.08%  
+解题思路：采用双指针做法，设定left从0，right从1开始，当right指向的数比left指向的数小时，将right赋值给left；当right指向的数比left指向的数大时，刷新最大差值；right往后移动，直至到达数组末尾

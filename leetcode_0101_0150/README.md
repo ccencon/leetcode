@@ -20,6 +20,7 @@
 |[0117](#0117)|[填充每个节点的下一个右侧节点指针-ii](#0117)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0117.cpp)|
 |[0118](#0118)|[杨辉三角](#0118)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0118.cpp)|
 |[0119](#0119)|[杨辉三角-ii](#0119)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0119.cpp)|
+|[0120](#0120)|[三角形最小路径和](#0120)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0120.cpp)|
 
 #### <span id=0101>[101] 对称二叉树</span>
 题目链接：[https://leetcode-cn.com/problems/symmetric-tree](https://leetcode-cn.com/problems/symmetric-tree)  
@@ -128,3 +129,12 @@
 解题思路：还记得高中课本在介绍杨辉三角的时候，将杨辉三角与二项式还有斐波那契数列联系在一起，每一行的数值可以不需要借助上一行计算出来；这题目要求返回某一行数列，如果按照[[118] 杨辉三角](https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150#0118)的做法将会多出不必要的推导过程；在温习相关知识后发现，杨辉三角每一行都复合二项式展开，那么只需要计算相关的组合数即可，如第n+1行的第个m+1位置，数值为 $C_{n}^{m}$ ，这个数值可以反推杨辉三角，因为 $C_{n}^{m}=C_{n-1}^{m-1} + C_{n-1}^{m}$ ，等式右边两个数恰好对应了杨辉三角第n+1行第个m+1位置的左上方和右上方两个位置
 
 计算组合数要注意溢出问题，这里又犯了这个错误，特地记录一下。如计算 $C_{n}^{m}$ ，应该将计算转化为 $\frac{n-m+1}{1}×\frac{n-m+2}{2}×\frac{n-m+3}{3}...×\frac{n}{m}$ ，按照顺序从左往右，先乘后除，这样既不会溢出，也不会损失精度；在组合数比较多的情况下，还可以采用数组进行记忆化储存
+#### <span id=0120>[120] 三角形最小路径和</span>
+题目链接：[https://leetcode-cn.com/problems/triangle](https://leetcode-cn.com/problems/triangle)  
+代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0120.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0120.cpp)  
+运行时间：beats 2.26%  
+解题思路：最开始看到这题的时候，不由自主的便将它与图进行了联想，脑海里第一个浮现的解决方案就是使用图算法中的Dijkstra或Floyd算法进行求解，因为是求三角形顶点到底部各点的最短路径，Dijkstra会更加适用；Dijkstra借助小顶堆，每次都取出当前权重最小的路径进行求解，要求路径中点的权重不能存在负数，如果存在负数，小顶堆的数据结构将不会有任何意义，因为这时候必须遍历完图中所有点才知道最短路径；这次的运行时间极度不理想，原因就是在于三角形各点权重存在负数
+
+同样可以使用DFS或BFS进行求解，使用DFS，类似二叉树的中序遍历，能往左走往左走，左走返回时能往右走往右走；可以优化的点在于记录每一个结点的最小权重，如果走到重复的点发现新权重大于旧权重便不用再走下去了
+
+BFS的方法与题解中dp的思路一致，其实题解中的dp本质也是BFS；按照逐行逐列的方式，计算出当前点的最小权重，最后返回末尾一行的最小权重；可以优化的点在于从底往上遍历，因为第1行只有一个权重，当遍历到第一行时直接返回其权重便可

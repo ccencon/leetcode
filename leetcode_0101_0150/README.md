@@ -23,6 +23,7 @@
 |[0120](#0120)|[三角形最小路径和](#0120)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0120.cpp)|
 |[0121](#0121)|[买卖股票的最佳时机](#0121)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0121.cpp)|
 |[0122](#0122)|[买卖股票的最佳时机-ii](#0122)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0122.cpp)|
+|[0123](#0123)|[买卖股票的最佳时机-iii](#0123)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0123.cpp)|
 
 #### <span id=0101>[101] 对称二叉树</span>
 题目链接：[https://leetcode-cn.com/problems/symmetric-tree](https://leetcode-cn.com/problems/symmetric-tree)  
@@ -150,3 +151,51 @@ BFS的方法与题解中dp的思路一致，其实题解中的dp本质也是BFS�
 代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0122.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0122.cpp)  
 运行时间：beats 90.41%  
 解题思路：不限制购买次数，可以看作实际股市中的做波段，低位买，高位卖；只需要遍历数组找到每一个单调递增区间，加上其差值即可
+#### <span id=0123>[123] 买卖股票的最佳时机-iii</span>
+题目链接：[https://leetcode-cn.com/problems/best-time-to-buy-and-sell-stock-iii](https://leetcode-cn.com/problems/best-time-to-buy-and-sell-stock-iii)  
+代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0123.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0123.cpp)  
+运行时间：beats 17.79%  
+解题思路：没做出来，最开始的想法跟前面类似，在遍历中找出单调递增区间，但无法处理区间重合的情况，想了很久还是不能解决。在浏览题解之后得到两种解决方法，下面记录一下自己的理解：
+
+> 递归
+
+对于每一天，可以选择的操作是：`不动`，`在已卖的前提下买`，`在已买的前提下卖`；基于此，可以创建递归思路，对每一天的最大收益，递归判断，是不动的收益大，还是买/卖的收益大；对于买还是卖，可以设定一个status从0开始，买卖一次都递增一次，即整除2时可买，否则就是卖，题目限定了最大交易次数为2，当遍历到数组末尾，或者status等于4时递归进行返回；可以采用记忆化进行优化，在递归过程中记录每一次的最大利润
+
+> 动态规划
+
+为了方便理解，可以把动态规划的求解过程划分为4个子过程：
+
+假设 $prices=[4,1,2,5,2,4]$
+
+##### 求在完成第一次买操作下每天的最大利润
+以上述prices为例，第一天的最大利润为-4，因为第一天只能在第一天进行购买；第二天利润为-1，因为在第二天可以选择第一天或第二天进行购买，这里毫无疑问选择第二天；依据这个思路，求得在完成第一次买操作下每天的最大利润 $p_1=[-4,-1,-1,-1,-1,-1]$ ，即 $p_1[i]=\max(p_1[i-1],-prices[i])$
+
+##### 求在完成第一次卖操作下每天的最大利润
+求在完成第一次卖操作下每天的最大利润需要依据上面已计算的结果；第一天时，只能选择当天卖出，利润为0；第二天时，选择当天卖出，利润为0，当天买卖；第三天时，同样选择当天利润卖出，利润为1，即第二天买，第三天卖；依据这个思路，第四天的利润是最高的，到了第五，第六天，因为其当天卖出的利润都比不上第4天，所以这两天的最大利润都是第四天的利润； $p_2=[0,0,1,4,1,3]$ ，即 $p_2[i]=\max(p_2[i-1],p_1[i]+prices[i])$
+
+##### 求在完成第二次买操作下每天的最大利润
+同理， $p_3=[-4,-1,-1,2,2]$ ，即 $p_3[i]=\max(p_3[i-1],p_2[i]-prices[i])$
+
+##### 求在完成第二次卖操作下每天的最大利润
+同理， $p_4=[0,0,1,4,4,6]$ ，即 $p_4[i]=\max(p_4[i-1],p_3[i]+prices[i])$
+
+可以发现，上述4个子过程有着严格的执行顺序，而每一天的状态也只需依赖前一天的状态，那么只需要遍历一次prices即可得出解；题目要求交易次数不超过2次，在上面的求解过程中，当天买卖的操作可以看作不交易，最终的p4必然复合题意
+
+```c++
+//leetcode官方题解代码
+class Solution {
+public:
+    int maxProfit(vector<int>& prices) {
+        int n = prices.size();
+        int buy1 = -prices[0], sell1 = 0;
+        int buy2 = -prices[0], sell2 = 0;
+        for (int i = 1; i < n; ++i) {
+            buy1 = max(buy1, -prices[i]);
+            sell1 = max(sell1, buy1 + prices[i]);
+            buy2 = max(buy2, sell1 - prices[i]);
+            sell2 = max(sell2, buy2 + prices[i]);
+        }
+        return sell2;
+    }
+};
+```

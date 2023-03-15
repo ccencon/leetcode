@@ -25,6 +25,7 @@
 |[0122](#0122)|[买卖股票的最佳时机-ii](#0122)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0122.cpp)|
 |[0123](#0123)|[买卖股票的最佳时机-iii](#0123)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0123.cpp)|
 |[0124](#0124)|[二叉树中的最大路径和](#0124)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0124.cpp)|
+|[0125](#0125)|[验证回文串](#0125)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0125.cpp)|
 
 #### <span id=0101>[101] 对称二叉树</span>
 题目链接：[https://leetcode-cn.com/problems/symmetric-tree](https://leetcode-cn.com/problems/symmetric-tree)  
@@ -205,3 +206,8 @@ public:
 代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0124.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0124.cpp)  
 运行时间：beats 58.19%  
 解题思路：递归计算左右子树的最大路径和，将它们与根结点进行运算计较，取出一条最大路径作为上一级递归的返回，这个最大路径可以是当前`根结点`，也可以是`根结点+左子树的最大路径`，也可以是`根结点+右子树的最大路径`；需要在递归过程外设定一个变量记录整棵树的最大路径和，另外一点，`根结点+左子树的最大路径+右子树的最大路径`虽然不能作为子树的最大路径返回，但却可以组成一条新的路径，在计算出左右子树的最大路径后，需要判断这种情况
+#### <span id=0125>[125] 验证回文串</span>
+题目链接：[https://leetcode-cn.com/problems/valid-palindrome](https://leetcode-cn.com/problems/valid-palindrome)  
+代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0125.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0125.cpp)  
+运行时间：beats 85.51%  
+解题思路：双指针从两边往中间遍历，遇到非字母数字字符跳过，比较两边字符直至两指针相遇

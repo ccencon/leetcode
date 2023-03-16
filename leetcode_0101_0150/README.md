@@ -26,6 +26,7 @@
 |[0123](#0123)|[买卖股票的最佳时机-iii](#0123)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0123.cpp)|
 |[0124](#0124)|[二叉树中的最大路径和](#0124)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0124.cpp)|
 |[0125](#0125)|[验证回文串](#0125)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0125.cpp)|
+|[0126](#0126)|[单词接龙-ii](#0126)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0126.cpp)|
 
 #### <span id=0101>[101] 对称二叉树</span>
 题目链接：[https://leetcode-cn.com/problems/symmetric-tree](https://leetcode-cn.com/problems/symmetric-tree)  
@@ -211,3 +212,18 @@ public:
 代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0125.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0125.cpp)  
 运行时间：beats 85.51%  
 解题思路：双指针从两边往中间遍历，遇到非字母数字字符跳过，比较两边字符直至两指针相遇
+#### <span id=0126>[126] 单词接龙-ii</span>
+题目链接：[https://leetcode-cn.com/problems/word-ladder-ii](https://leetcode-cn.com/problems/word-ladder-ii)  
+代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0126.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0126.cpp)  
+运行时间：beats 95.37%  
+解题思路：这是目前为止在leetcode提交过最长，最蛋痛的代码，提交前已经做好了超时准备，但没想到最终结果居然能打败90%多，虽然出乎意料，但这也证实了解题思路的正确性。题目需要求一个单词到另外一个单词的最小转换次数，不妨把单词看作图的一个结点，两个可以直接转换的单词存在连通关系，即可以组成一条边；求两个单词最小转换次数，就可以看作求图中两个结点的不带权最短路径，这一步只需简单的BFS即可解决。手撕过[无向图](https://github.com/ccencon/structdata#UnDirectedGraph)和[有向图](https://github.com/ccencon/structdata#DirectedGraph)的所有基础算法，这个实现还是非常简单的，但这题的细节实现却非常让人头痛，下面记录一下：
+
+1. `结点的连通关系判定`，最粗暴的解决方法就是以 $O(n^2)$ 的时间复杂度判定每一个单词与其它所有未判定单词间的连通关系；想过很多方法优化这一步，如哈希等，最后发现这一步好像根本没办法优化，最终还是采用了这种（唯一？）暴力方法
+2. `beginWord不必是字典wordList中的单词`，这也是很让人头痛的一点，甚至在开始我还觉得翻译有问题，意思应该是beginWord不会存在于字典中。beginWord存在于字典，会导致连通关系的判定出现两个抉择：
+
+    1. 先判定wordList中所有单词的连通关系，在判定过程额外判断beginWord是否存在于wordList；在连通关系判定结束后，如果beginWord不存在于wordList，那就再执行一次beginWord与wordList中所有单词的连通关系判定
+    2. 先对wordList进行一次遍历，找出beginWord是否存在于wordList，如果不存在就把beginWord加到wordList的末尾，最后统一对wordList中的单词进行连通判定
+
+    这两种不同的方式会导致后面的实现出现不一样的编程细节，在纠结很久后，选择了第二种
+
+3. `多条路径`，在无向图构建完成后，可以很轻易的通过BFS得出一条路径，但题目要求返回所有路径，这也使得BFS的形式更加复杂，在BFS标记所有路径之后，还需要借助回溯或者递归进行最后的字符串赋值

@@ -28,6 +28,7 @@
 |[0125](#0125)|[验证回文串](#0125)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0125.cpp)|
 |[0126](#0126)|[单词接龙-ii](#0126)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0126.cpp)|
 |[0127](#0127)|[单词接龙](#0127)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0127.cpp)|
+|[0128](#0128)|[最长连续序列](#0128)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0128.cpp)|
 
 #### <span id=0101>[101] 对称二叉树</span>
 题目链接：[https://leetcode-cn.com/problems/symmetric-tree](https://leetcode-cn.com/problems/symmetric-tree)  
@@ -237,3 +238,13 @@ public:
 > 具体地，我们可以创建虚拟节点。对于单词 hit，我们创建三个虚拟节点 \*it、h\*t、hi\*，并让 hit 向这三个虚拟节点分别连一条边即可。如果一个单词能够转化为 hit，那么该单词必然会连接到这三个虚拟节点之一。对于每一个单词，我们枚举它连接到的虚拟节点，把该单词对应的 id 与这些虚拟节点对应的 id 相连即可
 
 这种建图的方式时间复杂度为 $O(N×C)$，其中 $N$ 为字典长度， $C$ 为单词长度，但这个时间复杂度太过理想化，因为按照这种方法需要借助哈希表存放所有单词；总的来说，两种方法的运行时间比较依赖于测试用例，在字典单词较长，差异性较大的情况下，暴力法应该会有更好的表现
+#### <span id=0128>[128] 最长连续序列</span>
+题目链接：[https://leetcode-cn.com/problems/longest-consecutive-sequence](https://leetcode-cn.com/problems/longest-consecutive-sequence)  
+代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0128.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0128.cpp)  
+运行时间：beats 39.63%  
+解题思路：最开始的思路是构建一条路径path，插入nums[i]时，如果nums[i]-1已经存在（借助哈希表保存值和索引，假设索引为j），便把path[i]=j，nums[i]+1同理，最后再遍历一次数组找到最长连续序列；这个思路最后这一步会存在重复遍历路径的情况，于是把这个思路转换成了并查集，在最开始遍历的时候合并相近数字，使同一个集合内最小数指向最大数，最后遍历时，找出父结点的数值减去当前数值再加1，并刷新最大序列数；不过并查集的插入和查找的时间复杂度近似 $O(n)$ ，循环和并查集结合就接近了 $O(n^2)$ ，题目要求 $O(n)$ 的时间复杂度，这显然不符合题意；在想不出更好方案的情况下最后还是以这种不太能接受的思路提交。官方题解更加巧妙，记录一下：
+
+1. 先遍历一次数组，把各个数值加到哈希表中
+2. 再遍历一次数组，如果当前数值-1不存在于哈希表中，说明这个数值是某个序列的最小数，把当前数值不断加1，直到在哈希表中找不到，刷新最大序列数；如果当前数值-1存在哈希表，说明当前数值在序列中不是最小值，跳过
+
+官方题解巧妙在判断要计算序列数的情况，只有当前数值为序列中最小值才会执行计算，时间复杂度为 $O(n)$ 

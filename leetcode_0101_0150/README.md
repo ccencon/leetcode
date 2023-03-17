@@ -27,6 +27,7 @@
 |[0124](#0124)|[二叉树中的最大路径和](#0124)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0124.cpp)|
 |[0125](#0125)|[验证回文串](#0125)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0125.cpp)|
 |[0126](#0126)|[单词接龙-ii](#0126)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0126.cpp)|
+|[0127](#0127)|[单词接龙](#0127)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0127.cpp)|
 
 #### <span id=0101>[101] 对称二叉树</span>
 题目链接：[https://leetcode-cn.com/problems/symmetric-tree](https://leetcode-cn.com/problems/symmetric-tree)  
@@ -227,3 +228,12 @@ public:
     这两种不同的方式会导致后面的实现出现不一样的编程细节，在纠结很久后，选择了第二种
 
 3. `多条路径`，在无向图构建完成后，可以很轻易的通过BFS得出一条路径，但题目要求返回所有路径，这也使得BFS的形式更加复杂，在BFS标记所有路径之后，还需要借助回溯或者递归进行最后的字符串赋值
+#### <span id=0127>[127] 单词接龙</span>
+题目链接：[https://leetcode-cn.com/problems/word-ladder](https://leetcode-cn.com/problems/word-ladder)  
+代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0127.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0127.cpp)  
+运行时间：beats 23.96%  
+解题思路：与[单词接龙-ii](#0126)一样的思路，按照题目要求去掉最后回溯的一步，只需返回最少转换次数；但同一个思路的两次运行时间相差较大，看了下官方题解的做法，发现差别在于结点的连通性判定，官方做法是：
+
+> 具体地，我们可以创建虚拟节点。对于单词 hit，我们创建三个虚拟节点 \*it、h\*t、hi\*，并让 hit 向这三个虚拟节点分别连一条边即可。如果一个单词能够转化为 hit，那么该单词必然会连接到这三个虚拟节点之一。对于每一个单词，我们枚举它连接到的虚拟节点，把该单词对应的 id 与这些虚拟节点对应的 id 相连即可
+
+这种建图的方式时间复杂度为 $O(N×C)$，其中 $N$ 为字典长度， $C$ 为单词长度，但这个时间复杂度太过理想化，因为按照这种方法需要借助哈希表存放所有单词；总的来说，两种方法的运行时间比较依赖于测试用例，在字典单词较长，差异性较大的情况下，暴力法应该会有更好的表现

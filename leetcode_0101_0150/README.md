@@ -29,6 +29,7 @@
 |[0126](#0126)|[单词接龙-ii](#0126)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0126.cpp)|
 |[0127](#0127)|[单词接龙](#0127)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0127.cpp)|
 |[0128](#0128)|[最长连续序列](#0128)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0128.cpp)|
+|[0129](#0129)|[求根节点到叶节点数字之和](#0129)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0129.cpp)|
 
 #### <span id=0101>[101] 对称二叉树</span>
 题目链接：[https://leetcode-cn.com/problems/symmetric-tree](https://leetcode-cn.com/problems/symmetric-tree)  
@@ -248,3 +249,8 @@ public:
 2. 再遍历一次数组，如果当前数值-1不存在于哈希表中，说明这个数值是某个序列的最小数，把当前数值不断加1，直到在哈希表中找不到，刷新最大序列数；如果当前数值-1存在哈希表，说明当前数值在序列中不是最小值，跳过
 
 官方题解巧妙在判断要计算序列数的情况，只有当前数值为序列中最小值才会执行计算，时间复杂度为 $O(n)$ 
+#### <span id=0129>[129] 求根节点到叶节点数字之和</span>
+题目链接：[https://leetcode-cn.com/problems/sum-root-to-leaf-numbers](https://leetcode-cn.com/problems/sum-root-to-leaf-numbers)  
+代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0129.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0129.cpp)  
+运行时间：beats 100%  
+解题思路：递归处理，遇到非叶子结点乘10加上当前结点值，遇到叶子结点就加上总和返回；在这种情况下递归会比非递归的效率高，因为非递归在回溯时需要除以10还原值

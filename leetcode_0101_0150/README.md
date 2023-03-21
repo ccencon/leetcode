@@ -31,6 +31,7 @@
 |[0128](#0128)|[最长连续序列](#0128)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0128.cpp)|
 |[0129](#0129)|[求根节点到叶节点数字之和](#0129)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0129.cpp)|
 |[0130](#0130)|[被围绕的区域](#0130)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0130.cpp)|
+|[0131](#0131)|[分割回文串](#0131)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0131.cpp)|
 
 #### <span id=0101>[101] 对称二叉树</span>
 题目链接：[https://leetcode-cn.com/problems/symmetric-tree](https://leetcode-cn.com/problems/symmetric-tree)  
@@ -261,3 +262,8 @@ public:
 运行时间：beats 13.85%  
 解题思路：深度优先、广度优先、并查集都可以解答这题，但并查集的效率应该会低一点，
 原因在于并查集在创建集合之后需要初始化父结点指向自身，c++中`vector::vector(size_type n)`这个构造函数会为没有写构造函数的类对象做清零操作，其中就包括int类型，这就使得使用并查集解答需要两次赋值操作；虽然深度优先、广度优先也需要一个额外数组判定坐标是否已经被遍历，但这个数组是布尔类型且可以在创建的同时完成初始化，只需一次赋值操作；另外一点在于并查集的合并和查询，这两个操作合在一起理论上是 $O(n)$ 的时间复杂度。不过鉴于目前并查集算法使用得比较少，这题的解答方式便使用了并查集；具体思路是：先遍历一次数组，把当前'O'的坐标与上面和左边的'O'的坐标（如果存在）合并在一起，如果是处于矩阵边上的'O'，还需要与(0, 0)这个坐标合并（为了方便判断，也可以选择其它边上的坐标）；最后遍历一次数组，遇到'O'时，如果其坐标的父结点与(0, 0)这个坐标父结点不是同一个，说明与矩阵边界不连通，置为'X'
+#### <span id=0131>[131] 分割回文串</span>
+题目链接：[https://leetcode-cn.com/problems/palindrome-partitioning](https://leetcode-cn.com/problems/palindrome-partitioning)  
+代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0131.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0131.cpp)  
+运行时间：beats 99.9%  
+解题思路：回溯类问题，从字符串起始位置开始，每段子串长度取1，判断是否回文串，然后从最后的位置逐步回溯，长度+1，重复以上操作。这类问题还需要进行记忆化，对于某段子串，在回溯再往后操作的过程中，会存在多次相同的判断，可以使用记忆数组，保存子串起始和结束两个下标的回文串判断结果，当下次进行重复判断时，直接从记忆数组取出判断结果

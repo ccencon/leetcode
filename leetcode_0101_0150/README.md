@@ -32,6 +32,7 @@
 |[0129](#0129)|[求根节点到叶节点数字之和](#0129)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0129.cpp)|
 |[0130](#0130)|[被围绕的区域](#0130)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0130.cpp)|
 |[0131](#0131)|[分割回文串](#0131)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0131.cpp)|
+|[0132](#0132)|[分割回文串-ii](#0132)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0132.cpp)|
 
 #### <span id=0101>[101] 对称二叉树</span>
 题目链接：[https://leetcode-cn.com/problems/symmetric-tree](https://leetcode-cn.com/problems/symmetric-tree)  
@@ -267,3 +268,10 @@ public:
 代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0131.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0131.cpp)  
 运行时间：beats 99.9%  
 解题思路：回溯类问题，从字符串起始位置开始，每段子串长度取1，判断是否回文串，然后从最后的位置逐步回溯，长度+1，重复以上操作。这类问题还需要进行记忆化，对于某段子串，在回溯再往后操作的过程中，会存在多次相同的判断，可以使用记忆数组，保存子串起始和结束两个下标的回文串判断结果，当下次进行重复判断时，直接从记忆数组取出判断结果
+#### <span id=0132>[132] 分割回文串-ii</span>
+题目链接：[https://leetcode-cn.com/problems/palindrome-partitioning-ii](https://leetcode-cn.com/problems/palindrome-partitioning-ii)  
+代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0132.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0132.cpp)  
+运行时间：beats 5.07%  
+解题思路：使用了与[[131] 分割回文串](#0131)类似的回溯思路求解；在最开始的时候拿131的代码过来修改，然后提交，预料之中的超时；对超时测试用例进行跟踪调试发现，在回溯过程中，假设从下标10回溯到下标9，因为是从下标10开始穷举所有情况，所以下标10的最小分割次数已经可以确定，基于此可以使用另外一个记忆化数组记录从下标10开始的最小分割次数，当下一次从下标10开始计算最小分割次数时，就不用再穷举下去，直接从记忆化数组取出结果即可；再次提交，AC，但是用时800ms+，寻找可以优化的点，发现在刷新某下标的最小分割次数时，如果其最小分割次数已经为0，则可以立即返回，因为没有比0小的分割次数了；再次提交，用时降到500ms+，再次尝试寻找可以优化的点，发现可以使每次判断回文串的长度从1开始自增改为从最大值开始递减，因为题目是求最小分割次数，就必须尽可能使得每个子串最长；再次提交，用时降到300ms+；但这三次优化提交，运行时间都只是打败了5.07%，效果不太理想
+
+尝试使用动态规划的思想去解答，但想不通状态应该如何转移，在阅读官方动态规划的思路后，发现对动态规划的理解还是太过狭隘

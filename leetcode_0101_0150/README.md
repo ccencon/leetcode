@@ -280,4 +280,4 @@ public:
 题目链接：[https://leetcode-cn.com/problems/clone-graph](https://leetcode-cn.com/problems/clone-graph)  
 代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0133.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0133.cpp)  
 运行时间：beats 84.82%  
-解题思路：看完题目后就在脑海里描绘出了dfs，bfs两种解决方案，这得益于以前手撕过[邻接多重表实现的无向图](https://github.com/ccencon/structdata#UnDirectedGraph)和[十字链表实现的有向图](https://github.com/ccencon/structdata#DirectedGraph)。本次解答采用了dfs、bfs、dfs+bfs三种方案；其中dfs+bfs可以看作是bfs的变种，说简单点就是把存储结点的容器由队列改为栈，在加入当前结点的所有邻接结点之后，首先出栈的永远都是最后加入的结点，这样就使得遍历方式一半广度一半深度；其实不论何种遍历方式，只要能正确完成遍历，都是可取的；在c++中，队列的底层数据结构是双向链表，而栈的底层结构为数组，采用dfs+bfs的方案可以达到极致的效率
+解题思路：看完题目后就在脑海里描绘出了dfs，bfs两种解决方案，这得益于以前手撕过[邻接多重表实现的无向图](https://github.com/ccencon/structdata#UnDirectedGraph)和[十字链表实现的有向图](https://github.com/ccencon/structdata#DirectedGraph)。本次解答采用了dfs、bfs、dfs+bfs三种方案；其中dfs+bfs可以看作是bfs的变种，说简单点就是把存储结点的容器由队列改为栈，在加入当前结点的所有邻接结点之后，首先出栈的永远都是最后加入的结点，这样就使得遍历方式一半广度一半深度；其实不论何种遍历方式，只要能正确完成遍历，都是可取的

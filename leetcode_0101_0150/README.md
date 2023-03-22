@@ -35,6 +35,7 @@
 |[0132](#0132)|[分割回文串-ii](#0132)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0132.cpp)|
 |[0133](#0133)|[克隆图](#0133)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0133.cpp)|
 |[0134](#0134)|[加油站](#0134)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0134.cpp)|
+|[0135](#0135)|[分发糖果](#0135)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0135.cpp)|
 
 #### <span id=0101>[101] 对称二叉树</span>
 题目链接：[https://leetcode-cn.com/problems/symmetric-tree](https://leetcode-cn.com/problems/symmetric-tree)  
@@ -287,3 +288,8 @@ public:
 代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0134.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0134.cpp)  
 运行时间：beats 70.29%  
 解题思路：假设汽车可以欠油行驶，并且从索引为0的加油站开始出发，那么在行驶过程中，汽车如果欠越来越多的油，则说明符合条件的加油站必然位于当前加油站后面，由于只有一个加油站符合条件，可以假定符合条件的加油站索引为当前加油站索引+1，这个索引随着汽车行驶是否欠更多的油而刷新；在行驶一圈之后，如果汽车还欠油，则说明汽车不能完成行驶，否则所记录的加油站索引就是正确的解
+#### <span id=0135>[135] 分发糖果</span>
+题目链接：[https://leetcode-cn.com/problems/candy](https://leetcode-cn.com/problems/candy)  
+代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0135.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0135.cpp)  
+运行时间：beats 83.79%  
+解题思路：遍历数组，找出单调递增区间和单调递减区间；对于单调递增区间，最少糖果数必然是按照左端点到右端点的方向从1开始递增；对于单调递减区间，最少糖果数必然是按照右端点到左端点的方向从1开始递增；需要注意的是单调递增区间和单调递减区间重叠的端点，它必须取最大值，如序列 $ratings=[1,2,4,3,2,1]$ ，索引0-2为单调增区间，索引2-5为单调减区间，索引2作为这两个区间重叠的端点，最大值必须为右边区间的4，而非左区间的3

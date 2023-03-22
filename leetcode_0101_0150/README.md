@@ -34,6 +34,7 @@
 |[0131](#0131)|[分割回文串](#0131)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0131.cpp)|
 |[0132](#0132)|[分割回文串-ii](#0132)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0132.cpp)|
 |[0133](#0133)|[克隆图](#0133)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0133.cpp)|
+|[0134](#0134)|[加油站](#0134)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0134.cpp)|
 
 #### <span id=0101>[101] 对称二叉树</span>
 题目链接：[https://leetcode-cn.com/problems/symmetric-tree](https://leetcode-cn.com/problems/symmetric-tree)  
@@ -281,3 +282,8 @@ public:
 代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0133.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0133.cpp)  
 运行时间：beats 84.82%  
 解题思路：看完题目后就在脑海里描绘出了dfs，bfs两种解决方案，这得益于以前手撕过[邻接多重表实现的无向图](https://github.com/ccencon/structdata#UnDirectedGraph)和[十字链表实现的有向图](https://github.com/ccencon/structdata#DirectedGraph)。本次解答采用了dfs、bfs、dfs+bfs三种方案；其中dfs+bfs可以看作是bfs的变种，说简单点就是把存储结点的容器由队列改为栈，在加入当前结点的所有邻接结点之后，首先出栈的永远都是最后加入的结点，这样就使得遍历方式一半广度一半深度；其实不论何种遍历方式，只要能正确完成遍历，都是可取的
+#### <span id=0134>[134] 加油站</span>
+题目链接：[https://leetcode-cn.com/problems/gas-station](https://leetcode-cn.com/problems/gas-station)  
+代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0134.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0134.cpp)  
+运行时间：beats 70.29%  
+解题思路：假设汽车可以欠油行驶，并且从索引为0的加油站开始出发，那么在行驶过程中，汽车如果欠越来越多的油，则说明符合条件的加油站必然位于当前加油站后面，由于只有一个加油站符合条件，可以假定符合条件的加油站索引为当前加油站索引+1，这个索引随着汽车行驶是否欠更多的油而刷新；在行驶一圈之后，如果汽车还欠油，则说明汽车不能完成行驶，否则所记录的加油站索引就是正确的解

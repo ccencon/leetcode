@@ -36,6 +36,7 @@
 |[0133](#0133)|[克隆图](#0133)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0133.cpp)|
 |[0134](#0134)|[加油站](#0134)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0134.cpp)|
 |[0135](#0135)|[分发糖果](#0135)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0135.cpp)|
+|[0136](#0136)|[只出现一次的数字](#0136)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0136.cpp)|
 
 #### <span id=0101>[101] 对称二叉树</span>
 题目链接：[https://leetcode-cn.com/problems/symmetric-tree](https://leetcode-cn.com/problems/symmetric-tree)  
@@ -293,3 +294,8 @@ public:
 代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0135.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0135.cpp)  
 运行时间：beats 83.79%  
 解题思路：遍历数组，找出单调递增区间和单调递减区间；对于单调递增区间，最少糖果数必然是按照左端点到右端点的方向从1开始递增；对于单调递减区间，最少糖果数必然是按照右端点到左端点的方向从1开始递增；需要注意的是单调递增区间和单调递减区间重叠的端点，它必须取最大值，如序列 $ratings=[1,2,4,3,2,1]$ ，索引0-2为单调增区间，索引2-5为单调减区间，索引2作为这两个区间重叠的端点，最大值必须为右边区间的4，而非左区间的3
+#### <span id=0136>[136] 只出现一次的数字</span>
+题目链接：[https://leetcode-cn.com/problems/single-number](https://leetcode-cn.com/problems/single-number)  
+代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0136.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0136.cpp)  
+运行时间：beats 66.08%  
+解题思路：非常出名的一道题，记得很久之前就已经接触过；利用异或的特性进行解答，异或是相同位为0，不同位为1，这使得相同的两个数异或之后为0，而0异或任何数都为被异或数本身，加之异或满足交换律，只需遍历一次数组，异或上每一个数，最终的结果即为解

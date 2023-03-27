@@ -37,6 +37,7 @@
 |[0134](#0134)|[加油站](#0134)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0134.cpp)|
 |[0135](#0135)|[分发糖果](#0135)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0135.cpp)|
 |[0136](#0136)|[只出现一次的数字](#0136)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0136.cpp)|
+|[0137](#0137)|[只出现一次的数字-ii](#0137)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0137.cpp)|
 
 #### <span id=0101>[101] 对称二叉树</span>
 题目链接：[https://leetcode-cn.com/problems/symmetric-tree](https://leetcode-cn.com/problems/symmetric-tree)  
@@ -195,7 +196,6 @@ BFS的方法与题解中dp的思路一致，其实题解中的dp本质也是BFS�
 可以发现，上述4个子过程有着严格的执行顺序，而每一天的状态也只需依赖前一天的状态，那么只需要遍历一次prices即可得出解；题目要求交易次数不超过2次，在上面的求解过程中，当天买卖的操作可以看作不交易，最终的p4必然复合题意
 
 ```c++
-//leetcode官方题解代码
 class Solution {
 public:
     int maxProfit(vector<int>& prices) {
@@ -211,6 +211,11 @@ public:
         return sell2;
     }
 };
+/*
+作者：力扣官方题解
+链接：https://leetcode.cn/problems/best-time-to-buy-and-sell-stock-iii/solutions/552695/mai-mai-gu-piao-de-zui-jia-shi-ji-iii-by-wrnt/
+来源：力扣（LeetCode）
+著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。*/
 ```
 #### <span id=0124>[124] 二叉树中的最大路径和</span>
 题目链接：[https://leetcode-cn.com/problems/binary-tree-maximum-path-sum](https://leetcode-cn.com/problems/binary-tree-maximum-path-sum)  
@@ -299,3 +304,57 @@ public:
 代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0136.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0136.cpp)  
 运行时间：beats 66.08%  
 解题思路：非常出名的一道题，记得很久之前就已经接触过；利用异或的特性进行解答，异或是相同位为0，不同位为1，这使得相同的两个数异或之后为0，而0异或任何数都为被异或数本身，加之异或满足交换律，只需遍历一次数组，异或上每一个数，最终的结果即为解
+#### <span id=0137>[137] 只出现一次的数字-ii</span>
+题目链接：[https://leetcode-cn.com/problems/single-number-ii](https://leetcode-cn.com/problems/single-number-ii)  
+代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0137.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0137.cpp)  
+运行时间：beats 100%  
+解题思路：没做出来，思考方向是通过与或非等位运算操作一次数组，尝试转化为136的情况，但最后发现这根本不可行，这些操作只是把所有数字迁移到另外一种对称状态，最终所要面临的情况都是一样的。下面记录一下[官方题解](https://leetcode.cn/problems/single-number-ii/solutions/746993/zhi-chu-xian-yi-ci-de-shu-zi-ii-by-leetc-23t6/)的推导过程：
+
+> 过程1
+
+通过确定最终答案的每一个比特位得出答案；由于数组中除了答案数字，其它所有数字都只出现3次，而相同数字的相同比特位只能是0或1，所以数组中除了答案数字外，其它所有数字的相同比特位之和 $sum_i$ 必然能被3整除，而 $sum_i$ 加上答案数字相应的比特位之后，除以3的余数即为答案数字对应的比特位
+
+```c++
+class Solution {
+public:
+    int singleNumber(vector<int>& nums) {
+        int ans = 0;
+        for (int i = 0; i < 32; ++i) {
+            int total = 0;
+            for (int num: nums) {
+                total += ((num >> i) & 1);
+            }
+            if (total % 3) {
+                ans |= (1 << i);
+            }
+        }
+        return ans;
+    }
+};
+/*
+作者：力扣官方题解
+链接：https://leetcode.cn/problems/single-number-ii/solutions/746993/zhi-chu-xian-yi-ci-de-shu-zi-ii-by-leetc-23t6/
+来源：力扣（LeetCode）
+著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。*/
+```
+
+可以发现，无论数组中重复出现的数字有多少个，都可以按照这个思路求出解
+
+> 过程2
+
+过程1的时间复杂度为 $O(32n)$ ，为使其达到纯粹的 $O(n)$ ，可以引入数字电路的思想同时处理所有比特位；留意到过程1中，每个比特位的余数要么加0不变，要么加1按照0→1→2的顺序循环出现，由于比特位只有0和1，那么可以使用 $a$ 和 $b$ 两个数来记录每个比特位的状态；假设 $a_i$ 和 $b_i$ 表示答案数字第 $i$ 个比特位的状态， $x_i$ 为当前遍历到整数的第 $i$ 个比特位，由上述逻辑可以得出如下真值表：
+
+| $a_i$ | $b_i$ | $x_i$ | 新的 $a_i$ | 新的 $b_i$ |
+|:-:|:-:|:-:|:-:|:-:|
+|0|0|0|0|0|
+|0|0|1|0|1|
+|0|1|0|0|1|
+|0|1|1|1|0|
+|1|0|0|1|0|
+|1|0|1|0|0|
+
+根据真值表得到 $a_i$ 和 $b_i$ 的逻辑代数公式：
+
+$a_i=\overline{a_i}b_ix_i+a_i\overline{b_i}\overline{x_i}$ 
+
+$a_i=\overline{a_i}\overline{b_i}x_i+\overline{a_i}b_i\overline{x_i}=\overline{a_i}(b_i⊕x_i)$ 

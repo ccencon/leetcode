@@ -361,7 +361,7 @@ $b_i=\overline{a_i}\overline{b_i}x_i+\overline{a_i}b_i\overline{x_i}=\overline{a
 
 将电路逻辑运算转换成等价的整数位运算，得出：
 
-$a=(\~a\&b\&x)|(a\&\~b\&\~x)$
+$a=(\~a \& b \& x)|(a \& \~b \& \~x)$
 
 $b=\~a(b⊕a)$
 

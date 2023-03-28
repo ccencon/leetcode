@@ -39,6 +39,7 @@
 |[0136](#0136)|[只出现一次的数字](#0136)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0136.cpp)|
 |[0137](#0137)|[只出现一次的数字-ii](#0137)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0137.cpp)|
 |[0138](#0138)|[复制带随机指针的链表](#0138)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0138.cpp)|
+|[0139](#0139)|[单词拆分](#0139)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0139.cpp)|
 
 #### <span id=0101>[101] 对称二叉树</span>
 题目链接：[https://leetcode-cn.com/problems/symmetric-tree](https://leetcode-cn.com/problems/symmetric-tree)  
@@ -428,3 +429,8 @@ public:
 代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0138.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0138.cpp)  
 运行时间：beats 76.16%  
 解题思路：通过next指针遍历原有链表，创建新结点，以原结点为索引，把新结点加入到哈希表中；判断原结点的next和random指针，不为空则继续创建对应的新结点并加入到哈希表，完善新结点间的连接关系，然后进入下一轮迭代
+#### <span id=0139>[139] 单词拆分</span>
+题目链接：[https://leetcode-cn.com/problems/word-break](https://leetcode-cn.com/problems/word-break)  
+代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0139.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0139.cpp)  
+运行时间：beats 91.72%  
+解题思路：为数不多可以用动态规划做出的题之一。定义数组dp，dp[i]为true时表示s的前i个字符串能被正确划分于字典中；当遍历到dp[j]时，dp[j]的状态为dp[k]&&check(k,j)，其中0<=k<=j，而check的作用是检查s的第k个到第j个字符是否存在于字典中，即遍历到dp[j]时，只要找到一个以索引j结束，位于字典的字符串，且这个字符串之前的字符串能被正确的划分，dp[j]就为true

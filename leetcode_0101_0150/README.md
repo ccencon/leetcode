@@ -365,6 +365,8 @@ $a=(\tilde{a} \cdot b \cdot x) \mid (a \cdot \tilde{b} \cdot \tilde{x})$
 
 $b=\tilde{a} \cdot (b\oplus{a})$
 
+在遍历完数组所有数字之后， $a_ib_i$ 要么是00（对应余数为0），要么是01（对应余数为1），所以最终答案只需返回 $b$ ；其实按照这种思路，无论余数有多大，参与计算整数有多少个（比如余数为4，就需要3个数参与运算），最低位整数的比特位永远都是唯一数的比特位
+
 ```c++
 class Solution {
 public:

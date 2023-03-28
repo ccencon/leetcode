@@ -38,6 +38,7 @@
 |[0135](#0135)|[分发糖果](#0135)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0135.cpp)|
 |[0136](#0136)|[只出现一次的数字](#0136)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0136.cpp)|
 |[0137](#0137)|[只出现一次的数字-ii](#0137)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0137.cpp)|
+|[0138](#0138)|[复制带随机指针的链表](#0138)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0138.cpp)|
 
 #### <span id=0101>[101] 对称二叉树</span>
 题目链接：[https://leetcode-cn.com/problems/symmetric-tree](https://leetcode-cn.com/problems/symmetric-tree)  
@@ -308,7 +309,7 @@ public:
 题目链接：[https://leetcode-cn.com/problems/single-number-ii](https://leetcode-cn.com/problems/single-number-ii)  
 代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0137.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0137.cpp)  
 运行时间：beats 100%  
-解题思路：没做出来，思考方向是通过与或非等位运算操作一次数组，尝试转化为136的情况，但最后发现这根本不可行，这些操作只是把所有数字迁移到另外一种对称状态，最终所要面临的情况都是一样的。下面记录一下[官方题解](https://leetcode.cn/problems/single-number-ii/solutions/746993/zhi-chu-xian-yi-ci-de-shu-zi-ii-by-leetc-23t6/)的推导过程：
+解题思路：没做出来，思考方向是通过与或非等位运算操作一次数组，尝试转化为136的情况，但最后发现这根本不可行，这些操作只是把所有数字迁移到另外一种对称状态，最终所要面临的情况都是一样的。下面以个人理解记录一下[官方题解](https://leetcode.cn/problems/single-number-ii/solutions/746993/zhi-chu-xian-yi-ci-de-shu-zi-ii-by-leetc-23t6/)的推导过程：
 
 > 过程1
 
@@ -422,3 +423,8 @@ public:
 来源：力扣（LeetCode）
 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。*/
 ```
+#### <span id=0138>[138] 复制带随机指针的链表</span>
+题目链接：[https://leetcode-cn.com/problems/copy-list-with-random-pointer](https://leetcode-cn.com/problems/copy-list-with-random-pointer)  
+代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0138.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0138.cpp)  
+运行时间：beats 76.16%  
+解题思路：通过next指针遍历原有链表，创建新结点，以原结点为索引，把新结点加入到哈希表中；判断原结点的next和random指针，不为空则继续创建对应的新结点并加入到哈希表，完善新结点间的连接关系，然后进入下一轮迭代

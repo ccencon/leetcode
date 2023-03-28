@@ -342,7 +342,7 @@ public:
 
 > 过程2
 
-过程1的时间复杂度为 $O(32n)$ ，为使其达到纯粹的 $O(n)$ ，可以引入数字电路的思想同时处理所有比特位；留意到过程1中，每个比特位的余数要么加0不变，要么加1按照0→1→2的顺序循环出现，由于比特位只有0和1，那么可以使用 $a$ 和 $b$ 两个数来记录每个比特位的状态；假设 $a_i$ 和 $b_i$ 表示答案数字第 $i$ 个比特位的状态， $x_i$ 为当前遍历到整数的第 $i$ 个比特位，由上述逻辑可以得出如下真值表：
+过程1的时间复杂度为 $O(32n)$ ，为使其达到纯粹的 $O(n)$ ，可以引入数字电路的思想同时处理所有比特位。留意到过程1中，每个比特位在相加之后，它的余数要么是加0不变，要么是加1按照1→2→0的顺序循环出现；从数电的角度来看，可以把相加之前的两个比特（余数和数组新遍历的数）看作输入，相加之后的比特（余数）看作输出；由于比特位只有0和1两个状态，为了兼顾余数为2这种情况，可以使用 $a$ 和 $b$ 两个数来记录每个比特位的状态；假设 $a_i$ 和 $b_i$ 表示答案数字（余数）第 $i$ 个比特位的状态， $x_i$ 为当前遍历到整数的第 $i$ 个比特位，由上述逻辑可以得出如下真值表：
 
 | $a_i$ | $b_i$ | $x_i$ | 新的 $a_i$ | 新的 $b_i$ |
 |:-:|:-:|:-:|:-:|:-:|
@@ -357,4 +357,43 @@ public:
 
 $a_i=\overline{a_i}b_ix_i+a_i\overline{b_i}\overline{x_i}$ 
 
-$a_i=\overline{a_i}\overline{b_i}x_i+\overline{a_i}b_i\overline{x_i}=\overline{a_i}(b_i⊕x_i)$ 
+$b_i=\overline{a_i}\overline{b_i}x_i+\overline{a_i}b_i\overline{x_i}=\overline{a_i}(b_i⊕x_i)$ 
+
+将电路逻辑运算转换成等价的整数位运算，得出：
+
+$a=(\~a\&b\&x)|(a\&\~b\&\~x)$
+
+$b=\~a(b⊕a)$
+
+```c++
+class Solution {
+public:
+    int singleNumber(vector<int>& nums) {
+        int a = 0, b = 0;
+        for (int num: nums) {
+            tie(a, b) = pair{(~a & b & num) | (a & ~b & ~num), ~a & (b ^ num)};
+        }
+        return b;
+    }
+};
+/*
+作者：力扣官方题解
+链接：https://leetcode.cn/problems/single-number-ii/solutions/746993/zhi-chu-xian-yi-ci-de-shu-zi-ii-by-leetc-23t6/
+来源：力扣（LeetCode）
+著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。*/
+```
+在官方的这个推导过程中， $a_i$ 的计算过于复杂，可以引入无关状态进行化简；留意到上面真值表没有讨论 $a_i=1,b_i=1,x_i=0$ 和 $a_i=1,b_i=1,x_i=1$ 的情况，这两种情况在实际中不会发生，但为了进一步化简 $a_i$ 的计算，可以假定这两种情况会发生，且输出为1，那么 $a_i$ 的电路逻辑代数如下：
+
+$a_i=\overline{a_i}b_ix_i+a_i\overline{b_i}\overline{x_i}+a_ib_i\overline{x_i}+a_ib_ix_i=b_ix_i(a_i+\overline{a_i})+a_i\overline{x_i}(b_i+\overline{b_i})=b_ix_i+a_i\overline{x_i}$ 
+
+上述代码中a，b赋值对应转变为：
+
+```c++
+tie(a, b) = pair{(b & num) | (a & ~num), ~a & (b ^ num)};
+```
+
+可以发现，对于 $a_i$ 的计算，足足少了4次位运算
+
+> 过程3
+
+过程3是对过程2中计算 $a_i$ 的一个优化，采用的优化方案是先计算出 $b_i$ ，将新算出的 $b_i$ 替代真值表中原本的 $b_i$ ，得出新 $a_i$ 的逻辑电路函数；操作同理，这里不再详细叙述

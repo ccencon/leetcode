@@ -40,6 +40,7 @@
 |[0137](#0137)|[只出现一次的数字-ii](#0137)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0137.cpp)|
 |[0138](#0138)|[复制带随机指针的链表](#0138)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0138.cpp)|
 |[0139](#0139)|[单词拆分](#0139)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0139.cpp)|
+|[0140](#0140)|[单词拆分-ii](#0140)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0140.cpp)|
 
 #### <span id=0101>[101] 对称二叉树</span>
 题目链接：[https://leetcode-cn.com/problems/symmetric-tree](https://leetcode-cn.com/problems/symmetric-tree)  
@@ -434,3 +435,14 @@ public:
 代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0139.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0139.cpp)  
 运行时间：beats 91.72%  
 解题思路：为数不多可以用动态规划做出的题之一。定义数组dp，dp[i]为true时表示s的前i个字符串能被正确划分于字典中；当遍历到dp[j]时，dp[j]的状态为dp[k]&&check(k,j)，其中0<=k<=j，而check的作用是检查s的第k个到第j个字符是否存在于字典中，即遍历到dp[j]时，只要找到一个以索引j结束，位于字典的字符串，且这个字符串之前的字符串能被正确的划分，dp[j]就为true
+
+回溯+记忆化也可以很好的解决这类问题，但目前这种解法使用频繁，就不再实现了
+#### <span id=0140>[140] 单词拆分-ii</span>
+题目链接：[https://leetcode-cn.com/problems/word-break-ii](https://leetcode-cn.com/problems/word-break-ii)  
+代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0140.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0140.cpp)  
+运行时间：beats 34.45%  
+解题思路：这题有点类似[[132] 分割回文串-ii](#0132)，采用的解决方案也是回溯+记忆化；在这里同样需要两个记忆化，一个是记录某段字符串是否位于字典，避免重复在哈希表中查找相同内容；一个是记录遍历到某个下标时，这个下标之后的字符串能否被划分于字典中，在划分失败后进行回溯时，可以确定这个记忆化标志，当下一次再从这个下标开始划分时，就可以从这个记忆化标志确定后面的字符串不能被划分，从而提前结束划分操作
+
+官方题解中，记忆化是记录对应下标已经划分好的字符串，这个记忆化思路在解决[[132] 分割回文串-ii](#0132)的时候曾经有想过，但由于可能会涉及过多的字符串拷贝而放弃。假设最终的答案有 $n$ 个，每个答案平均划分字符串数为 $m$ 串，在最坏的情况下，采用两个记忆化设计的字符串拷贝数大概为 $nm$ 次，每次拷贝 $m$ 个单位；如果采用记录字符串的记忆化方法，拷贝次数大概为 $n(1+2+3+\dots+m)=\frac{nm(1+m)}{2}$ ，每次拷贝 $m$ 个单位
+
+第一种记忆化思路需要进行重复遍历，但不会产生额外的字符串拷贝次数，第二种记忆化思路反之，并且需要更多的额外空间；总的来说，两种思路各有优劣，效率还需依据实际情况讨论

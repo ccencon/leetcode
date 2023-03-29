@@ -41,6 +41,7 @@
 |[0138](#0138)|[复制带随机指针的链表](#0138)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0138.cpp)|
 |[0139](#0139)|[单词拆分](#0139)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0139.cpp)|
 |[0140](#0140)|[单词拆分-ii](#0140)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0140.cpp)|
+|[0141](#0141)|[环形链表](#0141)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0141.cpp)|
 
 #### <span id=0101>[101] 对称二叉树</span>
 题目链接：[https://leetcode-cn.com/problems/symmetric-tree](https://leetcode-cn.com/problems/symmetric-tree)  
@@ -446,3 +447,8 @@ public:
 官方题解中，记忆化是记录对应下标已经划分好的字符串，这个记忆化思路在解决[[132] 分割回文串-ii](#0132)的时候曾经有想过，但由于可能会涉及过多的字符串拷贝而放弃。假设最终的答案有 $n$ 个，每个答案平均划分字符串数为 $m$ 串，在最坏的情况下，采用两个记忆化设计的字符串拷贝数大概为 $nm$ 次，每次拷贝 $m$ 个单位；如果采用记录字符串的记忆化方法，拷贝次数大概为 $n(1+2+3+\dots+m)=\frac{nm(1+m)}{2}$ ，每次拷贝 $m$ 个单位
 
 第一种记忆化思路需要进行重复遍历，但不会产生额外的字符串拷贝次数，第二种记忆化思路反之，并且需要更多的额外空间；总的来说，两种思路各有优劣，效率还需依据实际情况讨论
+#### <span id=0141>[141] 环形链表</span>
+题目链接：[https://leetcode-cn.com/problems/linked-list-cycle](https://leetcode-cn.com/problems/linked-list-cycle)  
+代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0141.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0141.cpp)  
+运行时间：beats 92.72%  
+解题思路：使用哈希表记录遍历过的结点，在遍历过程中如果发现当前结点已经存在于哈希表中，则说明链表必然有环。题目进阶要求使用 $O(1)$ 的空间复杂度，为达到这个要求，可以使遍历过的结点的next指针全部指向头结点，这样如果再次遍历到了头结点，则说明链表有环。但这种方法会破坏链表结构，在实际编程中肯定不能被采纳。官方的快慢指针更加精妙，设定两个指针，一个每次向前移动两步，一个每次向前移动一步，如果两个指针可以相遇，则说明有环

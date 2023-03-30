@@ -42,6 +42,7 @@
 |[0139](#0139)|[单词拆分](#0139)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0139.cpp)|
 |[0140](#0140)|[单词拆分-ii](#0140)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0140.cpp)|
 |[0141](#0141)|[环形链表](#0141)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0141.cpp)|
+|[0142](#0142)|[环形链表-ii](#0142)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0142.cpp)|
 
 #### <span id=0101>[101] 对称二叉树</span>
 题目链接：[https://leetcode-cn.com/problems/symmetric-tree](https://leetcode-cn.com/problems/symmetric-tree)  
@@ -452,3 +453,20 @@ public:
 代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0141.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0141.cpp)  
 运行时间：beats 92.72%  
 解题思路：使用哈希表记录遍历过的结点，在遍历过程中如果发现当前结点已经存在于哈希表中，则说明链表必然有环。题目进阶要求使用 $O(1)$ 的空间复杂度，为达到这个要求，可以使遍历过的结点的next指针全部指向头结点，这样如果再次遍历到了头结点，则说明链表有环。但这种方法会破坏链表结构，在实际编程中肯定不能被采纳。官方的快慢指针更加精妙，设定两个指针，一个每次向前移动两步，一个每次向前移动一步，如果两个指针可以相遇，则说明有环
+#### <span id=0142>[142] 环形链表-ii</span>
+题目链接：[https://leetcode-cn.com/problems/linked-list-cycle-ii](https://leetcode-cn.com/problems/linked-list-cycle-ii)  
+代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0142.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0142.cpp)  
+运行时间：beats 75.49%  
+解题思路： $O(1)$ 空间复杂度的实现思路没有想出来，最终还是看了官方题解。采用的还是快慢指针方法；假设链表头到环起点的距离为 $a$ （包括环起点），快慢指针相遇的位置距离环口的距离为 $b$ （不包括环起点），环内剩余距离为 $c$ （包括环起点），快指针与慢指针相遇时已经在环内走了 $n(n>0)$ 圈，那么慢指针走过的距离为 $S_s=a+b$ ，快指针走过的距离为 $S_f=a+n(b+c)+b$ ，又因为 $2S_s=S_f$ ，即 $2(a+b)=a+n(b+c)+b$ ，最后得出 $a=(n-1)(b+c)+c$ 。如果慢指针从当前位置继续出发，在走过 $c$ 或 $c+1(b+c)$ 或 $c+2(b+c)$ ... 的距离之后，必然会到达环起点，而由最后得出的等式 $a=(n-1)(b+c)+c$ 可以发现，如果有一个指针位于链表头，跟慢指针同时出发，它们必然能相遇于环起点
+
+值得注意的是，慢指针必然能与快指针相遇且在第一圈相遇，这是基于慢指针速度为1，快指针速度为2，速度差为1的特例；下面记录一下快慢指针不会相遇及不在第一圈相遇的情况：
+
+> 快慢指针不相遇
+
+快慢指针速度差为 $k(k>1)$ ，在慢指针到达环起点位置 $1$ 的时候，假设这时候快指针所在位置和环的长度都是 $k$ 的整倍数，则快慢指针永远不会相遇；从相对运动的角度来看，慢指针位于位置 $1$ 不动，而快指针的位置永远是 $k,2k,3k,4k,...$ ，永远不会与 $1$ 相等；一个例子，慢指针速度为1，快指针速度为3，环的长度为6，慢指针到达位置 $1$ 的时候，快指针位于位置 $2$ ，这样的情况快慢指针是永远不会相遇的
+
+> 快慢指针不在第一圈相遇
+
+假设快慢指针可以相遇，慢指针速度为 $v$ ，环长为 $l$ ，那么在至多移动 $l$ 次（速度差为1的情况）之后，快慢指针相遇，这个时候慢指针走过的路程为 $vl$ ，只要 $v>1$ ，就必然有 $vl>l$ ，即相遇时，慢指针已经走超过 $1$ 圈的距离
+
+快慢指针判断基于的是`Floyd 判圈算法`，又称`龟兔赛跑算法`；是一个可以在有限状态机、迭代函数或者链表上判断是否存在环，以及判断环的起点与长度的算法。判断是否存在环时，为了减少遍历次数，快指针每次前进一步（每次前进两步，分两次走）都可以判断是否与慢指针相等；而在判断环的起点时，快指针必须在前进两步之后才能与慢指针比较，只有这样才能满足上述等式关系

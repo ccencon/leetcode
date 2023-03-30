@@ -177,7 +177,7 @@
 题目链接：[https://leetcode-cn.com/problems/swap-nodes-in-pairs](https://leetcode-cn.com/problems/swap-nodes-in-pairs)  
 代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0024.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0024.cpp)  
 运行时间：beats 100%  
-解题思路：没啥好说的，在一些时候代码简洁短小和易读易懂确实不可兼得
+解题思路：两两交换，交换前记录下一段的头指针；在一些时候代码简洁短小和易读易懂确实不可兼得
 #### <span id=0025>[25] k-个一组翻转链表</span>
 题目链接：[https://leetcode-cn.com/problems/reverse-nodes-in-k-group](https://leetcode-cn.com/problems/reverse-nodes-in-k-group)  
 代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0025.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050/cpp/leetcode_0025.cpp)  

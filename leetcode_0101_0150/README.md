@@ -44,6 +44,7 @@
 |[0141](#0141)|[环形链表](#0141)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0141.cpp)|
 |[0142](#0142)|[环形链表-ii](#0142)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0142.cpp)|
 |[0143](#0143)|[重排链表](#0143)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0143.cpp)|
+|[0144](#0144)|[二叉树的前序遍历](#0144)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0144.cpp)|
 
 #### <span id=0101>[101] 对称二叉树</span>
 题目链接：[https://leetcode-cn.com/problems/symmetric-tree](https://leetcode-cn.com/problems/symmetric-tree)  
@@ -478,3 +479,8 @@ public:
 解题思路：用顺序数组记录链表的每一个结点，然后连接；官方`寻找链表中点+链表逆序+合并链表`的思路很精妙，只需 $O(1)$ 额外空间就可以完成解答
 
 不知道为什么，在解答这题的时候，脑海里不自觉将链表的变换顺序与魔方联系起来，彷佛可以映射魔方的某个公式，然而对魔方的玩法早已模糊，不再深究了
+#### <span id=0144>[144] 二叉树的前序遍历</span>
+题目链接：[https://leetcode-cn.com/problems/binary-tree-preorder-traversal](https://leetcode-cn.com/problems/binary-tree-preorder-traversal)  
+代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0144.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0144.cpp)  
+运行时间：beats 41.57%  
+解题思路：对于二叉树的前中后序遍历，无论是递归还是迭代算法，已经熟练到能闭着眼背出来了；不再详细叙述

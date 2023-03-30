@@ -43,6 +43,7 @@
 |[0140](#0140)|[单词拆分-ii](#0140)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0140.cpp)|
 |[0141](#0141)|[环形链表](#0141)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0141.cpp)|
 |[0142](#0142)|[环形链表-ii](#0142)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0142.cpp)|
+|[0143](#0143)|[重排链表](#0143)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0143.cpp)|
 
 #### <span id=0101>[101] 对称二叉树</span>
 题目链接：[https://leetcode-cn.com/problems/symmetric-tree](https://leetcode-cn.com/problems/symmetric-tree)  
@@ -470,3 +471,10 @@ public:
 假设快慢指针可以相遇，慢指针速度为 $v$ ，环长为 $l$ ，那么在至多移动 $l$ 次（速度差为1的情况）之后，快慢指针第一次相遇，这个时候慢指针走过的路程为 $vl$ ，只要 $v>1$ ，就必然有 $vl>l$ ，即相遇时，慢指针已经走超过 $1$ 圈的距离
 
 快慢指针判断基于的是`Floyd 判圈算法`，又称`龟兔赛跑算法`；是一个可以在有限状态机、迭代函数或者链表上判断是否存在环，以及判断环的起点与长度的算法。判断是否存在环时，为了减少遍历次数，快指针每次前进一步（每次前进两步，分两次走）都可以判断是否与慢指针相等；而在判断环的起点时，快指针必须在前进两步之后才能与慢指针比较，只有这样才能满足上述等式关系
+#### <span id=0143>[143] 重排链表</span>
+题目链接：[https://leetcode-cn.com/problems/reorder-list](https://leetcode-cn.com/problems/reorder-list)  
+代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0143.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0143.cpp)  
+运行时间：beats 86.23%  
+解题思路：用顺序数组记录链表的每一个结点，然后连接；官方`寻找链表中点+链表逆序+合并链表`的思路很精妙，只需 $O(1)$ 额外空间就可以完成解答
+
+不知道为什么，在解答这题的时候，脑海里不自觉将链表的变换顺序与魔方联系起来，彷佛可以映射魔方的某个公式，然而对魔方的玩法早已模糊，不再深究了

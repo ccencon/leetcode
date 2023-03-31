@@ -46,6 +46,7 @@
 |[0143](#0143)|[重排链表](#0143)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0143.cpp)|
 |[0144](#0144)|[二叉树的前序遍历](#0144)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0144.cpp)|
 |[0145](#0145)|[二叉树的后序遍历](#0145)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0145.cpp)|
+|[0146](#0146)|[lru-缓存](#0146)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0146.cpp)|
 
 #### <span id=0101>[101] 对称二叉树</span>
 题目链接：[https://leetcode-cn.com/problems/symmetric-tree](https://leetcode-cn.com/problems/symmetric-tree)  
@@ -490,3 +491,10 @@ public:
 代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0145.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0145.cpp)  
 运行时间：beats 100%  
 解题思路：对于二叉树的前中后序遍历，无论是递归还是迭代算法，已经熟练到能闭着眼背出来了；不再详细叙述
+#### <span id=0146>[146] lru-缓存</span>
+题目链接：[https://leetcode-cn.com/problems/lru-cache](https://leetcode-cn.com/problems/lru-cache)  
+代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0146.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0146.cpp)  
+运行时间：beats 58.74%  
+解题思路：很有意思的一道题，在之前所做题目中，都是偏向考察某个具体算法，而这道题是针对内存页面置换面临的实际问题，需求设计一个解决方案，更加侧重于设计
+
+采用哈希表+双向链表的设计方案，另外单独记录链表的头结点和尾结点；双向链表用来存储插入数据，哈希表用来记录插入数据的链表结点地址；访问数据时，通过key从哈希表获取地址，地址存在时便返回其所记录的值；对于最近访问的数据，将其结点至于原头结点之上成为新的头结点，使得越是最近访问的数据越是靠近头结点，越是最久访问的数据越是靠近尾结点，当缓存数据达到容量上限时，下一次如果插入新的数据，便可以直接拿尾结点来进行操作

@@ -48,6 +48,7 @@
 |[0145](#0145)|[二叉树的后序遍历](#0145)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0145.cpp)|
 |[0146](#0146)|[lru-缓存](#0146)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0146.cpp)|
 |[0147](#0147)|[对链表进行插入排序](#0147)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0147.cpp)|
+|[0148](#0148)|[排序链表](#0148)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0148.cpp)|
 
 #### <span id=0101>[101] 对称二叉树</span>
 题目链接：[https://leetcode-cn.com/problems/symmetric-tree](https://leetcode-cn.com/problems/symmetric-tree)  
@@ -504,3 +505,18 @@ public:
 代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0147.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0147.cpp)  
 运行时间：beats 53.06%  
 解题思路：很朴素的一题，朴素得以为又暗藏着什么奇技淫巧，想了很久，慢慢确定出题者就是单纯的想考察单链表的插入排序，AC之后看官方题解，果然不出所料
+#### <span id=0148>[148] 排序链表</span>
+题目链接：[https://leetcode-cn.com/problems/sort-list](https://leetcode-cn.com/problems/sort-list)  
+代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0148.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0148.cpp)  
+运行时间：beats 59.05%  
+解题思路：一开始以快速排序的思路进行解答；快排的基本思想是分治，每一趟都是为了找到一个元素，这个元素可以把序列分割成左右两个子序列，其中左序列的数永远比右序列的数小（假设是升序排序），这样可以避免某个子序列中的数与其它子序列进行不必要的比较从而降低时间复杂度；链表的快排与顺序数组的快排在实现细节上存在差异，顺序数组因为其内存连续性，为了减少不必要的数据拷贝，在交换两个数之后需要变换基准值，同时变更遍历方向；而链表因为其数据结构特殊性，在一趟排序中只需一个固定的基准值就可以划分两个子序列
+
+快速排序的分治思想是基于序列元素，这就使得快速排序在一些情况下会退化成 $O(n^2)$ 的时间复杂度，比如下面的序列： 
+
+$$[2,3,4,5,6,7,8,...,49999,50000,1]$$
+
+这是这题的第26个测试用例，有50000个元素，以快排实现提交后在这里超时；按照实现策略，在第一次迭代时，以第一个元素2位基准，划分为两个子序列 $[1]$ 和 $[50000,49999,49998,...,4,3]$ ；在对右序列进行迭代时，选择元素50000为基准，再次将其划分为两个子序列 $[null]$ 和 $[3,4,5,...,49998,49999]$ ；可以发现，在这种情况下，需要划分 $n$ 次，每次都要进行 $n-1$ 次比较，时间复杂度将会退化成 $O(n^2)$
+
+可以使用归并排序（2-路归并）实现稳定的 $O(nlog_2 n)$ 时间复杂度，归并排序同样基于分治思想，每次将序列等分为两个子序列，并对子序列递归等分操作，在子序列只有一个元素时进行返回合并；主定理 $T(n)=T(\frac n 2)+T(\frac n 2)+C(n)$ ，当等长的两个子序列共有 $n$ 个元素时，比较次数 $C(n)$ 的最小值为 $\frac n 2$ ，最大值为 $n-1$ ；当 $C(n)=\frac n 2$ 时，$T(n)=2T(\frac n 2)+\frac n 2=2(2T(\frac n 4)+\frac n 4)+\frac n 2=...=\frac n 2 log_2 n \in O(nlog_2 n)$ ；当 $C(n)=n-1$ 时，$T(n)=2T(\frac n 2)+n-1=2(2T(\frac n 4)+\frac n 2-1)+n-1=...=nlog_2 n+1-n \in O(nlog_2 n)$
+
+归并的实现策略有两种，递归和迭代；在递归算法中，需要找到序列中点，以中点对序列进行划分，链表找出中点需要循环 $\frac n 2$ 次，在整个求解过程中，总时间复杂度便为 $\frac n 2+2\frac n 4+4\frac n 8+...=\frac n 2log_2 n \in O(nlog_2 n)$ ，与上述时间复杂度保持一致；而迭代算法先从最短子序列开始，即将链表划分为只有1个元素的序列，然后合并相邻两个序列；下一轮迭代便以2个元素为一组进行划分，然后再次合并，注意这两个元素在上一轮迭代中进行过一次合并，所以它们已经是有序的；再下一轮便以4个元素进行划分...

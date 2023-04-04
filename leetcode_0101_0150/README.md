@@ -526,7 +526,7 @@ $$[2,3,4,5,6,7,8,...,49999,50000,1]$$
 题目链接：[https://leetcode-cn.com/problems/max-points-on-a-line](https://leetcode-cn.com/problems/max-points-on-a-line)  
 代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0149.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0149.cpp)  
 运行时间：beats 24.12%  
-解题思路：选定两个端点，确定它们的斜率，再遍历其它端点，如果斜率相同，则证明三点在同一直线上；斜率的计算会设计到精度问题，应该将其转化为乘法，如 $k_1=\frac{y_1-y_2} {x_1-x_2}$ ， $k_2=\frac{y_1-y_3} {x_1-x_3}$ ，判定 $k_1,k_2$ 是否相等应该转化为判断 $(y_1-y_2)(x_1-x_3),(x_1-x_2)(y_1-y_3)$ 是否相等
+解题思路：选定两个端点，确定它们的斜率，再遍历其它端点，如果斜率相同，则证明三点在同一直线上；斜率的计算会设计到精度问题，应该将其转化为乘法，如 $k_1=\frac{y_1-y_2} {x_1-x_2},k_2=\frac{y_1-y_3} {x_1-x_3}$ ，判定 $k_1,k_2$ 是否相等应该转化为判断 $(y_1-y_2)(x_1-x_3),(x_1-x_2)(y_1-y_3)$ 是否相等
 #### <span id=0150>[150] 逆波兰表达式求值</span>
 题目链接：[https://leetcode-cn.com/problems/evaluate-reverse-polish-notation](https://leetcode-cn.com/problems/evaluate-reverse-polish-notation)  
 代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0150.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0150.cpp)  

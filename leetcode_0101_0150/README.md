@@ -50,6 +50,7 @@
 |[0147](#0147)|[对链表进行插入排序](#0147)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0147.cpp)|
 |[0148](#0148)|[排序链表](#0148)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0148.cpp)|
 |[0149](#0149)|[直线上最多的点数](#0149)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0149.cpp)|
+|[0150](#0150)|[逆波兰表达式求值](#0150)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0150.cpp)|
 
 #### <span id=0101>[101] 对称二叉树</span>
 题目链接：[https://leetcode-cn.com/problems/symmetric-tree](https://leetcode-cn.com/problems/symmetric-tree)  
@@ -526,3 +527,8 @@ $$[2,3,4,5,6,7,8,...,49999,50000,1]$$
 代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0149.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0149.cpp)  
 运行时间：beats 24.12%  
 解题思路：选定两个端点，确定它们的斜率，再遍历其它端点，如果斜率相同，则证明三点在同一直线上；斜率的计算会设计到精度问题，应该将其转化为乘法，如 $k_1=\frac{y_1-y_2} {x_1-x_2}$ ， $k_2=\frac{y_1-y_3} {x_1-x_3}$ ，判定 $k_1,k_2$ 是否相等应该转化为判断 $(y_1-y_2)(x_1-x_3),(x_1-x_2)(y_1-y_3)$ 是否相等
+#### <span id=0150>[150] 逆波兰表达式求值</span>
+题目链接：[https://leetcode-cn.com/problems/evaluate-reverse-polish-notation](https://leetcode-cn.com/problems/evaluate-reverse-polish-notation)  
+代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0150.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0150.cpp)  
+运行时间：beats 98.8%  
+解题思路：逆波兰表达式是一种后缀表达式，求解表达式时可以借助栈操作，遇到数字入栈，遇到运算符则取出栈顶两个数字进行计算，并将结果再次压入栈中

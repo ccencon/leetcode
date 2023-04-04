@@ -49,6 +49,7 @@
 |[0146](#0146)|[lru-缓存](#0146)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0146.cpp)|
 |[0147](#0147)|[对链表进行插入排序](#0147)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0147.cpp)|
 |[0148](#0148)|[排序链表](#0148)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0148.cpp)|
+|[0149](#0149)|[直线上最多的点数](#0149)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0149.cpp)|
 
 #### <span id=0101>[101] 对称二叉树</span>
 题目链接：[https://leetcode-cn.com/problems/symmetric-tree](https://leetcode-cn.com/problems/symmetric-tree)  
@@ -520,3 +521,8 @@ $$[2,3,4,5,6,7,8,...,49999,50000,1]$$
 可以使用归并排序（2-路归并）实现稳定的 $O(nlog_2 n)$ 时间复杂度，归并排序同样基于分治思想，每次将序列等分为两个子序列，并对子序列递归等分操作，在子序列只有一个元素时进行返回合并；主定理 $T(n)=T(\frac n 2)+T(\frac n 2)+C(n)$ ，当等长的两个子序列共有 $n$ 个元素时，比较次数 $C(n)$ 的最小值为 $\frac n 2$ ，最大值为 $n-1$ ；当 $C(n)=\frac n 2$ 时， $T(n)=2T(\frac n 2)+\frac n 2=2(2T(\frac n 4)+\frac n 4)+\frac n 2=...=\frac n 2 log_2 n \in O(nlog_2 n)$ ；当 $C(n)=n-1$ 时， $T(n)=2T(\frac n 2)+n-1=2(2T(\frac n 4)+\frac n 2-1)+n-1=...=nlog_2 n+1-n \in O(nlog_2 n)$
 
 归并的实现策略有两种，递归和迭代；在递归算法中，需要找到序列中点，以中点对序列进行划分，链表找出中点需要循环 $\frac n 2$ 次，在整个求解过程中，总时间复杂度便为 $\frac n 2+2\frac n 4+4\frac n 8+...=\frac n 2log_2 n \in O(nlog_2 n)$ ，与上述时间复杂度保持一致；而迭代算法先从最短子序列开始，即将链表划分为只有1个元素的序列，然后合并相邻两个序列；下一轮迭代便以2个元素为一组进行划分，然后再次合并，注意这两个元素在上一轮迭代中进行过一次合并，所以它们已经是有序的；再下一轮便以4个元素进行划分...
+#### <span id=0149>[149] 直线上最多的点数</span>
+题目链接：[https://leetcode-cn.com/problems/max-points-on-a-line](https://leetcode-cn.com/problems/max-points-on-a-line)  
+代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0149.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0101_0150/cpp/leetcode_0149.cpp)  
+运行时间：beats 24.12%  
+解题思路：选定两个端点，确定它们的斜率，再遍历其它端点，如果斜率相同，则证明三点在同一直线上；斜率的计算会设计到精度问题，应该将其转化为乘法，如 $k_1=\frac{y_1-y_2} {x_1-x_2}$ ， $k_2=\frac{y_1-y_3} {x_1-x_3}$ ，判定 $k_1,k_2$ 是否相等应该转化为判断 $(y_1-y_2)(x_1-x_3),(x_1-x_2)(y_1-y_3)$ 是否相等

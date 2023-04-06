@@ -4,6 +4,7 @@
 |[0151](#0151)|[颠倒字符串中的单词](#0151)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0151_0200/cpp/leetcode_0151.cpp)|
 |[0152](#0152)|[乘积最大子数组](#0152)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0151_0200/cpp/leetcode_0152.cpp)|
 |[0153](#0153)|[寻找旋转排序数组中的最小值](#0153)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0151_0200/cpp/leetcode_0153.cpp)|
+|[0154](#0154)|[寻找旋转排序数组中的最小值-ii](#0154)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0151_0200/cpp/leetcode_0154.cpp)|
 
 #### <span id=0151>[151] 颠倒字符串中的单词</span>
 题目链接：[https://leetcode-cn.com/problems/reverse-words-in-a-string](https://leetcode-cn.com/problems/reverse-words-in-a-string)  
@@ -20,3 +21,8 @@
 代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0151_0200/cpp/leetcode_0153.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0151_0200/cpp/leetcode_0153.cpp)  
 运行时间：beats 100%  
 解题思路：这应该算作一道重复题，与[[33] 搜索旋转排序数组](https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050#0033)本质上是一样的；解决思路就是进行二分查找，因为其旋转特性，当 $nums[mid]$ 比 $nums[right]$ 大时，说明最小数位于区间 $[mid+1, right]$ ，否则就是位于 $[left, mid]$ ；另外一点，当 $nums[left]$ 比 $nums[right]$ 小时，说明区间内已经有序， $nums[left]$ 必然是最小数，直接返回即可
+#### <span id=0154>[154] 寻找旋转排序数组中的最小值-ii</span>
+题目链接：[https://leetcode-cn.com/problems/find-minimum-in-rotated-sorted-array-ii](https://leetcode-cn.com/problems/find-minimum-in-rotated-sorted-array-ii)  
+代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0151_0200/cpp/leetcode_0154.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0151_0200/cpp/leetcode_0154.cpp)  
+运行时间：beats 85.03%  
+解题思路：这也可以算作一道重复题，对标[[81] 搜索旋转排序数组-ii](https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100#0081)；其中与[[153] 寻找旋转排序数组中的最小值](#0153)不同的点在于数组中可能存在重复元素，当数组存在重复元素时，便没法确定区间应该如何进行偏移；如序列 $2 2 2 4 1 2 2$ 和 $2 2 1 4 2 2 2$ ，它们初始的状态都一样，但却有着不用的偏移方向；解决方法也很简单，当左边或右边遇到重复元素时，将其往中间靠拢直至没有重复元素，转化为第154题的情况

@@ -19,4 +19,4 @@
 题目链接：[https://leetcode-cn.com/problems/find-minimum-in-rotated-sorted-array](https://leetcode-cn.com/problems/find-minimum-in-rotated-sorted-array)  
 代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0151_0200/cpp/leetcode_0153.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0151_0200/cpp/leetcode_0153.cpp)  
 运行时间：beats 100%  
-解题思路：这应该算作一道重复题，与[[33] 搜索旋转排序数组](https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050#0033)本质上是一样的；解决思路就是进行二分查找，因为其旋转特性，当 $nums[mid]$ 比 $nums[right]$ 大时，说明最小数位于区间 $[mid+1, right]$ ，否则就是位于 $[left, mid]$
+解题思路：这应该算作一道重复题，与[[33] 搜索旋转排序数组](https://github.com/ccencon/leetcode/tree/main/leetcode_0001_0050#0033)本质上是一样的；解决思路就是进行二分查找，因为其旋转特性，当 $nums[mid]$ 比 $nums[right]$ 大时，说明最小数位于区间 $[mid+1, right]$ ，否则就是位于 $[left, mid]$ ；另外一点，当 $nums[left]$ 比 $nums[right]$ 小时，说明区间内已经有序， $nums[left]$ 必然是最小数，直接返回即可

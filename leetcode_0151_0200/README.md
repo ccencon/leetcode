@@ -5,6 +5,7 @@
 |[0152](#0152)|[乘积最大子数组](#0152)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0151_0200/cpp/leetcode_0152.cpp)|
 |[0153](#0153)|[寻找旋转排序数组中的最小值](#0153)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0151_0200/cpp/leetcode_0153.cpp)|
 |[0154](#0154)|[寻找旋转排序数组中的最小值-ii](#0154)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0151_0200/cpp/leetcode_0154.cpp)|
+|[0155](#0155)|[最小栈](#0155)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0151_0200/cpp/leetcode_0155.cpp)|
 
 #### <span id=0151>[151] 颠倒字符串中的单词</span>
 题目链接：[https://leetcode-cn.com/problems/reverse-words-in-a-string](https://leetcode-cn.com/problems/reverse-words-in-a-string)  
@@ -25,4 +26,11 @@
 题目链接：[https://leetcode-cn.com/problems/find-minimum-in-rotated-sorted-array-ii](https://leetcode-cn.com/problems/find-minimum-in-rotated-sorted-array-ii)  
 代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0151_0200/cpp/leetcode_0154.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0151_0200/cpp/leetcode_0154.cpp)  
 运行时间：beats 85.03%  
-解题思路：这也可以算作一道重复题，对标[[81] 搜索旋转排序数组-ii](https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100#0081)；其中与[[153] 寻找旋转排序数组中的最小值](#0153)不同的点在于数组中可能存在重复元素，当数组存在重复元素时，便没法确定区间应该如何进行偏移；如序列 $2 2 2 4 1 2 2$ 和 $2 2 1 4 2 2 2$ ，它们初始的状态都一样，但却有着不用的偏移方向；解决方法也很简单，当左边或右边遇到重复元素时，将其往中间靠拢直至没有重复元素，转化为第154题的情况
+解题思路：这也可以算作一道重复题，对标[[81] 搜索旋转排序数组-ii](https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100#0081)；其中与[[153] 寻找旋转排序数组中的最小值](#0153)不同的点在于数组中可能存在重复元素，当数组存在重复元素时，便没法确定区间应该如何进行偏移；如序列 $2 2 2 4 1 2 2$ 和 $2 2 1 4 2 2 2$ ，它们初始的状态都一样，但却有着不用的偏移方向；解决方法也很简单，当左边或右边遇到重复元素时，便往中间靠拢直至没有重复元素，将其转化为第154题的情况
+#### <span id=0155>[155] 最小栈</span>
+题目链接：[https://leetcode-cn.com/problems/min-stack](https://leetcode-cn.com/problems/min-stack)  
+代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0151_0200/cpp/leetcode_0155.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0151_0200/cpp/leetcode_0155.cpp)  
+运行时间：beats 42.67%  
+解题思路：设定两个栈A和B，栈A用来记录入栈的数，栈B用来记录栈A当前的最小数。当A出栈时，B同步出栈；当入栈A时，将入栈数与当前最小数比较得出新的最小数，将新的最小数入栈B；这样使得获取栈A的最小值时，直接返回栈B的栈顶元素即可
+
+在浏览官方题解的评论中，发现了一种更加巧妙的方法，就是只设立一个栈和一个最小数，这个栈用来记录与最小数的差值，当这个差值为正数时，差值+栈记录=入栈数；当差值为负数时，说明最小值更新，旧最小值-差值=新的最小值，新的最小值同时也是当前入栈数。以这种思路再次实现提交，通过；留意到评论中说这种做法不需要额外空间，这应该是不正确的，虽然少了一个栈，但引入差值的计算会超出原本数据类型的范围，如 $int32$ 的差值，就需要 $int64$ 的栈来保存，这与两个 $int32$ 的栈做法所需空间理论上是一致的

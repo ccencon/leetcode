@@ -6,6 +6,7 @@
 |[0153](#0153)|[寻找旋转排序数组中的最小值](#0153)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0151_0200/cpp/leetcode_0153.cpp)|
 |[0154](#0154)|[寻找旋转排序数组中的最小值-ii](#0154)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0151_0200/cpp/leetcode_0154.cpp)|
 |[0155](#0155)|[最小栈](#0155)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0151_0200/cpp/leetcode_0155.cpp)|
+|[0156](#0156)|[上下翻转二叉树](#0156)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0151_0200/cpp/leetcode_0156.cpp)|
 |[0160](#0160)|[相交链表](#0160)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0151_0200/cpp/leetcode_0160.cpp)|
 
 #### <span id=0151>[151] 颠倒字符串中的单词</span>
@@ -35,6 +36,11 @@
 解题思路：设定两个栈 $A$ 和 $B$ ，栈 $A$ 用来记录入栈的数，栈 $B$ 用来记录栈 $A$ 当前的最小数。当 $A$ 出栈时， $B$ 同步出栈；当入栈 $A$ 时，将入栈数与当前最小数比较得出新的最小数，将新的最小数入栈 $B$ ；这样使得获取栈 $A$ 的最小值时，直接返回栈 $B$ 的栈顶元素即可
 
 在浏览官方题解的评论中，发现了一种更加巧妙的方法，就是只设立一个栈和一个最小数，这个栈用来记录与最小数的差值，当这个差值为正数时，差值+栈记录=入栈数；当差值为负数时，说明最小值更新，旧最小值-差值=新的最小值，新的最小值同时也是当前入栈数。以这种思路再次实现提交，通过；留意到评论中说这种做法不需要额外空间，这应该是不正确的，虽然少了一个栈，但引入差值的计算会超出原本数据类型的范围，如 $int32$ 的差值，就需要 $int64$ 的栈来保存，这与两个 $int32$ 的栈做法所需空间理论上是一致的
+#### <span id=0156>[156] 上下翻转二叉树</span>
+题目链接：[https://leetcode-cn.com/problems/binary-tree-upside-down](https://leetcode-cn.com/problems/binary-tree-upside-down)  
+代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0151_0200/cpp/leetcode_0156.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0151_0200/cpp/leetcode_0156.cpp)  
+运行时间：beats 66.41%  
+解题思路：很基础的题目，用递归或者栈回溯都可以很好的解决。不过在最后的处理中忘记把原先根结点左右孩子置NULL，导致输出有误，加之官方debug信息奇奇怪怪，花费了不少时间才找出错误
 #### <span id=0160>[160] 相交链表</span>
 题目链接：[https://leetcode-cn.com/problems/intersection-of-two-linked-lists](https://leetcode-cn.com/problems/intersection-of-two-linked-lists)  
 代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0151_0200/cpp/leetcode_0160.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0151_0200/cpp/leetcode_0160.cpp)  

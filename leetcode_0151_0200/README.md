@@ -8,6 +8,7 @@
 |[0155](#0155)|[最小栈](#0155)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0151_0200/cpp/leetcode_0155.cpp)|
 |[0156](#0156)|[上下翻转二叉树](#0156)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0151_0200/cpp/leetcode_0156.cpp)|
 |[0157](#0157)|[用-Read4-读取-N-个字符](#0157)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0151_0200/cpp/leetcode_0157.cpp)|
+|[0158](#0158)|[用-Read4-读取-N-个字符-ii](#0158)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0151_0200/cpp/leetcode_0158.cpp)|
 |[0160](#0160)|[相交链表](#0160)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0151_0200/cpp/leetcode_0160.cpp)|
 
 #### <span id=0151>[151] 颠倒字符串中的单词</span>
@@ -47,6 +48,11 @@
 代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0151_0200/cpp/leetcode_0157.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0151_0200/cpp/leetcode_0157.cpp)  
 运行时间：beats 100%  
 解题思路：因为题目保证了 $read$ 函数在每个测试用例中只会调用一次，所以不需要在实现类内部再添加一个缓存数组保存已读未取结果；只需一直读下去直到遇到EOF或已获取到所需要字节数的内容即可
+#### <span id=0158>[158] 用-Read4-读取-N-个字符-ii</span>
+题目链接：[https://leetcode-cn.com/problems/read-n-characters-given-read4-ii-call-multiple-times](https://leetcode-cn.com/problems/read-n-characters-given-read4-ii-call-multiple-times)  
+代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0151_0200/cpp/leetcode_0158.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0151_0200/cpp/leetcode_0158.cpp)  
+运行时间：beats 100%  
+解题思路：采用类似于unix标准IO的处理方式，实现一个内部缓冲区，将已可用但未被外部读取的内容储存于这个内部缓冲区内，下一次读取将优先从这个内部缓冲区读取
 #### <span id=0160>[160] 相交链表</span>
 题目链接：[https://leetcode-cn.com/problems/intersection-of-two-linked-lists](https://leetcode-cn.com/problems/intersection-of-two-linked-lists)  
 代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0151_0200/cpp/leetcode_0160.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0151_0200/cpp/leetcode_0160.cpp)  

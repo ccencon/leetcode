@@ -7,6 +7,7 @@
 |[0154](#0154)|[寻找旋转排序数组中的最小值-ii](#0154)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0151_0200/cpp/leetcode_0154.cpp)|
 |[0155](#0155)|[最小栈](#0155)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0151_0200/cpp/leetcode_0155.cpp)|
 |[0156](#0156)|[上下翻转二叉树](#0156)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0151_0200/cpp/leetcode_0156.cpp)|
+|[0157](#0157)|[用-Read4-读取-N-个字符](#0157)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0151_0200/cpp/leetcode_0157.cpp)|
 |[0160](#0160)|[相交链表](#0160)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0151_0200/cpp/leetcode_0160.cpp)|
 
 #### <span id=0151>[151] 颠倒字符串中的单词</span>
@@ -41,6 +42,11 @@
 代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0151_0200/cpp/leetcode_0156.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0151_0200/cpp/leetcode_0156.cpp)  
 运行时间：beats 66.41%  
 解题思路：很基础的题目，用递归或者栈回溯都可以很好的解决。不过在最后的处理中忘记把原先根结点左右孩子置NULL，导致输出有误，加之官方debug信息奇奇怪怪，花费了不少时间才找出错误
+#### <span id=0157>[157] 用-Read4-读取-N-个字符</span>
+题目链接：[https://leetcode-cn.com/problems/read-n-characters-given-read4](https://leetcode-cn.com/problems/read-n-characters-given-read4)  
+代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0151_0200/cpp/leetcode_0157.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0151_0200/cpp/leetcode_0157.cpp)  
+运行时间：beats 100%  
+解题思路：因为题目保证了 $read$ 函数在每个测试用例中只会调用一次，所以不需要在实现类内部再添加一个缓存数组保存已读未取结果；只需一直读下去直到遇到EOF或已获取到所需要字节数的内容即可
 #### <span id=0160>[160] 相交链表</span>
 题目链接：[https://leetcode-cn.com/problems/intersection-of-two-linked-lists](https://leetcode-cn.com/problems/intersection-of-two-linked-lists)  
 代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0151_0200/cpp/leetcode_0160.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0151_0200/cpp/leetcode_0160.cpp)  

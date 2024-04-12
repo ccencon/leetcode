@@ -12,6 +12,7 @@
 |[0159](#0159)|[至多包含两个不同字符的最长子串](#0159)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0151_0200/cpp/leetcode_0159.cpp)|
 |[0160](#0160)|[相交链表](#0160)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0151_0200/cpp/leetcode_0160.cpp)|
 |[0161](#0161)|[相隔为-1-的编辑距离](#0161)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0151_0200/cpp/leetcode_0161.cpp)|
+|[0162](#0162)|[寻找峰值](#0162)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0151_0200/cpp/leetcode_0162.cpp)|
 
 #### <span id=0151>[151] 颠倒字符串中的单词</span>
 题目链接：[https://leetcode-cn.com/problems/reverse-words-in-a-string](https://leetcode-cn.com/problems/reverse-words-in-a-string)  
@@ -85,4 +86,16 @@
 题目链接：[https://leetcode-cn.com/problems/one-edit-distance](https://leetcode-cn.com/problems/one-edit-distance)  
 代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0151_0200/cpp/leetcode_0161.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0151_0200/cpp/leetcode_0161.cpp)  
 运行时间：beats 70.03%  
-解题思路：<u>[\[72\] 编辑距离](https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100#0072)</u>的一个特例子问题。在求解两个字符串的最少编辑次数时，需要计算每两个字符间进行<u>插入</u>、<u>删除</u>、<u>替换</u>这三个操作时的编辑次数，取其最小值。由于题目只要求判断两个字符串的编辑距离是否为1，所以不需要按照原来繁杂的操作进行求解。首先找出第一个不同的字符，在这个位置分别进行<u>插入</u>、<u>删除</u>、<u>替换</u>这三个操作，如果任意一个操作都可以使得字符串相等，则证明这两个字符串的编辑距离为1
+解题思路：<u>[\[72\] 编辑距离](https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100#0072)</u>的一个特例子问题。在求解两个字符串的最少编辑次数时，需要计算每两个字符间进行 <u>插入</u> 、 <u>删除</u> 、 <u>替换</u> 这三个操作时的编辑次数，取其最小值。由于题目只要求判断两个字符串的编辑距离是否为1，所以不需要按照原来繁杂的操作进行求解。首先找出第一个不同的字符，在这个位置分别进行 <u>插入</u> 、 <u>删除</u> 、 <u>替换</u> 这三个操作，如果任意一个操作都可以使得字符串相等，则证明这两个字符串的编辑距离为1
+#### <span id=0162>[162] 寻找峰值</span>
+题目链接：[https://leetcode-cn.com/problems/find-peak-element](https://leetcode-cn.com/problems/find-peak-element)  
+代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0151_0200/cpp/leetcode_0162.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0151_0200/cpp/leetcode_0162.cpp)  
+运行时间：beats 68.74%  
+解题思路：由于题目要求只需返回任意一个峰值而不是整个数组的最大峰值，所以可以使用二分法查找替代顺序遍历。具体操作步骤为：
+
+1. 初始化左右指针，使其指向数组的两端
+2. 计算出中间指针，将其索引位置的数字与 <b>紧挨着</b> 的左右两个数字进行大小比较
+
+    1. 如果中间数字比临近两个数字都大，证明中间数字为其中一个峰值，返回即可
+    2. 如果左边的数字比右边的大，说明左指针到中间指针的位置存在一个峰值，将右指针移动到中间指针前一个位置，随后重复步骤2
+    3. 如果右边的数字比左边的大，说明右指针到中间指针的位置存在一个峰值，将左指针移动到中间指针后一个位置，随后重复步骤2

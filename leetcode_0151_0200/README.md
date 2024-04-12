@@ -13,6 +13,7 @@
 |[0160](#0160)|[相交链表](#0160)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0151_0200/cpp/leetcode_0160.cpp)|
 |[0161](#0161)|[相隔为-1-的编辑距离](#0161)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0151_0200/cpp/leetcode_0161.cpp)|
 |[0162](#0162)|[寻找峰值](#0162)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0151_0200/cpp/leetcode_0162.cpp)|
+|[0163](#0163)|[缺失的区间](#0163)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0151_0200/cpp/leetcode_0163.cpp)|
 
 #### <span id=0151>[151] 颠倒字符串中的单词</span>
 题目链接：[https://leetcode-cn.com/problems/reverse-words-in-a-string](https://leetcode-cn.com/problems/reverse-words-in-a-string)  
@@ -99,3 +100,8 @@
     1. 如果中间数字比临近两个数字都大，证明中间数字为其中一个峰值，返回即可
     2. 如果左边的数字比右边的大，说明左指针到中间指针的位置存在一个峰值，将右指针移动到中间指针前一个位置，随后重复步骤2
     3. 如果右边的数字比左边的大，说明右指针到中间指针的位置存在一个峰值，将左指针移动到中间指针后一个位置，随后重复步骤2
+#### <span id=0163>[163] 缺失的区间</span>
+题目链接：[https://leetcode-cn.com/problems/missing-ranges](https://leetcode-cn.com/problems/missing-ranges)  
+代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0151_0200/cpp/leetcode_0163.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0151_0200/cpp/leetcode_0163.cpp)  
+运行时间：beats 38.21%  
+解题思路：顺序遍历数组，如果 $nums[i] > lower$ ，则添加区间 $[lower, nums[i] - 1]$ ；更新 $lower$ 为 $nums[i]$ ；在最后还需要额外处理一下最后一个元素与 $upper$ 的区间。另外可以注意的一点是，可以将 $upper$ 添加到数组末尾避免一次特殊处理；但在实际工程中，应该避免这种可能会导致BUG的做法

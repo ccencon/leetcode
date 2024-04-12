@@ -15,6 +15,7 @@
 |[0162](#0162)|[寻找峰值](#0162)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0151_0200/cpp/leetcode_0162.cpp)|
 |[0163](#0163)|[缺失的区间](#0163)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0151_0200/cpp/leetcode_0163.cpp)|
 |[0170](#0170)|[两数之和-III-数据结构设计](#0170)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0151_0200/cpp/leetcode_0170.cpp)|
+|[0186](#0186)|[反转字符串中的单词-II](#0186)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0151_0200/cpp/leetcode_0186.cpp)|
 
 #### <span id=0151>[151] 颠倒字符串中的单词</span>
 题目链接：[https://leetcode-cn.com/problems/reverse-words-in-a-string](https://leetcode-cn.com/problems/reverse-words-in-a-string)  
@@ -116,3 +117,8 @@
 +  $find$ 的次数相对较多。使用哈希表 $A$ 记录 $add$ 操作插入的数字个数，同时使用哈希表 $B$ 记录每一对数字对之和；这样就使得 $find$ 操作时可以直接从哈希表 $B$ 取出运算结果。这时候 $add$ 操作时间复杂度为 $O(n)$ ， $find$ 操作时间复杂度为 $O(1)$
 
 题目没有指明 $find$ 和 $add$ 的实际调用次数，故而为了实现的方便这里选择了第一种设计策略
+#### <span id=0186>[186] 反转字符串中的单词-II</span>
+题目链接：[https://leetcode-cn.com/problems/reverse-words-in-a-string-ii](https://leetcode-cn.com/problems/reverse-words-in-a-string-ii)  
+代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0151_0200/cpp/leetcode_0186.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0151_0200/cpp/leetcode_0186.cpp)  
+运行时间：beats 72.69%  
+解题思路：<u>[\[151\] 颠倒字符串中的单词](#0151)</u>的简单版本，区别在于本题不会包含多余空格，处理起来更加方便。具体解法为，先将字符串整体反转一次，然后再逐个将单词反转，便可得到最终的反转结果

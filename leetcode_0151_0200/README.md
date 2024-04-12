@@ -11,6 +11,7 @@
 |[0158](#0158)|[用-Read4-读取-N-个字符-ii](#0158)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0151_0200/cpp/leetcode_0158.cpp)|
 |[0159](#0159)|[至多包含两个不同字符的最长子串](#0159)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0151_0200/cpp/leetcode_0159.cpp)|
 |[0160](#0160)|[相交链表](#0160)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0151_0200/cpp/leetcode_0160.cpp)|
+|[0161](#0161)|[相隔为-1-的编辑距离](#0161)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0151_0200/cpp/leetcode_0161.cpp)|
 
 #### <span id=0151>[151] 颠倒字符串中的单词</span>
 题目链接：[https://leetcode-cn.com/problems/reverse-words-in-a-string](https://leetcode-cn.com/problems/reverse-words-in-a-string)  
@@ -80,3 +81,8 @@
 2. 同时对链表 $A$ 和链表 $B$ 遍历，每次遍历一个结点，当链表 $A$ 遍历到结尾时，使其从链表 $B$ 开头处重新遍历；当链表 $B$ 遍历到结尾时，使其从链表 $A$ 开头处重新遍历
 3. 假设两个链表相交，在转换链表进行遍历时，两个链表必然同时遍历到第一个相交结点，因为这时候走过的路程均为 $m + n + c$（如果 $m = n$ ，在转换前便可同时遍历到第一个相交结点）
 4. 如果两个链表不相交，无论 $m$ 是否等于 $n$ ，最终都遍历到空结点结束
+#### <span id=0161>[161] 相隔为-1-的编辑距离</span>
+题目链接：[https://leetcode-cn.com/problems/one-edit-distance](https://leetcode-cn.com/problems/one-edit-distance)  
+代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0151_0200/cpp/leetcode_0161.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0151_0200/cpp/leetcode_0161.cpp)  
+运行时间：beats 70.03%  
+解题思路：<u>[\[72\] 编辑距离](https://github.com/ccencon/leetcode/tree/main/leetcode_0051_0100#0072)</u>的一个特例子问题。在求解两个字符串的最少编辑次数时，需要计算每两个字符间进行<u>插入</u>、<u>删除</u>、<u>替换</u>这三个操作时的编辑次数，取其最小值。由于题目只要求判断两个字符串的编辑距离是否为1，所以不需要按照原来繁杂的操作进行求解。首先找出第一个不同的字符，在这个位置分别进行<u>插入</u>、<u>删除</u>、<u>替换</u>这三个操作，如果任意一个操作都可以使得字符串相等，则证明这两个字符串的编辑距离为1

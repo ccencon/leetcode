@@ -9,6 +9,7 @@
 |[0156](#0156)|[上下翻转二叉树](#0156)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0151_0200/cpp/leetcode_0156.cpp)|
 |[0157](#0157)|[用-Read4-读取-N-个字符](#0157)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0151_0200/cpp/leetcode_0157.cpp)|
 |[0158](#0158)|[用-Read4-读取-N-个字符-ii](#0158)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0151_0200/cpp/leetcode_0158.cpp)|
+|[0159](#0159)|[至多包含两个不同字符的最长子串](#0159)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0151_0200/cpp/leetcode_0159.cpp)|
 |[0160](#0160)|[相交链表](#0160)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0151_0200/cpp/leetcode_0160.cpp)|
 
 #### <span id=0151>[151] 颠倒字符串中的单词</span>
@@ -53,6 +54,20 @@
 代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0151_0200/cpp/leetcode_0158.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0151_0200/cpp/leetcode_0158.cpp)  
 运行时间：beats 100%  
 解题思路：采用类似于unix标准IO的处理方式，实现一个内部缓冲区，将已可用但未被外部读取的内容储存于这个内部缓冲区内，下一次读取将优先从这个内部缓冲区读取
+#### <span id=0159>[159] 至多包含两个不同字符的最长子串</span>
+题目链接：[https://leetcode-cn.com/problems/longest-substring-with-at-most-two-distinct-characters](https://leetcode-cn.com/problems/longest-substring-with-at-most-two-distinct-characters)  
+代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0151_0200/cpp/leetcode_0159.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0151_0200/cpp/leetcode_0159.cpp)  
+运行时间：beats 89.40%  
+解题思路：预遍历字符串，找出最开始不同的两个字符 $c1$ 和 $c2$，然后从预遍历之后的位置开始对字符串再次进行遍历，具体的逻辑操作为：
+
+1. 如果当前字符与前一个字符相等，则记录这个字符的最大连续长度
+2. 如果当前字符等于 $c1$ 或 $c2$ ，以当前字符作为结尾的最大子串的最大长度加1
+3. 如果当前字符不等于 $c1$ 或 $c2$ ，以当前字符作为结尾的最大子串的最大长度为前一个字符最大连续长度加1，同时更新 $c1$ 或 $c2$
+
+很容易将此题目归纳到 <u><b>至多包含N不同字符的最长子串</b></u> 这一类问题，如果要计算至多包含 $N$ 个不同字符的最长子串，将不能再使用前面的思路，前面的解法只可以看作 $N=2$ 时的一个特例解法。这个时候可以使用滑动窗口的思路：设定两个指针，使其包含至多 $N$ 个不同字符，计算其长度，然后两个指针同时向字符末尾滑动，使其再次包含至多 $N$ 个不同字符。其中窗口包含的字符可以使用哈希表进行记录，这样便可以使窗口包含正确个数的不同字符
+
+上述两种解法的时间复杂度都为 $O(n)$ ，不过在此题目中，特例解法理论上应更为高效，因为其使用顺序数组而不是哈希表进行数据记录
+
 #### <span id=0160>[160] 相交链表</span>
 题目链接：[https://leetcode-cn.com/problems/intersection-of-two-linked-lists](https://leetcode-cn.com/problems/intersection-of-two-linked-lists)  
 代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0151_0200/cpp/leetcode_0160.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0151_0200/cpp/leetcode_0160.cpp)  

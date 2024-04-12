@@ -14,6 +14,7 @@
 |[0161](#0161)|[相隔为-1-的编辑距离](#0161)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0151_0200/cpp/leetcode_0161.cpp)|
 |[0162](#0162)|[寻找峰值](#0162)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0151_0200/cpp/leetcode_0162.cpp)|
 |[0163](#0163)|[缺失的区间](#0163)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0151_0200/cpp/leetcode_0163.cpp)|
+|[0170](#0170)|[两数之和-III-数据结构设计](#0170)|[cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0151_0200/cpp/leetcode_0170.cpp)|
 
 #### <span id=0151>[151] 颠倒字符串中的单词</span>
 题目链接：[https://leetcode-cn.com/problems/reverse-words-in-a-string](https://leetcode-cn.com/problems/reverse-words-in-a-string)  
@@ -105,3 +106,13 @@
 代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0151_0200/cpp/leetcode_0163.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0151_0200/cpp/leetcode_0163.cpp)  
 运行时间：beats 38.21%  
 解题思路：顺序遍历数组，如果 $nums[i] > lower$ ，则添加区间 $[lower, nums[i] - 1]$ ；更新 $lower$ 为 $nums[i]$ ；在最后还需要额外处理一下最后一个元素与 $upper$ 的区间。另外可以注意的一点是，可以将 $upper$ 添加到数组末尾避免一次特殊处理；但在实际工程中，应该避免这种可能会导致BUG的做法
+#### <span id=0170>[170] 两数之和-III-数据结构设计</span>
+题目链接：[https://leetcode-cn.com/problems/two-sum-iii-data-structure-design](https://leetcode-cn.com/problems/two-sum-iii-data-structure-design)  
+代码链接：[https://github.com/ccencon/leetcode/tree/main/leetcode_0151_0200/cpp/leetcode_0170.cpp](https://github.com/ccencon/leetcode/tree/main/leetcode_0151_0200/cpp/leetcode_0170.cpp)  
+运行时间：beats 57.25%  
+解题思路：这里的数据结构需要提供两种操作， $find$ 和 $add$ ；然而根据 $find$ 和 $add$ 期望调用次数的不同，可以衍生出两种不同的实现策略
+
++  $add$ 的次数相对较多。使用哈希表记录 $add$ 操作插入的数字个数， $find$ 操作时遍历哈希表，找出匹配的数字对。 $add$ 操作时间复杂度为 $O(1)$ ， $find$ 操作时间复杂度为 $O(n)$
++  $find$ 的次数相对较多。使用哈希表 $A$ 记录 $add$ 操作插入的数字个数，同时使用哈希表 $B$ 记录每一对数字对之和；这样就使得 $find$ 操作时可以直接从哈希表 $B$ 取出运算结果。这时候 $add$ 操作时间复杂度为 $O(n)$ ， $find$ 操作时间复杂度为 $O(1)$
+
+题目没有指明 $find$ 和 $add$ 的实际调用次数，故而为了实现的方便这里选择了第一种设计策略

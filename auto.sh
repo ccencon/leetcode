@@ -2,7 +2,7 @@
 #提交github自动化工具
 #根据题目生成相关目录和readme结构
 localPath=`pwd`
-githubPath='https://github.com/ccencon/leetcode/tree/main'
+githubPath='https://github.com/olberix/leetcode/tree/main'
 orderStep=50
 
 dirName=""

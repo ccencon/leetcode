@@ -112,7 +112,12 @@
 题目链接：[https://leetcode-cn.com/problems/maximum-gap](https://leetcode-cn.com/problems/maximum-gap)  
 代码链接：[https://github.com/olberix/leetcode/tree/main/leetcode_0151_0200/cpp/leetcode_0164.cpp](https://github.com/olberix/leetcode/tree/main/leetcode_0151_0200/cpp/leetcode_0164.cpp)  
 运行时间：beats 67.15%  
-解题思路：
+解题思路：题目要求<u>必须编写一个在「线性时间」内运行并使用「线性额外空间」的算法</u>，一开始并没有往排序的方向去想，过程中发现要找到精确的最大间距，最好的方法也要对数组进行树形比较，可是这样一来复杂度就来到了 $O(nlog_2 n)$ 。后来想到这题会不会是想考查基数排序这些有望能达到 $O(n)$ 时间复杂度的排序，忍不住点开题解，还真是...
+
+因为数组元素是数字，本题的解法采用LSD基数排序和计数排序结合的方式进行数组排序，以半字节进行关键字划分以进行计数排序。半字节与传统的十进制取余划分，位运算速度更快，但当数组都是比较小的数字时，会有对高字节的 *0000* 产生多余的操作，与十进制取余相比，对于随机情况，也说不上谁更优更劣。题解中的第二种解法是桶排序，与传统桶排相比，设计更加巧妙，下面简单记录一下
+
+假设数组长度为 $n$ ，最大值 $max$ ，最小值 $min$ ，则数组平均间距为 $d = \frac{max - min}{n - 1}$ ，以 $d$ 作为桶的容量，设立 $m = \frac{max - min}{d}$ 个桶，将数组所有元素与 $min$ 计算间距，以 $d$ 作为步长，将元素放进对应桶中。可以发现，一个桶内的元素最大间距必然小于 $d$ ，而 $d$ 作为平均间距，说明最大间距必然存在于某个桶的最大值与其下一个桶之间的最小值之间
+
 #### <span id=0170>[170] 两数之和-III-数据结构设计</span>
 题目链接：[https://leetcode-cn.com/problems/two-sum-iii-data-structure-design](https://leetcode-cn.com/problems/two-sum-iii-data-structure-design)  
 代码链接：[https://github.com/olberix/leetcode/tree/main/leetcode_0151_0200/cpp/leetcode_0170.cpp](https://github.com/olberix/leetcode/tree/main/leetcode_0151_0200/cpp/leetcode_0170.cpp)  

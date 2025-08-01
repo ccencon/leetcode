@@ -15,6 +15,7 @@
 |[0162](#0162)|[寻找峰值](#0162)|[cpp](https://github.com/olberix/leetcode/tree/main/leetcode_0151_0200/cpp/leetcode_0162.cpp)|
 |[0163](#0163)|[缺失的区间](#0163)|[cpp](https://github.com/olberix/leetcode/tree/main/leetcode_0151_0200/cpp/leetcode_0163.cpp)|
 |[0164](#0164)|[最大间距](#0164)|[cpp](https://github.com/olberix/leetcode/tree/main/leetcode_0151_0200/cpp/leetcode_0164.cpp)|
+|[0165](#0165)|[比较版本号](#0165)|[cpp](https://github.com/olberix/leetcode/tree/main/leetcode_0151_0200/cpp/leetcode_0165.cpp)|
 |[0170](#0170)|[两数之和-III-数据结构设计](#0170)|[cpp](https://github.com/olberix/leetcode/tree/main/leetcode_0151_0200/cpp/leetcode_0170.cpp)|
 |[0186](#0186)|[反转字符串中的单词-II](#0186)|[cpp](https://github.com/olberix/leetcode/tree/main/leetcode_0151_0200/cpp/leetcode_0186.cpp)|
 
@@ -118,6 +119,11 @@
 
 假设数组长度为 $n$ ，最大值 $max$ ，最小值 $min$ ，则数组平均间距为 $d = \frac{max - min}{n - 1}$ ，以 $d$ 作为桶的容量，设立 $m = \frac{max - min}{d}$ 个桶，将数组所有元素与 $min$ 计算间距，以 $d$ 作为步长，将元素放进对应桶中。可以发现，一个桶内的元素最大间距必然小于 $d$ ，而 $d$ 作为平均间距，说明最大间距必然存在于某个桶的最大值与其下一个桶之间的最小值之间
 
+#### <span id=0165>[165] 比较版本号</span>
+题目链接：[https://leetcode-cn.com/problems/compare-version-numbers](https://leetcode-cn.com/problems/compare-version-numbers)  
+代码链接：[https://github.com/olberix/leetcode/tree/main/leetcode_0151_0200/cpp/leetcode_0165.cpp](https://github.com/olberix/leetcode/tree/main/leetcode_0151_0200/cpp/leetcode_0165.cpp)  
+运行时间：beats 100%  
+解题思路：挺简单的一题，从左到右按照点号分割数字字符串即可
 #### <span id=0170>[170] 两数之和-III-数据结构设计</span>
 题目链接：[https://leetcode-cn.com/problems/two-sum-iii-data-structure-design](https://leetcode-cn.com/problems/two-sum-iii-data-structure-design)  
 代码链接：[https://github.com/olberix/leetcode/tree/main/leetcode_0151_0200/cpp/leetcode_0170.cpp](https://github.com/olberix/leetcode/tree/main/leetcode_0151_0200/cpp/leetcode_0170.cpp)  
